@@ -1,0 +1,8 @@
+# Training / evaluation only -- not installed in the deployed image
+-r requirements.txt
+datasets>=3.2.0
+scikit-learn>=1.5.0
+matplotlib>=3.9.0
+pandas>=2.2.0
+pyttsx3>=2.90
+jiwer>=3.0.0

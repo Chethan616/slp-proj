@@ -1,0 +1,207 @@
+{
+ "alarm": [
+  "Sure -- what time should I set the alarm for?",
+  "I can set that alarm. Tell me the time and I'll take care of it.",
+  "Alarm it is. What time do you want to be woken up?"
+ ],
+ "are_you_a_bot": [
+  "I am -- a neural intent classifier with a speech front end. No human back here.",
+  "Guilty. I'm a bot: Whisper turns your voice into text and DistilBERT works out what you meant.",
+  "Yes, I'm a machine. I try not to sound too much like one."
+ ],
+ "balance": [
+  "Your current account balance is $2,431.09.",
+  "You have $2,431.09 available in your checking account.",
+  "Right now you're sitting at $2,431.09."
+ ],
+ "book_flight": [
+  "Happy to book a flight. Where are you flying from and to, and on what date?",
+  "Let's get that booked -- give me your destination and travel dates.",
+  "I can search flights for you. What's the route, and when do you want to leave?"
+ ],
+ "book_hotel": [
+  "I can book a hotel. Which city, and which nights do you need?",
+  "Sure -- tell me the destination and your check-in and check-out dates.",
+  "Let's find you a room. Where are you staying, and for how long?"
+ ],
+ "calculator": [
+  "I can do that maths for you -- what's the calculation?",
+  "Give me the numbers and I'll work it out.",
+  "Ready to calculate. What am I adding up?"
+ ],
+ "calories": [
+  "That dish comes to roughly 450 calories per serving.",
+  "About 450 calories a portion, give or take depending on how it's cooked.",
+  "Roughly 450 calories -- want the full nutritional breakdown?"
+ ],
+ "credit_score": [
+  "Your credit score is currently 742, which is rated good.",
+  "You're at 742 -- solidly in the good range, and up 8 points this quarter.",
+  "Latest reading is 742. Nothing on your report is dragging it down."
+ ],
+ "date": [
+  "Today is {date}.",
+  "It's {date} today.",
+  "The date today is {date}."
+ ],
+ "definition": [
+  "I can look that up -- which word do you want defined?",
+  "Sure, give me the word and I'll define it.",
+  "Happy to help with a definition. What's the word?"
+ ],
+ "directions": [
+  "I've pulled up directions -- the fastest route takes about 18 minutes.",
+  "Route found. Head out and I'll guide you turn by turn.",
+  "Directions ready. It's roughly 18 minutes with current traffic."
+ ],
+ "distance": [
+  "That's about 12.4 kilometres from where you are now.",
+  "Roughly 12.4 km -- around 18 minutes by car.",
+  "The distance is approximately 12.4 kilometres."
+ ],
+ "exchange_rate": [
+  "One US dollar is currently worth about 83.2 Indian rupees.",
+  "Today's rate is roughly 83.2 rupees to the dollar.",
+  "The exchange rate right now is about 1 USD to 83.2 INR."
+ ],
+ "flight_status": [
+  "That flight is on time and scheduled to land at 4:35 PM.",
+  "Good news -- the flight is running on schedule, arriving 4:35 PM.",
+  "Currently on time. Gate information should post about an hour before landing."
+ ],
+ "flip_coin": [
+  "I flipped a coin and it landed on {coin}.",
+  "It's {coin}.",
+  "Coin flipped -- {coin}."
+ ],
+ "gas": [
+  "The nearest petrol station is 1.2 km away, on your right.",
+  "There's a station about 1.2 km ahead -- want me to route you there?",
+  "Closest fuel stop is 1.2 km from here."
+ ],
+ "goodbye": [
+  "Goodbye! Come back any time.",
+  "See you later -- take care.",
+  "Bye for now. It was good talking to you."
+ ],
+ "greeting": [
+  "Hello! What can I do for you today?",
+  "Hi there -- I'm listening.",
+  "Hey! Ask me anything you would normally ask a voice assistant."
+ ],
+ "how_old_are_you": [
+  "I don't have a birthday, but my weights finished training fairly recently.",
+  "Age is tricky for software. I'm as old as my last training run.",
+  "No age to speak of -- I'm a model, not a person."
+ ],
+ "meeting_schedule": [
+  "You have three meetings today, the next one at 2 PM.",
+  "Next up is a 2 PM meeting; two more follow this afternoon.",
+  "Your calendar shows three meetings today. The 2 PM one is first."
+ ],
+ "next_song": [
+  "Skipping ahead to the next track.",
+  "Next song coming up.",
+  "Done -- playing the next one."
+ ],
+ "pay_bill": [
+  "I can pay that bill. Which account should I take it from?",
+  "Sure -- confirm the amount and I'll send the payment.",
+  "Ready to pay it. Just tell me which bill and I'll handle the rest."
+ ],
+ "payday": [
+  "Your next payday is the 30th of this month.",
+  "You get paid on the 30th -- that's nine days away.",
+  "Payday lands on the 30th."
+ ],
+ "play_music": [
+  "Playing music now.",
+  "Starting your playlist.",
+  "Music on -- enjoy."
+ ],
+ "pto_balance": [
+  "You have 12 days of paid time off remaining this year.",
+  "Your PTO balance is 12 days.",
+  "Twelve days of leave left, and they don't roll over past December."
+ ],
+ "recipe": [
+  "I found a recipe for that -- it takes about 30 minutes and serves four.",
+  "Here's a recipe: 30 minutes start to finish, six ingredients.",
+  "Got one. Want me to read out the ingredients first?"
+ ],
+ "reminder": [
+  "Reminder set. I'll nudge you when the time comes.",
+  "Done -- I'll remind you.",
+  "I've added that reminder for you."
+ ],
+ "restaurant_suggestion": [
+  "There's a well-rated Italian place ten minutes away -- want me to book it?",
+  "I'd suggest the Italian spot nearby; it's rated 4.6 and usually has tables.",
+  "How about Italian? There's a good one ten minutes from here."
+ ],
+ "shopping_list": [
+  "Added to your shopping list.",
+  "That's on the shopping list now.",
+  "Got it -- your shopping list is updated."
+ ],
+ "tell_joke": [
+  "Why did the neural network go to therapy? It had too many hidden layers.",
+  "I told my computer I needed a break, and it said it would go to sleep.",
+  "Why do programmers prefer dark mode? Because light attracts bugs."
+ ],
+ "thank_you": [
+  "You're very welcome!",
+  "Any time -- glad I could help.",
+  "No problem at all."
+ ],
+ "time": [
+  "It's {time} right now.",
+  "The time is {time}.",
+  "Right now it's {time}."
+ ],
+ "timer": [
+  "Timer started.",
+  "I've set that timer for you -- I'll sound when it's up.",
+  "Counting down now."
+ ],
+ "todo_list": [
+  "Added to your to-do list.",
+  "That's on your to-do list now.",
+  "Noted -- your to-do list is updated."
+ ],
+ "traffic": [
+  "Traffic is light on your usual route -- about 18 minutes.",
+  "The roads are clear right now, no delays worth mentioning.",
+  "There's moderate traffic ahead, adding roughly five minutes."
+ ],
+ "transactions": [
+  "Your last three transactions total $87.40, the most recent at a coffee shop.",
+  "Most recent activity: three purchases totalling $87.40.",
+  "I see three recent transactions adding up to $87.40."
+ ],
+ "translate": [
+  "I can translate that -- which language should I put it into?",
+  "Sure. Tell me the phrase and the target language.",
+  "Happy to translate. What language do you need?"
+ ],
+ "weather": [
+  "It's 27 degrees and partly cloudy, with no rain expected today.",
+  "Currently 27 degrees Celsius and mostly clear.",
+  "Expect 27 degrees and light cloud -- a good day to be outside."
+ ],
+ "what_can_i_ask_you": [
+  "Try me on weather, alarms, timers, flights, hotels, directions, traffic, your bank balance, music, reminders, recipes -- or just say hello.",
+  "I handle 40 intents across small talk, utilities, travel, driving, banking, home, work and food. Ask away.",
+  "Anything a voice assistant would do -- weather, timers, bookings, balances, music, to-do lists, plus a joke if you want one."
+ ],
+ "what_is_your_name": [
+  "I'm Vox, a voice-enabled chatbot built on Whisper and DistilBERT.",
+  "Call me Vox.",
+  "My name is Vox. Nice to meet you."
+ ],
+ "oos": [
+  "I'm not sure I follow -- that's outside what I've been trained on. Try asking about weather, travel, banking or your calendar.",
+  "That one's out of scope for me. Say 'what can I ask you' and I'll list what I do handle.",
+  "I don't have an answer for that. I only cover 40 specific intents -- ask me what they are if you like."
+ ]
+}

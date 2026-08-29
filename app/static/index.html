@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vox — Voice-Enabled Chatbot</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">◉</span>
+    <div>
+      <h1>Vox</h1>
+      <p class="tagline">Voice-enabled chatbot · Whisper + DistilBERT</p>
+    </div>
+  </div>
+  <div class="pipeline" aria-label="processing pipeline">
+    <span class="stage" data-stage="record">Record</span>
+    <span class="arrow">→</span>
+    <span class="stage" data-stage="stt">Speech&nbsp;recognition</span>
+    <span class="arrow">→</span>
+    <span class="stage" data-stage="nlu">Intent&nbsp;model</span>
+    <span class="arrow">→</span>
+    <span class="stage" data-stage="reply">Response</span>
+  </div>
+</header>
+
+<main>
+  <section id="transcript" class="transcript" aria-live="polite">
+    <div class="empty-state" id="emptyState">
+      <p class="empty-title">Press the microphone and speak.</p>
+      <p class="empty-sub">Your speech is transcribed on the server by Whisper, classified into one of 41 intents by a fine-tuned DistilBERT model, and answered.</p>
+      <ul class="suggestions" id="suggestions"></ul>
+    </div>
+  </section>
+</main>
+
+<footer class="controls">
+  <div class="mic-row">
+    <button id="micBtn" class="mic" aria-label="Start recording">
+      <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true">
+        <path fill="currentColor" d="M12 15a3.5 3.5 0 0 0 3.5-3.5v-6a3.5 3.5 0 1 0-7 0v6A3.5 3.5 0 0 0 12 15Z"/>
+        <path fill="currentColor" d="M18.5 11.5a.9.9 0 0 0-1.8 0 4.7 4.7 0 0 1-9.4 0 .9.9 0 0 0-1.8 0 6.5 6.5 0 0 0 5.6 6.4V21a.9.9 0 0 0 1.8 0v-3.1a6.5 6.5 0 0 0 5.6-6.4Z"/>
+      </svg>
+      <span class="level" id="level"></span>
+    </button>
+    <div class="mic-meta">
+      <span id="micLabel">Click to speak</span>
+      <span id="timer" class="timer"></span>
+    </div>
+  </div>
+
+  <form id="textForm" class="text-row" autocomplete="off">
+    <input id="textInput" type="text" maxlength="500"
+           placeholder="…or type here if you have no microphone" />
+    <button type="submit" class="send">Send</button>
+  </form>
+
+  <div class="footer-meta">
+    <label class="speak-toggle">
+      <input type="checkbox" id="speakToggle" /> Read replies aloud
+    </label>
+    <span id="modelInfo" class="model-info"></span>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
