@@ -1,0 +1,7502 @@
+[
+ {
+  "text": "give me examples of what to ask you",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "play the song called wreckless love",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how much time do i have left on my 0% apr",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "good speaking to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "check to see how many miles are on my car",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "find out what the maximum memory size is that i can buy in a dvd",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "read my to-do list items",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what is the calorie count of a burrito",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "is milk on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "my list of reminders contains what",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what's a good chili recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what subjects do you like",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "give me today's date",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what day can i expect to receive payment on",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what's your name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "check current prime mortgage rate",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me my credit raing",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what would you be able to do with me",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "i'd like to know how you are doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "let me know when it's been 5 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "can you tell me local crime in my area",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "book me a flight to jackson, mississippi from austin texas on american airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "are you a computer generated voice",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "can you tell me how to solve simple algebraic equations with one variable",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what do i call you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "can you tell me what obsolescence means",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "please give me my current credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "pull up the songs under slow",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "i'm travelling to boston on march 2 until march 4 please make a hotel reservation for me",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what should you be called",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "whats my bank accounts look like",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "how far out is flight dl123",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "show my transactions",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "i need to know the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "is laundry on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "regards",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "please play the next track",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "tell me where i can get the cheapest tennis balls on the internet",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "do i have enough in my wells fargo account to get some nike's",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what's the exhange rate between mxn and gbp",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "tell me how you are doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "thank you for that reply",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "provide me with the knowledge of whether you are a human or are a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "who am i speaking with",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "book me a flight from midway to jfk for less than 200 dollars",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "go ahead and find me a hotel with good reviews in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what percentage full is my gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "what happened with the summit between trump and jong",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "are your step-parent's parents considered your grandparents",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let me know the nearest gas station to glendale",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "where is the nearest fry's",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "give me my reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what's the definition of luminescent",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "how much is one us dollar in british pounds",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "it was great talking to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "i must get a hotel in phoenix near chase field from january 4th to the 8th",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "how long until my paycheck shows up",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "my electric bill should be paid today",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what's the more secure bank vault",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the calorie content in potatoes",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what is the weather doing in austin",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "i'd like to pay $4735 to my water bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "where's the closest car wash my car smells",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's a good gift to get for your grandparents",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "where is my delta flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what the numerical number inside my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "when for i meet jane for our meeting",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "is the depiction of gold mining in the movie the ballad of buster scruggs realistic",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me information on the oscars",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what have i spent things on",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "can you tell me today's headlines pleasei",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you book me a flight to memphis from st louis on delta airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "how is the traffic at 9:00 on the way to detroit",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how many people have insomnia",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "make a list of side hustles i could start today to make a little extra cash",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need to know what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what is the cost of four double a batteries",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need a hotel between january 1st through 3rd in jacksonville near the stadium",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what kinds of things are you familiar with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "give me a recommendation for a local landscaper",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how long does it take to get to el paso on a bus",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "how would they say butter in zambia",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "how much is this years model of my car cost",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what do i have in my bank accounts right now",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i wanna find a hotel with good reviews in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "where is the closest bathroom to the statue of liberty",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what do i put on my feet",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "get me a hotel room big enough for 4 people from may 3 to may 5 in boston",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what date will it be tomorrow",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "are there any sales on groceries today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "are you a person or robot",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how much dough do i have in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "are polar bears on the endangered species list",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "fun gift ideas to give to grandparents",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "put on my 90s playlist",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "i need to pay my electric bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "tell me if you are a human or are a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "might we go to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "when did i last collect my salary",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "can you check my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "thanks for the reply",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "where can i go to eat",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "is $30 usd more or less in canada",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "play a song",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how would i say where is the bathroom if i were korean",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "is it true your a real person",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how much gas do i have here",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "when do i next get paid",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "give me a list of places that serve the best wings in charlotte",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "when do i get my next paycheck",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "i need reviews for places serving tacos in chicago",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what's the status of my southwest flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "clear my search history",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when will cameron release the sequel to avatar",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i would like to hear a joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "instruct a list of all the brands of cereal manufactured by kelloggs",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much candy have i consumed this week",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "set a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "where can i find my gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "that's all i need, i'm going now",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "when were you made",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "when do i get paid for my work",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "many thank",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "\"i'll be travelling from lax and headed to phl for 120 on the 10th of may",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "well hi there",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "how is the weather in austin",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "tell me my gas tank levels",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "find the square root of 1243435",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "did carrots get on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "i need for you to get me the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "create emergency phone numbers list",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "look up the rate of exchange between pesos and usd",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how are you doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "can you help me pay my bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "i want to know how you are doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "what would you like me to call you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how much money do i have in my various bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what transactions did i make on electronics this morning after 6am",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "tell me what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how do you say fast in spanish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "when was the term \"zombie\" first used",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when is your birthday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "search for chili recipes",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "whats the exchange rate for us dollars to british pounds",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "what's the first romantic movie ever made",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "will you tell me how the ai is doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "i need to book a flight on jet blue to boston from new york",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "who played ronald weasly",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what date is it tomorrow",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "hey there, how are you today",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "how much is $30 usd in canadian dollar",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "what is a good laptop for gaming",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i'd like you to check on my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "bye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "what were indians like 100 years ago",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is a british pound worth in mexican pesos",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "are carrots added to the grocery list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "do you have any monkey jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "is it possible i have a meeting with kim today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what stuff am i trying to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "can you see what the budget for the united states military was in 2018",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i have a super runny nose and want to find a doctor",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is there traffic on i-95 north to new york from philadelphia",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "is your voice from a human or is it synthesized",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "what is the day now",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "when will world war 3 begin",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what time is it right now in adelaide, australia",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "please make sure the alarm is set",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "what's up with my american airline flight will it be on time",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "when will the government file another antitrust suit against microsoft",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "pay my electric bill for me",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "watch the stories on instagram",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "am i talking to a real live person",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "list my reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what's the status of my virgin airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "i need a flight from boston to miami for under 300 dollars",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what's on my to-buy list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what do my vacation days amount to",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "hello, how is it going",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "how much vacation time do i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "good bye then",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "how many harry potter books are there",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the last transaction on my visa card",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what things are on my shopping list today",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "how many vacation days do i still have available",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "how long is the bank open until",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many calories does an orange have",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "can you tell me about that tornado that just tore up alabama",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me information about the element carbon and its reactions with hydrogen",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when is boarding scheduled for my flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "how much money is there in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i want a timer set for 10 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "i want to know my reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "let me know if you are a human or are a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how do you say please in french",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what's the average time to boston when riding a bus",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "tell me what the weather is looking like",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "is there an internet outage in my area",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me a coin toss result",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "great talk, thanks",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "show me ideas for hamburger",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what should i do if i saw a cockroach in my house",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "make sure i get a delta flight from pittsburgh to arizona",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "how would i say i love you if i were german",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what does peer-to-peer actually mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "tell me the answer to 1000 divided by 40",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what's the date on my last pay stub",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "how many calories does doing 20 situps burn",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how long does it take to get your yellow belt in karate",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what should i take for a cold",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how would i say thank you if i were mexican",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "how safe is the herpes vaccine they give women",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to find new cyberpunk fiction books",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to hear a joke about elephants",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how do you prepare omelet",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "can you verify my recent visa card transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "hey there",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "please read me the last text message i received",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how long will it take me to get to walmart",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "what size pipes are used for sinks",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "make a list of what materials have been used for spacesuits",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "flip the coin, i choose heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "can i get to susan's house with my current tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "could you hit next",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what is the weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you find what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how much should i tip on this bill",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the number of calories in a steak",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what's the cost of bottled water",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "flip a coin, you're tails and i'm heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "set an alarm for 8 tomorrow",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "know any dad jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "ai is a helpful item to have in my home, thank you",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "can you order some ointment for me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i am grateful for the help",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "is it after noon",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "tell me what tomorrow's date is",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "i would like to book a place to stay in phoenix from the 5th to the 9th of march",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what is today's big article in the washington post",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to see all transactions in the past month for all accounts",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "can you tell me my bank balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "please give me the name of a few good options for places to eat dinner tonight",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "how's the weather in seattle",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "what stores are at my local mall",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "report outage to my electric provider",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to fly to atlanta for under 300 from pittsburgh",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "schedule a flight from pittsburgh to arizona on delta",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what's the definition of unencumbered",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "is the meeting with lisa today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "who wrote green book",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much cash do i have in my various bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "are you a human or ai computer based",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "i'd love to set an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "give me the status on my united airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "tell me the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what is the cheapest new car for this year",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "will you tell me my bank balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what would the word for grass be in finland",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what is my credit rating",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what movies are available",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's your date of birth",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "how do i get to the subway by foot",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what kind of foods are border collies allergic to",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "set a timer to go off in 1 hour",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "pull up some recommendations for places serving fish in maine",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what knowledge do you have on certain subjects",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "play oldschool rap",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "play the next one",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "can you list all channels of a certain category",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "it was very good to talk to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "make a list of stocks that would be good to invest in to start making money",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you find me a rice recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what is my remaining amount of pto days",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "coin flip, choose heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "when's pay day for me",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "would you tell me my bank balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "who set up the numbers for it",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "find me examples of post modern art",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many days can i take for vacation",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "what type of industries do innovation managers work in",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can i fly from atlanta to san francisco for less than 100 dollars",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "how many mexican pesos is a us dollar worth",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "let me know the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "hi, how are you today",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "pay my utility bill from my bank account",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "am i supposed to attend any meetings today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "how far am i from orlando",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "can you colorize a black and white photo",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i heard some woman say she was going to yerd me, what's that mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i'm looking for a flight from billings to cleveland on may 2 and a return on may 9",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "can i get to work on my fuel tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "when is the best time of year for pruning",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the time is central time zone",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "which hospital is nearest to me",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "please tell me what the date is tomorrow",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "how can you help me",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "find the closest cvs near galleria mall",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "i'm trying to raise my credit score can you tell me what it is now",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "i don't like this song, can skip it",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "set a timer for 30 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "i need a flight for under 300 from pittsburgh to atlanta",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "tell me a joke about the topic of mice",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what's the power consumption of my fridge",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "go on the ferris wheel",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "explain to me the process of evaporation",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "define discontent",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "is it possible to read my to-do list again",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "request a refund on the car wax i bought yesterday",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is the stop sign around the corner still knocked over",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "\"i'm fly out from lax to phl this weekend for around $120",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "play ludacris hits",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "drop some beats",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what is the right way to say excuse me in spanish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "review my resume for spelling errors",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when is my paycheck arriving",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "ai, what is your name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how many people suffer from mental illness",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "set an alarm for 6 am tomorrow",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "can you tell me your birthday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "would you tell me how the ai is doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "find a recipe for baked ziti",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what's my checking look like",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i want a flight from new york to san francisco using delta",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "let's hear a joke from you please",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how can i repair a broken watch",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many days on holiday do i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "can you look at when the next iphone is due out",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you give me a traffic update for driving routes nearest ocean city, new jersey from philadelphia",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how much gas do i have in my tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "how do you treat an iron skillet",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do i pay my electric bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "is my flight, dl123 on time",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "check my checking balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what kind of things do i have to do today",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "set an alarm for 11 tomorrow",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "check to see if i still have allergy medication",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me what types of questions i can ask you",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "will you play the song that goes like, \"starships were meant to fly",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "i need to know what's on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "i have a rash, what can i use for it",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is a good home remedy for a rash",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can i get a timer set",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what did my best friend do in the kitchen while we were gone",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "on my way to work, is there traffic",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "has flight dl123 landed",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "have i already got eggs down on the shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "can you check to see if my shopping list already has milk",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "make a list of all sites in the us where spirits have been seen at night",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what are some things i can do on the way to work",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please play music by acdc",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "where can i satisfy my craving for french food in milwaukee",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what's the best hand to have in texas hold em",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "find a cleaner that specializes in suede",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how would i say how are you today if i were mexican",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what are the best jeans in my size",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much ram does my computer have",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "do i have any meetings scheduled today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "play the song called dancing on the ceiling",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "tell me about the oscars",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many dollars can i get for 20 yen",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "set the alarm now",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "i need to know how you are doing today",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "how many keys does a xylophone have",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "so, does it take long to get to dodger stadium in anaheim",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "could you tell me what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "are you a person that's real",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "can you check my credit score for me",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "flip coin, heads!",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "i need some suggestions for dinner places tonight",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "hello there, good morning",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "will you tell me a joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how old",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "how many minutes will it take to get to the empire state building in manhattan",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "i need a hand getting this gas bill paid",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what's the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "find articles on essay writing for beginners",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "flip a coin, i'm heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "how many dollars is 20 yen worth",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how much vacation time have i earned",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "so i have any vacation days left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "do i have to buy milk",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what is the weather like",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "i need a hotel room that is big enough for eleven people from march 10th to the 15th in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what is 300 divided by 42",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "when is boarding scheduled",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "read my list of reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "thanks for trying",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "look up when my payday is supposed to be",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "search my contacts for the auto repair place",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me if i have a meeting with liz today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "are there any good places in cleveland that serve clams",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what subjects are you experienced in",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "i need to book a place to stay in phoenix from the 5th to the 9th of march",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "are you real or a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "throw a coin in the air",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "use my navy federal account and pay this month's verizon bill, please",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "when is my meeting with jim scheduled for",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "any fantastic restaurants to get shrimp at in atlanta",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "tell me a dog joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "please tell me your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "next song, please!",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what's the definition of idiosyncratic",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "make a 10 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "how do i skip all of the advertisements",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many calories are in a cheeseburger",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "how many dvds do i currently have on file",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many calories are in hamburgers",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "can you find me a salsa recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what do i currently have on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "do i have a meeting with paul today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "i am going to need help paying my rent bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "let me know what time the patriots game starts",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "hoq many calories does pasta have",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "hello there ai",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "can you please do a simulated coin flip for me ai",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "what subjects or areas are you familiar with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "does the shopping list have apples on it",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "look for a position similar to mine that is open around my area",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need to set an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "how do i get perfect alignment with the curb",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need your help to find a good reviewed hotel in washington",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "mickey mouse is a huge part of disney",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "where is the closest mcdonald's to foxwoods casino",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "i need to know the answer to 10000 multiplied by 44",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what is the date in 5 days",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what time is it in the central timezone",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "did you put carrots on the shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what is 592 minus 124",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "check what is on my to-do list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "when is my meeting with jack for",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what time is it in the mountain timezone",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "ai you have given me so much information, thank you",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "signing off",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "tell me what 1875 plus 3459 equals",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "how much cash do i have in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what does serendipity mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i need to have a timer for 10 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "do i have money in my wells fargo account for nike's",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what is the state of the weather in seattle",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "would you call yourself a human or a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "update my status on instagram",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what day are we in",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "is there more than one occult that a person can join",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "the time is what",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "open bank app and show my most recent transactions",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what is dog in spanish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "can you tell me the to do's on my reminder list",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "thank you ever so much for that!",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "did the stock market finish up for the day",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "search up the cast in the walking dead",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what brand was the last advertisement for",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what should i use when i refer to you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "thanks for your help, goodbye!",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "i want to set an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "turn on metallicas greatest hits",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what is the exchange rate between euros and pesos",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "what's the news with my delta flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what is the current weather like",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "start the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "please review my recent visa card transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "how might i say hello if i were scottish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "how is ford's stock doing",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please give me the time",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "what's on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what is 48 multiplied by 4 divided by 2",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "please uninstall this intrusive social media app",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please help me to know what type of things you can help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "what is the balance on my vacation days",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "let me know the date tomorrow",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "i want a hotel in phoenix near chase field from january 4th to the 8th",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "where is the closest pharmacy",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "can you set an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "how much moola is in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what can you do for me",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "convert 200 us dollars to british pounds",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how does one say wonderful in german",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "has ko gone up or down",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's the mileage to get the the taj mahal in atlantic city",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "book a flight to los angeles from las vegas on american airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "tell me a good joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how do you say dog in spanish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "how safe is it to consume the substance h2o",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "are you okay",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "i need to know your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "what's the best make-up to cover a black eye",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "forward the text i just got from henry to giselle",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "wake me up with an alarm at 6am",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "it is good to see you",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "where is the closest architecture college",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "state recent transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "is traffic good or bad at 9:00 on the way to detroit",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what are the best places to get shrimp in chicago",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "how many days of vacation do i have left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "is make a hair appointment on my todo list right now",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "can you tell me the current time in jamaica",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "find me a place to stay in jacksonville near the stadium from january 1st through 3rd",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "has there been anything breaking this afternoon",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is on my to-do list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what time is a star is born showing",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "could you set a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "how many years do you need to be in the army to get a college tuition",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "book me a flight to dallas from st, paul, minnesota on delta airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what is the time in est",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how many weeks of vacation time have i earned",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "what is the year to date total on my vacation days",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "what is the sum of eleven and ten",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "give me prices on a copy of the mla grammar handbook",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how old were you on your last birthday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "can i reach seattle with this amount of fuel",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "can you suggest a thai restaurant",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "can you suggest a french restaurant",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what is the current time",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "find a credit mentoring service number for me please",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's the way for delta to cancel a flight",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the current exchange rate between mxn and eur",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "let me hear my slow songs",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what about the weather in austin",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you tell me your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "set a 1 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "can you suggest a french restaurant, please",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "i would like to know my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how much time is left until we get there",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "what's the name of the day today",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "going to work, will there be traffic",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "date please",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "will i make it to my current destination on this fuel tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "\"i'm going on a flight from lax and going to phl, which is only $120 on june 15th",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "flip a coin i choose heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "can you tell me something funny about science",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "show me some restaurants that have high reviews for eating out",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "i appeciate it",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what are my reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "could you share my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "please tell me what today is",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "was einstein right to be scared of spooky action at a distance",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what do i need to do to cook a chicken",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "how's my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "is it too late to wear white",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "could you be a person",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "tell me the time in las vegas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how many years have you been alive",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "what is a good movie to go see in theaters for a family with young kids",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let me know what my credit score is today",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "where does jiu jitsu originate",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "convert 20 yen to dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how would i say i must be going now if i were german",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what does anachronistic mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "can you tell me what you are called",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "can i use direct deposit for my tax refund",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what time is it in the eastern timezone",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "when will i get to orlando",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "could you tell me what the weather is in austin",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "what number is my credit score currently",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how do i get started making homemade pizza dough",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "tell me something funny about horses",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "can you do a coin flip for me ai",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "did i put grocery shopping on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what's the exchange rate between ils and usd",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how do i write c++",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can i know what type of things you can help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "thank you ai for everything you do",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "play music by ludacris",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "please alert me when my iphone battery falls below 30%",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "check on my to-do list items",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "i need to put in a payment towards my phone bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "i want to pay my bill through the app",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "my credit rating is what",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "would you tell me how old you are",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "how do i get downtown by foot",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "email my boss, tell him i wont be in today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "are you actually a person",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "in cleveland, are there any good places that serve clams",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "my meeting with alice is scheduled for when",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "let me hear my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "in 15 minutes the timer should go off",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "is there a meeting with sam today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "your a bot aren't you",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "what does confrontation mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "can we move onto the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "how many calories can i expect to be in fries",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "tell me a joke about elephants",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "tell me the date, please",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what's the french word you use for potato",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "is anything on my grocery list on sale today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what was my recent transaction on my visa card",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what kind of camera should i buy",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is the polar vortex of 2019 apart of global warming",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need an alarm set now",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "where is the closest gas station to glendale",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "play the song that goes, \"starships were meant to fly",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "can you please start the avatar movie for me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "flip a coin, i call heads!",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "is my meeting with frank on my list of reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "where is the nearest marijuana dispensary to kentucky fried chicken",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "i have to pay my water bill but need help doing it",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what kind of traffic can i expect at 9:00 on the route to detroit",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "thank you for the heip",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "find me a recipe for chili",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "give me a summary of today's meetings",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what's the status of by delta flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "when should you use a dry cleaner",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please set the alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "what is the time in the usa",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "so what subjects do you like",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "what was the date when i last go paid",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what is the meaning of incandescent",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "tell me about the amusement park",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the weather forecast looking like for seattle",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "play the song called amazing grace",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "will there be heavy traffic near downtown philadelphia from lincoln drive in the next two hours",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "recipes for garlic bread please",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what does amicable mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "tell me what to call you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how many vacation days are remaining on my time",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "order the new book titled \"ghost work\"",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to install new tiles in my kitchen",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "hey, how are you",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "see if you can find a good vegetable wash for me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "pick out an excerise outfit for me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you please remind me of the items that i made note of to not forget",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "did i remember to put oatmeal on my list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "enjoy your day, goodbye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "where is the nearest circuit city",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "find square root of 453",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "how to fix walls",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the meaning of the word girn",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "what time is boarding for my flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "tell me the current balance of my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "thanks so much ai",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "how much was my last target trip",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "i want an alarm for 6 am",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "can you enable subtitles",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to know my credit rating",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what things are on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "i must know the closest gas station to glendale",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what's the first thing you should do to wash your car",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do i get to central park by foot",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "pay my con edison bill using my capital one account",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what are you feeling today",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "how do you describe yourself: as a computer or a human",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "that answer was very helpful, thanks",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "i want some nike's, is there enough in my wells fargo account",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what is the calorie count for this milkshake",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what's the balance in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what number of days do i have for vacation",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "give me my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "charge my internet bill to the corporate account",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "look up which animal is represented in this year's chinese new year",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "send information on flood clean up to my phone",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me vacation days remaining, please",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "exactly what time is my meeting with robin scheduled for on",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "are you human",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "show me my ten most recent transactions on account xyz",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "look up the date for my next payday",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "can i make it to los angeles with this fuel level",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "i need to get a hotel room that is big enough for eleven people from march 10th to the 15th in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what do mummies eat",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what time is it in the greenwich timezone",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "i want to a book a roundtrip flight from san antonio to dtw departing on friday and returning on wednesday",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "tell me a summary of reviews that oakley frogskins get on amazon",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many transactions do i have on flower shops from last wednesday between 2pm and 7pm",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "how long does it take the irs to issue a tax refund",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how can i add my signature to the proposed bill legalizing prostitution",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is beer legal in this state",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "hi there, how are you doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "what transactions do i have on groceries from yesterday",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "when will my payment be deposited",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what is the square root of 95",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what is on the shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "i need a recipe for chili",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what is 1243 times 45",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "look up articles on squealing brakes for ford f-150's",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much gas do i have left in my tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "hi, how are you",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "ai, please flip a simulated coin",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "that will be all have a nice day!",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "could you suggest a french restaurant, please",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "how much does my bank account have",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i need some directions to phoenix",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what time is it in california",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "which subjects are you the most experienced with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "what are you programmed to do for me",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "what is 400 times 2",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "it was great to talk to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "what's the calorie content of french fries",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what is the price of other company's similar phone plans",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please tell me a recipe for this meal",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what day is payday",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "\"which things are wanted to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "the song that goes, \"starships were meant to fly\", play it",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "can you tell me what time it is in dallas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "what is the cashback rate for my credit card",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what should i call you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "your birthday please",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "can you tell me the traffic situation from philadelphia to the new jersey turnpike",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how many more miles can i drive on my current tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "please flip a coin, i choose heads!",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "do you know any jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "find me a hotel with good reviews in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "can you search recommended casual restaurants for tonight in philadelphia",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what kind of calories do chicken tenders have",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "read my reminder list",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "recite the items i'm planning to purchase",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "have i told you to add washing dishes to my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "is \"cleaning the bathroom\" an item on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what happens if you're skydiving and your parachute doesn't open",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do you unclog a toilet",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i was wondering what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how much pto days do i have remaining",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "start the timer now",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "help me get my gas bill paid",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "create a pamphlet on albert einsteins childhood",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "good bye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "who teaches english near me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what does my shopping list contain",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "hey, what's new",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "what is the current time in dallas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "give me a joke about the topic of television",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what are the limits in my phone plan",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "thank a bunch",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "is garlic on my grocery list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what must i do today",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "book me a hotel in jacksonville near the stadium from january 1st to 3rd",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what's the definition of remunerative",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i need tips on how to overcome insomnia",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "check my wells fargo account to see if i have enough for these nike's",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i need to up by noon",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "how long does it take to get downtown by bus",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "where can i have a black and white photo blown up to poster size",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "whats the exact time",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "let's hear a joke!",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what are some good methods of relieving stress",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "great, thanks!",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what can i call you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "if i'm locked in a bank vault what's the best way to get out",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what things are you able to help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "when's my next pay day",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "in 5 days from today, what will the date be",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "find out where i can by melamine dinner plates",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the total number of calories in this pizza",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "how would i say what is your name if i were french",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "is it payday",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "is it going to be much longer until i reach the bank",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "is my spirit flight running on time",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what does post rush hour traffic generally look like heading into the lincoln tunnel in manhattan from new jersey",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how long will i be on the bus if i rid it to seattle",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "do you mind if i ask how old you are",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "what is the conversion of $30 in canadian dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "what were the things that i wanted to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "change this song please",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "when is the next full moon",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's the best way to drown a witch",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me an eta on when i will arrive at my destination",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "flip a coin into the air",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "flip a coin, heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "play the next song please if you would",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "is milk one of my shopping list items",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "can you see how many calories are in cream of mushroom soup",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "i need to get a hotel in phoenix near chase field from january 4th to the 8th",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "give me directions to phoenix",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "show me laptops for sale that are under $2,000",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the official language of romania",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please book me a place to stay in phoenix from the 5th to the 9th of march",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what was hercules the god of",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many gallons do i have left in my gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "how's my gasoline how much do i have left",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "is it possible to set a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what was the point of the crusades",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let me know how you are doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "do i have twinkies on the grocery list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "read my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "is michonne wrong for not working with the kingdom to put on the fair",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "will you create a timer for me",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "may i suggest we go to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what's the word for trees in norway",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "do you know when i'll receive my next paycheck",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what's the date today",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "are there meetings from 1 to 5 pm",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "i need some assistance paying my utilities bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "please go though the bullet points on my reminder list",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "find the names of all the rain forests located in south america",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you look at what the oldest age is someone can enlist in the army",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you tell me what you can help with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "show me the goals of my local police department in terms of reducing crime",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "it was great to speak with you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "what day it today",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "i need to know whether you are a human or are a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how is the weather looking in seattle",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "how to take care of the sick",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much is my car worth used",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "maybe we can go to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "tell me today's date",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "i really need you to find me a hotel with good reviews in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "how to paint walls",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "search up someone who plays in a movie",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "just toss a coin",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "what can you tell me about flight dl123",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "i'd like to hear a lawyer joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what's 47 times 83",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "do i have enough gas to get home",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "what instructions do i need to bake a cake from scratch",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "where is the colosseum",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when can i expect my paycheck",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "can you tell me what the traffic is usually like at 7:00 pm from philadelphia to ocean city, new jersey",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "can you tell me the weather forecast",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "i need to start a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "how does the weather feel",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "where should i go for food tonight",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "tell me the price of bananas at whole foods this week",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me an energy usage breakdown for march",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "scan my photos and tell me which hair style is most suiting for my face",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want a recipe for roasted veggies",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "please tell me what subjects you like",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "skip to next track",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "on my reminders list, is there an item called conference call",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what are the best restaurants open tonight",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "how much do i have in my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "can you add a bag to my reservation",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "define epicurean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "turn on my tunes",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how many minutes am i from texaco",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "set a 3 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what time is my meeting with design team scheduled for",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "skip to the next track",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "check my schedule for meetings today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what did they name you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "find for me a hotel with great reviews in ho chi minh",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what is happening with the weather in austin",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "what date do i get paid",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "bump some jams",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "flip a coin i'm calling heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "can you help me pay my electricity bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "is my todo list possible today",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "set an alarm for 9 tomorrow",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "can you look up how i shoot a time lapse video on my iphone camera or is it even possible",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "thank you for your time and trying to help",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what is the calorie content in peanut butter",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what are apartment prices now",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "show what i have spent things on",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "set a 2 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "when will the bus get me to vermont",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "what's the status of my jetblue flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what does circuitous mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "book a flight from new york to la for less than 200 dollars",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what's the number of vacation days i have left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "i would like to hear something funny",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what was my recent transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "later",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "will i run out of gas before i reach atlantic city",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "what is the time signature for the castlevania song bloody tears",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i must know how to say thank you in german",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "thank you for your assistance",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "thanks for that response",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "is there traffic on the way to work",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "bye bye then",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "do i have any meetings between 1 and 8 pm",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "set an alarm for ten tomorrow",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "i want to hear my slow playlist",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what's tomorrow's date",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "where is the nearest k mart",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "set a timer for 5 minutes from now",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "i need you to find me a hotel with good reviews in phoenix",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "may i have your name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how many weeks of vacation time do i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "how is that weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "look up local repair shops that work on vacuum cleaners",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is my visa bill over my limit this month",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "thanks for all your help",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what are all the things on my reminder list",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what is the calorie content in french fries",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "has flight dl123 left",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what's 15% of 68",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "tell me the time in california",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how many japanese yen are in a us dollar",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "please play that song that goes, \"starships were meant to fly",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what causes dyslexia",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is 25% of $54,788",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what is 1000 plus 745",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "lets play some music by korn",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what articles are written at the cnn site about the women's march",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "watch the fbi",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i made a transaction recently",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "are the schools closed",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you share something funny about traveling",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "where is the nearest papa john's",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what's the spanish word for dog",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "get me my slow sounds",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "show me how many community centers are located within 5 miles of my location",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "iterate over the items on my grocery list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "how do you repel a bear when you're out on a hike",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much gas is left in my car",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "what name do you go by",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "goodbye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "when do i get my next pay check",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "how do they say tacos in mexico",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "show me what the weather is like",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "when did i last make a purchase",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "can i deposit a check",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "do i have enough fuel to travel to san diego from here",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "how full is my gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "can you go to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "how many people are jobless in america",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i have too many credit cards, is there any way you can help me organize them",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "whats the combined total of the money inside my bank accounts",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "how long will i be on the bus to new orleans",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "have a good day, bye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "flip us a coin, i call heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "the intake of calories it it bad",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "could you tell me if you're a real person",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "i would like to know what type of things you can help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "what kind of traffic is there at 9:00 on the route to detroit",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what day am i on on vacation and how much do i got left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "can you dim the brightness of my screen",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the largest transaction i have made on video games this month",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "does cutting down the rain forest really add to global warming",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's in fashion this month",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please read my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what credit score number do i have",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what year did my grandparents get married",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's the current prevailing interest rate for mortgages in my area",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i would like to know what you can help with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "are there any roundtrip flights from shanghai to seatac that depart on wednesday and return on the thirty first",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "i need a hotel in phoenix near chase field from january 4th to the 8th",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "i need you to tell me what time it is in new york now",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "whats your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "what's your age right now",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "remind me of the items on my list of things to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "how would i say i am lost if i were japanese",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what time is it in adelaide, australia right now",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "what's the spanish word for pasta",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "heads, coin flip",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "i think your a bot",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "for what time is my meeting with marketing scheduled",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what things do you know how to do",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "how does my current htc phone compare to other android phones",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "where's the best place to hike in the rockies",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me a blonde joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how many days of vacation are left now",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "go and check the fridge",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do i ask the ai to help me with math problem",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what number of calories are in a pizza",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "tell me when today's meeting is supposed to happen",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what is the date of tomorrow",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what is the solution to sixty times thirty",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "i want an alarm set",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "can you see if paying garbage bill is on my todo list for this week",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "tell me what the time is in dallas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how do i make lasagna",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "how many calories are in a burger",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "can you wake me up at noon",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "today is which day of the week",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "tell me the current account balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "play next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "where is the nearest arco gas station to macdonalds",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "how old will you be this year",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "play the song called baby shark",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "tell me how much longer i will have to drive to reach the destination",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "list meetings on calendar for today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "google the price of skydiving in florida",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "book a delta flight to arizona from pittsburgh",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "where will the next olympics be hosted",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when should you mow your grass after it's rained",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "when is my meeting with ann",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "if something is 15% off $35, how much is it",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "what are the rules for chess",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "you\u2019re the best thanks so much!",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "in what movie did mrs congeniality feature a contestant championing for world peace",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what time is today's meeting",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "how old will you be",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "i want to hear something funny about politicsi",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "can you set the timer to 20 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "give me my to-do list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "is milk one of the things i need to buy",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "who invented custardo",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to know what type of things you can help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "when do the kids get out of school today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "find out how many latin scholars there are at the university of chicago",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "today is what day of the week",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "are you able to find my recent transactions for me",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "show me how to make tuna casserole please",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "whats the traffic for the drive to the nearest restaurant",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "it was nice to chat",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "please give me the time in tanzania at this moment",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "what time is it right now at home",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "what is the average of 54, 23, 43, 12, and 442",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "can you tell me about what time i should be arriving at the airport",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "scan you find me a chicken recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "thanks for your help!",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "where is the closest hospital to madison square garden",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "where do i go for my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "find me a room near the jacksonville stadium between january 1st through january 3rd",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what does adulation mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "would most people say you are a computer or a human",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "whats your age range",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "keep a note of how many miles you walk a day",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is there traffic right now on my route to work",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "i need to know all my spending transactions",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "please clean the car windows",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you tell me how much gas is in my tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "when is the next time i'll receive a paycheck",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "start the timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what roundtrip flights from orlando to vegas are available from thursday to monday",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "when's your birthday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "set an alarm to wake me up at 5:30am",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "can you find me a reputable hotel in honolulu",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "is grocery shopping on my reminders list",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what kinds of cereal are low sugar",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you flip a coin for me",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "i would like to have an alarm set for me",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "want to know the weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you set the alarm for noon",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "list my todo list items",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "find out where i can buy a barbie doll for my niece",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i enjoyed talking to you, bye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "find me the exchange rate between usd and cad",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "list my to-do list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "i want to hear something funny about history",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "search all movies created by disney in the 1980's",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me what the status is for my aa flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "give me the results of a coin flip",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "can you play music by led zepplin",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how much is my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "may i ask your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "could you be human",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how do i make my android phone more secure",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me the current exchange rate between cad and euros",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "tell me what's on my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what's the cost to have a business card printed",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "is there traffic on the way",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what does yolo mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "thanks bye bye!",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "when is the next payday i can look forward to",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "renew gym membership",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how is traffic nearest the ben franklin bridge philadelphia heading to the new jersey turnpike",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what movie is it that says today is a good day to die",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is my credit score number",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "thank you for that response",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what is the square root of 36",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "plant all your flowers just after easter in early april",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is in a burrito recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "give me your name so i can use you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how many sick days do i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "tell me a joke about the subject of sailing",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "open cnn websiteo",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me my credit rating",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what is 1100 minus 2347",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "put on some metallica music",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how would i say nice to meet you if i were russian",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "would you tell me if you are a human or are a computer",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "do play the music by linkin park",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "get me a flight from barcelona to paris from jet blue",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "english to spanish for dog",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "let me know what tomorrow's date is",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "how would one say cruiser in china",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "how do you prepare taco",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "i need to know what traffic is going to be like at 3:00 pm on the new jersey turnpike heading into camden from north jersey",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what are my coffers at",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "are there good clam places in cleveland",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "help me wake up with an alarm at 5:30am",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "what is your preferred name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "what's the calorie content of chicken nuggets",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "number of calories in coke",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "where is the nearest movie theater to time' square",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what day's my pay coming next",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "do you own the mineral rights to gold nuggets you find in your back yard",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much farther is orlando from my location",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "how much did i spend on my most recent transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "move forward one song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "in canadian dollars, what is $30",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how much have i spent on my bank card sine i last paid my bill",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what's the cost of a good pegboard",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how old would you be",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "id like a room in jacksonville near the stadium between january 1st to 3rd",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "i want you to play the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "can you auto-pilot the car",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let's take a look at the weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "which medicine to relieve my cough",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "show me examples of cute eyeglass frames",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need to know if i have meetings from 3 to 6 pm",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what do i call you, ai",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "what can you do to make yourself useful",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "ai, flip a coin for me",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "will you let me know my bank balance",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "will i encounter traffic",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "can you tell me what 100 british pounds equals in us dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "which day is it now",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "tell me where to go to get my son enrolled in public kindergarten",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "book me a place to chicago from atlanta united airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "i know i should pay my electric bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what is your name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "where can i get some good food",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "i need to use a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what do they call you, ai",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "what will it take to achieve world peace",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want directions to phoenix",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "put on an educational program about buddhism",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how far from our destination are we",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "does cleveland have any good places that serve clams",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what sorts of tasks can you do",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "i need you to order a new pair of eyeglasses for me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "flip a coin and tell me if it's heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "what name do you want me to use",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "find me a flight from seattle to detroit for less than 200 dollars",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what time will i get to the beach taking the bus",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "do i have enough gas in my car to make it to dallas",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "vacuum out the car",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "did i add \"cleaning the foyer\" to my todo list yet",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "show me the nearest gas station",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "i want to know what my recent transaction was",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "\"i'll leave to lax and go to phl for $120 on nov 5th",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "don't forget to set an alarm for noon",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "tell me my to-do list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what amount of vacation days do i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "tell me what your name is",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "could you set the alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "give me restaurant reccomendations",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "find out where parking is close to the stadium",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "do i have enough gas in my tank to make it to washington dc",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "can you find me a pork recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what does mature mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i would like to know my vacation days balance",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "where are classes taught near me for c++",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "where is my gas tank located",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "i need to know what 25 times 38 is",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "can you tell me what dendrofilous means",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i need a flight on delta from los angeles to seattle",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "ai, what is your given name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "what type of questions can i ask you",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "did the supreme court nominee get approvedu",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what does ferrari mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "how much gas do i have in the tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "i could use a laugh, got any jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "what shows are on tonight",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is the calorie content in bananas",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "can you give me some stress management tips",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's the meaning of naff",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "can you see if i have any vacation days available for a request",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "hello, how's your day",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "i bought 6 shirts at $499 each what was my total expenditure for them",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "how many people have held the role of county attorney bearing the family name \"dixon\"",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "whats the current exchange rate between usd and eur",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "how many homeless people are there",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "hola!",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "what are some good places to go out for dinner in my area tonight",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what time is it in dallas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "pay $175 on my visa",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "today is the day i should pay my electric bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what did i ask you to remind me of",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "where is the nearest wal mart",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "thanks a million",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "set a 4 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "how many days are remaining on my vacation days",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "what is the definiton of auspicious",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "what items did i want to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "please pay my sprint bill using my bank of america checking account",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "show me my recent transactions from account xyz",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "change out the older photos with the newer ones",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's on my purchase list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "turn on top 20 country hits",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "what kind of weather can i expect now",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you suggest a thai restaurant, please",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "which element on the periodic table is k",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "does my shopping list have pop tarts",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "when does the stock market update",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "does it take long to get to yankee stadium in the bronx",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "tell me what's is on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what's the status for my delta flight this afternoon",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "is there any meetings from 5 to 6 pm",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "how is the traffic normally driving into downtown washington, dc, from baltimore at 4:00 pm",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "what will traffic be like nearest the george washington bridge, new york",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "refresh my memory about what items i want to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "i would like to hear the reminders that i listed on my things to remember list, please",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "can you find me a brisket recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "thanks that was really helpful",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "i need a timer for 45 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what's the food can easily get in canada",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "tell me something about linkin park",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i will be glad to know what type of things you can help me with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "where should i eat",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "go to upcoming song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "thank you very much",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "how much is auto febreeze on amazon",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i really want to know my todo list again thanks",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "how do i get to the train by foot",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "how much time is left on my laundry",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "calorie check, cheese burger",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "i need for you to look up some of the major gods in mythology",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what was the closing number of the nasdaq today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "on the way to work is there traffic",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "are there are any good places in washington that serve cheese pizza",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "what's my current bank account total",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "give me a joke about water",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how do i go about cooking a 10lb turkey",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what\u2019s the time in new york",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "can you check the amount of calories in a chicken sandwich",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "explain how small talk helps bind groups together",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do you relieve a hangover",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "do i have a ways to go or am i close to getting to penn station",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "is there a better bus route i should be taking",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what is a normal resting heart rate",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what does the gas meter read",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "calorie content of dr pepper",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "what's the estimated travel time to get to dc via bus",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "today my electric bill will be paid, or should be",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "tell me something funny about the middle ages",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how bad is traffic at 9:00 going to detroit",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how do i make money",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how is my credit score numberwise",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "how much do i have in my savings account",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "what your numerical digit to display as your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "and your name is",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how many mexican pesos can i get for one us dollar",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "rolls have how many calories",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "is everything ok today",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "play the next song please",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what traffic can i expect on the way to the newark, new jersey from philadelphia",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "make a chart of the different types of whales",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "get me directions to phoenix",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "what kinds of things are you supposed to remind me of",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "how full or empty is my tank of gas",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "tell me the weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "when is my flight scheduled to board",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "am i close to arriving at the post office",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "see if there is a recipe to make a casserole without any dairy",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "catch you later",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "skip ahead one song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "did i tell you to remind me about laundry",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "please set an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "do you know how old you are",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "define antebellum",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "what is the weather doing now",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "what would the date be 5 days from today",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "tell me the time in san francisco, please",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "thanks so much",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "can you tell me if your a bot",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "add 45 to 87 plus 54 plus 43 plus 22",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "please tell me my todo list",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "when is my meeting with infrastructure",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "are there meetings scheduled for today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "nice seeing you bye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "are there any new job postings in my area in the last hour for jobs on craigslist",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "next track",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "give weather update now",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you play the song that goes like, \"starships were meant to fly",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "20 yen is how many dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "can you really get arrested for yelling fire in a crowded theater",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "heard any good jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "i spent 34 dollars for 12 gallons of paint what is the average price for each gallon",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "i'd like to know what bitcoin means",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "am i connected to wifi",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do you make fried rice",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "can you get me a flight from san francisco to san jose using american airlines",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "are you real",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "i want to pay my electric bill, can you do it for me",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "i need a list of good places to eat near me",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "flip a coin for me and i call heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "do you know any dad jokes",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "can you delete my saved credit card",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "play the song called i want it that way",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "how many calories are in a sandwich",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "can you flip a coin i call heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "are you computer or human",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "i need a hotel room for 4 people from may 3 to may 5 in boston",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what were the things i want to recall",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what are the weather conditions like in seattle",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "i need an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "i need a timer to be set",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "tell me what subjects you like",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "how many parks are within 20 miles of me",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "look up the operating hours of my local park on weekends",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how is the weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "tell time for another city: dallas",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how do i say bathroom in italian",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "i'm looking for flights that depart on the 3rd and return on z from monday to friday",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "when can i expect to be paid",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "i would like to thank you ai",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "find me a graphic tutorial on writing longhand",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "pay my gas bill with my checking account",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "set an alarm for me",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "is it six o clock yet",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how much have i spent on my debit card this month",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "tell me the date 5 days from now",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what does epicurean mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "what is the data of my gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "is there traffic expected",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "can you find me a good reviewed hotel in japan",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "start a timer please",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "how long is a bus ride to staples",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "i would like to find a stylish suit for a party",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let me know what's on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what's your bday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "what will tomorrow be on the calendar",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "how full is the gas tank",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "your date of birth",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "i need to pay my visa",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "give me my credit score please",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "i want to hear your best joke",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "is my credit score over 700 yet",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what is the present exchange rate between usd and british pound",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "please begin a timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "tell me what i have on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "what name do you go by, ai",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "how much does it cost to spay a puppy",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what kid of subjects do you excel in",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "see you later",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "dog in spanish",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "set alarm for noon",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "skip this song, please",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "how many cars average are on the road daily",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "divide 100 by 12",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "find out when my next upcoming payday will be",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what is that crunchy stuff on creme bruleo",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what time is boarding scheduled",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what's at movies",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i really gotta book a place to stay in phoenix from the 5th to the 9th of march",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "pay my light bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "please play my list of reminders",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "can you tell me the date of my last check",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "hey, how do i call your attention",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "please give me the approximate amount of time i will need to go from jfk international airport to penn station",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "what makes pi so mathematically important",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how should i address you",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "can my grace period be extended any possible way",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "talk to you soon, bye!",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "what were my last 10 charges on my credit card",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what does a flashing yellow light mean",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "set a timer for 10 minutes",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what time do i need to arrive to make it on time",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "thank you goodbye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "how much is alorie intake",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "i have a car payment that needs to be paid",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "ok good chatting goodbye",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "check the start time of the meeting scheduled for today",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "i need to know where the hospital closest to me is",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "i must understand the nearest gas station to glendale",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "tell me what you can do for me",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "please flip a coin for me",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "i need to know what traffic looks like nearest the smithsonian institute in washington, dc for the next hour",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "find out who is the representative of my district",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "hey, what's up",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "i apprecaite the help from you",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "what's the current time",
+  "label": "time",
+  "label_id": 31
+ },
+ {
+  "text": "how many times can 3 be divided into 1253",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "can you calculate the square root of 172",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "can i summon a demon using just an ouija board",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many hits have i done today",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do you cooked eggs",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "i want to pay my bill",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "what are popular lifestyle magazines",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "organize my photos by date please",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "las vegas weather today",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "what bands are touring in my city this week",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "pull up my electric bill, i want to pay it",
+  "label": "pay_bill",
+  "label_id": 21
+ },
+ {
+  "text": "how do you make pasta",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "tell me the items in my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "how can i get help for my mental health",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much do i have left in my checking account",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "how much for a samurai sword",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want to know if your a bot",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "what is the number of pto days i have left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "is flight dl123 delayed",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "what's the date",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what amount of pto days do i have left",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "whens your birthday",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "do you know when my next check is coming",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "where can i submit my architecture plans",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "am i supposed to buy milk",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "would you let me know the status of my american airlines flight",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "can you please convert $30 usd to canadian dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "which way do we go and how long will it take to get to the sears tower in chicago",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "can you swipe to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "tell me the weather for today",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "set an alarm for 5am",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "hello, how are things",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "what are the top rated universities within my state",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "please flip a coin for me ai",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "when do i have to get the mmr",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what kind of traffic can i expect driving to newark, new jersey on i-95 from philadelphia at noon",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "how do i put a lens that's fallen out back in my glasses",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do you say your name",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "need to know the weather now",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "how much money would my house sell for",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need to know when i get paid next",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "i dont want to listen to this song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what were you supposed to remind me of",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "is this a bot",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "what is the usd mxn exchange rate",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "go to the next song and play it",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "can you get me recipes for eggs please",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "can you share a humorous joke with me",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "how many calories are in a taco",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "please explain the word catastrophic to me",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "how much of the gas do i have left",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "what is my to-do list like today",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what day will i earn my payment from work",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "what's the weather like today",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "give me a list of the top 10 tennis players in the world",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "deny incoming phone call",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how would i say i need directions if i were french",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "tell me where to send my resume in order to get a job at delta airlines",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many moons does mars have",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "what's on my list of things to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "is there enough in my wells fargo account to buy some nike's",
+  "label": "balance",
+  "label_id": 2
+ },
+ {
+  "text": "i would love to know the closest gas station to glendale",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "hello there",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "it was a pleasure talking to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "20 yen equals how many dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "when will my next paycheck be coming",
+  "label": "payday",
+  "label_id": 22
+ },
+ {
+  "text": "is flight dl123 going to arrive on time",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "current weather",
+  "label": "weather",
+  "label_id": 37
+ },
+ {
+  "text": "can you fill in my credit card number on the screen",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you tell me the meaning of fluctuate",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "look up prices for parking at the airport over the weekend",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "find a couple's therapist who can help me and my wife",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how many items are in a bakers dozen",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "just flip a coin",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "please tell me how traffic from the new jersey turnpike into the lincoln tunnel looks currently",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "where's my buddy steve right this second",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i'm in the mood for slow songs and nothing else",
+  "label": "play_music",
+  "label_id": 23
+ },
+ {
+  "text": "show my my most recent visa card transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "please let me know what is on my shopping list",
+  "label": "shopping_list",
+  "label_id": 28
+ },
+ {
+  "text": "can you see if the octopus eggs have hatched yet",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "where is flight dl123",
+  "label": "flight_status",
+  "label_id": 13
+ },
+ {
+  "text": "please tell me what my credit score is",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "i need a pasta recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what are the amount of vacation days i have",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "give me a list of the top three landscaping companies nearby",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "let's flip a coin i choose heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "tell me the steps as to how to begin a career as a journalist",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "tell me what the date will be in 5 days",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "i'd like to just confirm all of the reminders currently on my list of reminders, please",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what is the current day",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "is there traffic on my work route",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "i wanna book a place to stay in phoenix from the 5th to the 9th of march",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "thanks for helping",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "when will i arrive at hy-vee",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "please can we go to the next song",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "when is my meeting with invoicing scheduled",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "\"i\"m headed out to lax and going to phl for a low price of $120 this weekend on the 12th",
+  "label": "book_flight",
+  "label_id": 3
+ },
+ {
+  "text": "what does the word polynomial mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "i want you to flip a coin i choose heads",
+  "label": "flip_coin",
+  "label_id": 14
+ },
+ {
+  "text": "let's go to the next song please",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "i need to know traffic patterns heading to the george washington bridge from manhattan",
+  "label": "traffic",
+  "label_id": 34
+ },
+ {
+  "text": "give me a tuna salad recipe",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "how old are you turning",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "are you a person or artificial intelligence",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "how young are you",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "thanks for that answer",
+  "label": "thank_you",
+  "label_id": 30
+ },
+ {
+  "text": "please tell me the status of the government shutdown",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me a 10 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "what is the calorie content in spaghetti",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "how can i locate my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "what did i want to remember",
+  "label": "reminder",
+  "label_id": 26
+ },
+ {
+  "text": "what items are on my list of to-dos",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "how do i say i'm sorry in chinese",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "what's on my todo list for today",
+  "label": "todo_list",
+  "label_id": 33
+ },
+ {
+  "text": "what's the time to destination going via bus to omaha",
+  "label": "distance",
+  "label_id": 11
+ },
+ {
+  "text": "tell me where my gas tank is",
+  "label": "gas",
+  "label_id": 15
+ },
+ {
+  "text": "set a 5 minute timer",
+  "label": "timer",
+  "label_id": 32
+ },
+ {
+  "text": "when are the winter olympic games",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i wanna have an alarm",
+  "label": "alarm",
+  "label_id": 0
+ },
+ {
+  "text": "what does assiduous mean",
+  "label": "definition",
+  "label_id": 9
+ },
+ {
+  "text": "how would you say fly in italian",
+  "label": "translate",
+  "label_id": 36
+ },
+ {
+  "text": "please tell me the exact number of days i have still for vacation",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "who do i have the pleasure of speaking with",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "what do you like to be called",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "are there any meetings between 2 and 5 pm",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "i need to know tomorrow's date",
+  "label": "date",
+  "label_id": 8
+ },
+ {
+  "text": "what movies are playing",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i want a hotel with good review in honolulu, can you find one",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "i need to find my credit score",
+  "label": "credit_score",
+  "label_id": 7
+ },
+ {
+  "text": "could you tell me how old you are",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "search for a chili recipe for me",
+  "label": "recipe",
+  "label_id": 25
+ },
+ {
+  "text": "what is 100 multiplied by 55",
+  "label": "calculator",
+  "label_id": 5
+ },
+ {
+  "text": "look up daily dog kennels in my area",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how much is 5 us dollars worth in canadian dollars",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "hello, how are you doing",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "who was the first person to discover cells",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "how do i get to the airport by foot",
+  "label": "directions",
+  "label_id": 10
+ },
+ {
+  "text": "get me a hotel in phoenix near chase field from january 4th to the 8th",
+  "label": "book_hotel",
+  "label_id": 4
+ },
+ {
+  "text": "what is the exchange rate between us dollars and japanese yen",
+  "label": "exchange_rate",
+  "label_id": 12
+ },
+ {
+  "text": "what coupons do i have for restaurants",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "i need to know the calorie content of spaghetti",
+  "label": "calories",
+  "label_id": 6
+ },
+ {
+  "text": "check today's calendar for meetings",
+  "label": "meeting_schedule",
+  "label_id": 19
+ },
+ {
+  "text": "what's your name anyway",
+  "label": "what_is_your_name",
+  "label_id": 39
+ },
+ {
+  "text": "fill out the paperwork for tonys new daycare center",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "give me a joke about the subject of bugs",
+  "label": "tell_joke",
+  "label_id": 29
+ },
+ {
+  "text": "skip this track",
+  "label": "next_song",
+  "label_id": 20
+ },
+ {
+  "text": "what's the most practiced form of mma in the world",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "it was really awesome to talk to you",
+  "label": "goodbye",
+  "label_id": 16
+ },
+ {
+  "text": "are you really real",
+  "label": "are_you_a_bot",
+  "label_id": 1
+ },
+ {
+  "text": "what do my pto days amount to",
+  "label": "pto_balance",
+  "label_id": 24
+ },
+ {
+  "text": "can i ask your age",
+  "label": "how_old_are_you",
+  "label_id": 18
+ },
+ {
+  "text": "can you find any good places in cleveland that serve clams",
+  "label": "restaurant_suggestion",
+  "label_id": 27
+ },
+ {
+  "text": "i need information about my recent transaction",
+  "label": "transactions",
+  "label_id": 35
+ },
+ {
+  "text": "what kind of things can you help with",
+  "label": "what_can_i_ask_you",
+  "label_id": 38
+ },
+ {
+  "text": "are you doing alright",
+  "label": "greeting",
+  "label_id": 17
+ },
+ {
+  "text": "are there cameras hidden in stop lights",
+  "label": "oos",
+  "label_id": 40
+ },
+ {
+  "text": "can you tell me how to clean a fish tank",
+  "label": "oos",
+  "label_id": 40
+ }
+]
