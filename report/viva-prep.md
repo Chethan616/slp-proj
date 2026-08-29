@@ -175,10 +175,37 @@ performance — a proper evaluation would need recorded human speakers.
 ## Deployment
 
 **Q. Where is it hosted, and how?**
-A Hugging Face Docker Space. The Dockerfile builds a Python 3.11 image, installs
-the CPU-only build of PyTorch, bakes the Whisper weights into the image so the
-first request does not wait for a download, and runs uvicorn on port 7860 as
-uid 1000 (which is what Spaces requires).
+Streamlit Community Cloud, which builds the app straight from the GitHub
+repository. Both models run server-side; the browser only records audio and
+displays results. A Dockerfile is also included so the same app can be
+self-hosted anywhere.
+
+**Q. Why is there no PyTorch in the deployed app?**
+Because nothing at inference time needs it. Whisper runs on CTranslate2, and the
+classifier was exported to ONNX and served by ONNX Runtime. That matters on a
+free tier: the default Linux PyTorch wheel drags in about 2.5 GB of CUDA
+libraries that a CPU host will never execute. PyTorch remains a training-time
+dependency.
+
+**Q. What is ONNX?**
+An open format for representing a trained model as a computation graph, so it
+can be run by any compatible runtime instead of the framework it was trained in.
+You export once and can then serve the model without the training framework.
+
+**Q. What is dynamic quantisation, and did it hurt accuracy?**
+The weights are converted from 32-bit floats to 8-bit integers, and activations
+are quantised on the fly at inference. It cut the model from 268 MB to 67 MB and
+made inference about 1.8x faster. Accuracy did not drop — it went from 0.9460 to
+0.9473. The int8 graph agrees with the full-precision one on about 98% of test
+utterances, and where they disagree the differences happen to cancel out. That
+last part is luck, not a general rule; the honest claim is that quantisation was
+lossless *within noise* on this test set.
+
+**Q. Why are the weights downloaded from the Hugging Face Hub at startup?**
+Streamlit Community Cloud does not fetch Git LFS objects when it clones the
+repository, so the model file would arrive as a text pointer rather than real
+weights. Hosting the weights in a Hub model repository and downloading them at
+startup avoids that, and keeps the application repository small.
 
 **Q. Why load the models at startup rather than per request?**
 Loading DistilBERT and Whisper takes several seconds. Doing that per request

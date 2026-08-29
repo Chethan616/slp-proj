@@ -570,5 +570,14 @@
       }
     ],
     "deployed": true
+  },
+  "distilbert_onnx_int8": {
+    "name": "DistilBERT, ONNX int8 (deployed build)",
+    "family": "transformer (quantised for deployment)",
+    "size_mb": 67.4,
+    "test_accuracy": 0.9473333333333334,
+    "test_macro_f1": 0.9562244814264763,
+    "agreement_with_fp32": 0.9793333333333333,
+    "speedup_vs_torch": 1.85
   }
 }
