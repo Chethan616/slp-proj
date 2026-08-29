@@ -1,8 +1,9 @@
-# Runtime dependencies for the deployed Space
-fastapi>=0.115
-uvicorn[standard]>=0.34
-python-multipart>=0.0.20
+# Runtime dependencies. Deliberately no torch: the classifier runs as an int8
+# ONNX graph and Whisper runs on CTranslate2, so the ~2.5 GB CUDA-enabled torch
+# wheel is never needed on a CPU host.
+streamlit>=1.41
 faster-whisper>=1.1.0
+onnxruntime>=1.19
 transformers>=4.48
-torch>=2.5
+huggingface-hub>=0.26
 numpy>=2.0

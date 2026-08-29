@@ -1,7 +1,7 @@
 # Voice-Enabled Chatbot using Speech Recognition and Deep Learning
 
 **Live application:** (deployment link to be inserted)  
-**Date:** 29 August 2026
+**Date:** 30 August 2026
 
 ---
 
@@ -18,13 +18,13 @@ The system is deployed as a public web application and requires nothing but a
 browser and a microphone to use.
 
 ```
-microphone --> MediaRecorder (webm/opus) --> POST /api/voice
-                                                 |
-                        faster-whisper base.en (int8, CTranslate2)
-                                                 |  recognised text
-                        DistilBERT intent classifier (41-way softmax)
-                                                 |  intent + confidence
-                        response template --> displayed and optionally spoken
+microphone --> recorded audio --> server
+                                     |
+             faster-whisper base.en (int8, CTranslate2)
+                                     |  recognised text
+             DistilBERT intent classifier, int8 ONNX (41-way softmax)
+                                     |  intent + confidence
+             response template --> recognised speech + intent + reply shown
 ```
 
 ## 2. Dataset
@@ -257,11 +257,11 @@ through the complete deployed pipeline.
 | Word error rate | 0.0394 |
 | Transcribed with no errors | 80.2% |
 | Intent accuracy from clean text | 0.9767 |
-| Intent accuracy from speech | 0.9767 |
-| Accuracy lost to recognition | 0.0 points |
-| Mean speech recognition latency | 1219 ms |
-| Mean intent inference latency | 67 ms |
-| Real-time factor | 0.39 |
+| Intent accuracy from speech | 0.9651 |
+| Accuracy lost to recognition | 1.2 points |
+| Mean speech recognition latency | 1089 ms |
+| Mean intent inference latency | 12 ms |
+| Real-time factor | 0.35 |
 
 ![Voice evaluation](../results/voice_eval.png)
 
@@ -270,15 +270,13 @@ A word error rate of 0.039 means roughly
 80.2% of utterances come back with no errors
 at all.
 
-Notably, intent accuracy is **identical** whether the classifier is given the
-clean reference text or Whisper's transcription of the synthesised speech. The
-recognition errors that do occur fall on words the intent classifier does not
-depend on — a misheard proper noun rarely changes whether an utterance is a
-request for the weather. The errors the pipeline makes are the classifier's own,
-not the recogniser's.
+The intent classifier absorbs most of those errors: accuracy falls by
+1.2 points when the input arrives as speech rather
+than as text, because recognition errors tend to land on words that do not
+determine the intent.
 
-A real-time factor of 0.39 means the system transcribes
-roughly 2.5 times faster than the audio was spoken.
+A real-time factor of 0.35 means the system transcribes
+roughly 2.8 times faster than the audio was spoken.
 
 This evaluation uses synthetic speech, which is cleaner than real speech: no
 background noise, no disfluencies, limited accent variation. The figures are a
@@ -288,16 +286,55 @@ lower bound on error, not a prediction of field performance.
 
 The application is live at **(deployment link to be inserted)**.
 
-It runs as a **Hugging Face Docker Space** on the free CPU tier (2 vCPU, 16 GB
-RAM). The image is built from `python:3.11-slim`, installs the CPU-only build of
-PyTorch (the default wheel would pull in roughly 2.5 GB of unusable CUDA
-libraries), bakes the Whisper weights in at build time so the first visitor does
-not wait for a download, and runs uvicorn on port 7860 as uid 1000, as Spaces
-requires.
+It is deployed on **Streamlit Community Cloud**, which builds the app directly
+from the GitHub repository. Both models run server-side, so the browser only
+records audio and displays results.
 
-Both models are loaded once during the FastAPI lifespan startup hook, before the
-server accepts traffic. Loading them per request would dominate the latency
-budget entirely.
+### 7.1 Removing PyTorch from the runtime
+
+Free hosting tiers have a fixed disk and memory budget, and the default Linux
+PyTorch wheel pulls in roughly 2.5 GB of CUDA libraries that a CPU host will
+never execute. Neither model actually needs PyTorch at inference time: Whisper
+already runs on CTranslate2, and the fine-tuned classifier was exported to an
+**int8-quantised ONNX graph** served by ONNX Runtime. PyTorch is therefore a
+training-time dependency only.
+
+| Property | PyTorch build | Deployed ONNX int8 build |
+|---|---:|---:|
+| Model size on disk | 268.0 MB | 67.4 MB |
+| Test accuracy | 0.9460 | 0.9473 |
+| Macro F1 | 0.9556 | 0.9562 |
+| Relative inference speed | 1.0x | 1.85x |
+
+Quantisation is effectively lossless here: the int8 graph agrees with the
+full-precision model on 97.9% of test utterances,
+and where they disagree the errors cancel out, leaving accuracy marginally
+*higher* (0.9473 against 0.9460) rather
+than lower. The end-to-end voice figures in section 6.4 were measured on this
+deployed build, not on the PyTorch one.
+
+The weights are pulled from a public model repository on the Hugging Face Hub at
+startup, because Streamlit Community Cloud does not fetch Git LFS objects from
+the source repository. Both models are loaded once and cached for the lifetime of
+the container rather than per interaction, which would otherwise dominate the
+latency budget.
+
+A `Dockerfile` is included so the same application can be reproduced or
+self-hosted anywhere; it installs `libgomp1`, which CTranslate2 requires and the
+slim Python base image omits.
+
+### 7.2 Interface
+
+The interface records from the microphone, then displays each turn as the
+**recognised speech**, the **predicted intent** with its confidence and the two
+runner-up intents, and the **generated reply**, along with the measured speech
+recognition and inference latencies. A text tab is provided for machines without
+a working microphone.
+
+A second front end is included in `app/main.py`: a FastAPI service exposing the
+same pipeline programmatically, with a dependency-free HTML/JavaScript interface
+that records through the MediaRecorder API. It is not the deployed entry point,
+but it documents the system as a reusable service rather than a single page.
 
 | Method | Endpoint | Purpose |
 |---|---|---|
@@ -307,13 +344,6 @@ budget entirely.
 | POST | `/api/chat` | text to intent and reply |
 | GET | `/api/info` | model metadata and intent list |
 | GET | `/health` | liveness probe |
-
-The front end is dependency-free HTML, CSS and JavaScript. It records with the
-MediaRecorder API, shows a live input-level ring while recording, and renders
-each turn as the recognised speech, the intent with a confidence bar and the two
-runner-up intents, and the reply. A text box is provided for machines without a
-working microphone, and replies can optionally be spoken back using the browser's
-built-in speech synthesis.
 
 ## 8. Limitations and future work
 
@@ -340,10 +370,12 @@ pip install -r requirements-train.txt
 python train/prepare_data.py       # build the CLINC150 subset
 python train/train_baselines.py    # three reference models
 python train/train_distilbert.py   # the deployed model
+python train/predict_split.py val  # validation preds for threshold choice
 python train/evaluate.py           # figures and results tables
+python train/export_onnx.py        # int8 ONNX build that gets deployed
 python train/eval_voice.py         # end-to-end speech evaluation
 python report/build_report.py      # regenerate this document
-cd app && uvicorn main:app --port 7860
+streamlit run streamlit_app.py
 ```
 
 All randomness is seeded (seed 42).

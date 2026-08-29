@@ -1,0 +1,7 @@
+# Extra dependencies for the alternative FastAPI front end in app/main.py.
+# The public deployment uses the Streamlit app; this API is kept as a
+# programmatic interface to the same pipeline.
+-r requirements.txt
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-multipart>=0.0.20

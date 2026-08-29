@@ -6,3 +6,6 @@ data/eval_audio/
 .DS_Store
 *.egg-info/
 .pytest_cache/
+
+# ONNX exporter intermediate (the quantised graph is self-contained)
+app/model_onnx/model_fp32.onnx*
