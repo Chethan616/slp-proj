@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Voice-Enabled Chatbot — Report</title>
+<style>
+:root { --ink:#1a1c23; --muted:#5c6270; --line:#e3e6ee; --accent:#4f46e5; --bg:#fff; --code:#f5f6fa; }
+@media (prefers-color-scheme: dark) {
+  :root { --ink:#e6e8ef; --muted:#9aa1b1; --line:#2a2f3d; --accent:#8b8cf9; --bg:#12141a; --code:#1b1e27; }
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink);
+  font:16px/1.65 ui-serif, Georgia, "Times New Roman", serif; }
+main { max-width:860px; margin:0 auto; padding:56px 28px 90px; }
+h1 { font-size:30px; line-height:1.25; margin:0 0 6px; letter-spacing:-.01em; }
+h2 { font-size:22px; margin:44px 0 12px; padding-bottom:7px; border-bottom:2px solid var(--line); }
+h3 { font-size:17px; margin:28px 0 8px; color:var(--accent); }
+p { margin:0 0 13px; }
+hr { border:0; border-top:1px solid var(--line); margin:26px 0; }
+ul, ol { margin:0 0 14px; padding-left:22px; }
+li { margin-bottom:6px; }
+a { color:var(--accent); }
+code { font:13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+  background:var(--code); padding:1.5px 5px; border-radius:4px; }
+pre { background:var(--code); border:1px solid var(--line); border-radius:9px;
+  padding:14px 16px; overflow-x:auto; }
+pre code { background:none; padding:0; font-size:12.5px; line-height:1.55; }
+table { width:100%; border-collapse:collapse; margin:14px 0 20px;
+  font:14px/1.5 ui-sans-serif, system-ui, sans-serif; display:block; overflow-x:auto; }
+th, td { border-bottom:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top; }
+thead th { border-bottom:2px solid var(--line); font-weight:600; white-space:nowrap; }
+tbody tr:last-child td { border-bottom:none; }
+figure { margin:22px 0; text-align:center; }
+figure img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:9px; }
+.missing { color:#b45309; font-style:italic; }
+@media print {
+  body { background:#fff; color:#000; }
+  h2 { page-break-after:avoid; }
+  figure, table, pre { page-break-inside:avoid; }
+  main { max-width:none; padding:0; }
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Voice-Enabled Chatbot using Speech Recognition and Deep Learning</h1>
+<p><strong>Live application:</strong> (deployment link to be inserted) <strong>Date:</strong> 29 August 2026</p>
+<hr />
+<h2>1. Introduction</h2>
+<p>This project implements and deploys a chatbot that is operated by voice. The user speaks into the browser; the recorded audio is transcribed by an automatic speech recognition model; the transcript is classified into a user intent by a fine-tuned transformer; and a response is produced for that intent. The interface shows the recognised speech, the predicted intent with its confidence, and the reply, so that every stage of the pipeline is visible.</p>
+<p>The system is deployed as a public web application and requires nothing but a browser and a microphone to use.</p>
+<pre><code>microphone --&gt; MediaRecorder (webm/opus) --&gt; POST /api/voice
+                                                 |
+                        faster-whisper base.en (int8, CTranslate2)
+                                                 |  recognised text
+                        DistilBERT intent classifier (41-way softmax)
+                                                 |  intent + confidence
+                        response template --&gt; displayed and optionally spoken</code></pre>
+<h2>2. Dataset</h2>
+<h3>2.1 Source</h3>
+<p>The intent classifier is trained on <strong>CLINC150</strong> (Larson et al., EMNLP 2019), a benchmark created specifically for intent classification. It contains 150 in-scope intents spread over 10 domains, with 150 crowdsourced utterances per intent, and — unusually for an intent dataset — an explicit <strong>out-of-scope</strong> class of queries that a task-oriented assistant is not built to answer.</p>
+<h3>2.2 Subset used</h3>
+<p>A 40-intent subset spanning eight domains was selected, plus the out-of-scope class, giving <strong>41 classes</strong>. The selection is fixed in code (<code>train/prepare_data.py</code>) and therefore reproducible. Two considerations drove it: training all 150 classes on CPU is slow without teaching anything extra, and every intent needs a written response template for the chatbot to reply at all.</p>
+<table><thead><tr><th>Domain</th><th>Intents</th></tr></thead><tbody><tr><td style="text-align:left">Small talk</td><td style="text-align:left">greeting, goodbye, thank_you, tell_joke, what_is_your_name, how_old_are_you, are_you_a_bot, what_can_i_ask_you</td></tr><tr><td style="text-align:left">Utility</td><td style="text-align:left">weather, time, date, alarm, timer, definition, calculator, flip_coin</td></tr><tr><td style="text-align:left">Travel</td><td style="text-align:left">flight_status, book_flight, book_hotel, translate, exchange_rate</td></tr><tr><td style="text-align:left">Auto and commute</td><td style="text-align:left">directions, traffic, distance, gas</td></tr><tr><td style="text-align:left">Banking</td><td style="text-align:left">balance, transactions, pay_bill, credit_score</td></tr><tr><td style="text-align:left">Home</td><td style="text-align:left">play_music, next_song, shopping_list, todo_list, reminder</td></tr><tr><td style="text-align:left">Work</td><td style="text-align:left">payday, meeting_schedule, pto_balance</td></tr><tr><td style="text-align:left">Kitchen and dining</td><td style="text-align:left">recipe, restaurant_suggestion, calories</td></tr><tr><td style="text-align:left">—</td><td style="text-align:left">oos (out of scope)</td></tr></tbody></table>
+<table><thead><tr><th>Split</th><th>Utterances</th><th>Per in-scope intent</th><th>Out-of-scope</th></tr></thead><tbody><tr><td style="text-align:left">Train</td><td style="text-align:right">4,250</td><td style="text-align:right">100</td><td style="text-align:right">250</td></tr><tr><td style="text-align:left">Validation</td><td style="text-align:right">900</td><td style="text-align:right">20</td><td style="text-align:right">100</td></tr><tr><td style="text-align:left">Test</td><td style="text-align:right">1,500</td><td style="text-align:right">30</td><td style="text-align:right">300</td></tr></tbody></table>
+<p>The out-of-scope examples in the test split were subsampled from the 1,000 that CLINC provides, because 1,000 out-of-scope against 1,200 in-scope would have let a single class dominate every aggregate metric.</p>
+<h3>2.3 Responses</h3>
+<p>CLINC150 is a classification dataset and ships no replies. A response file (<code>app/responses.json</code>) maps each of the 41 intents to two or three written replies, one of which is chosen at random per turn. A few contain placeholders (<code>{time}</code>, <code>{date}</code>, <code>{coin}</code>) that are filled from the server clock or a random draw, so those intents give genuinely live answers.</p>
+<h2>3. Speech recognition</h2>
+<h3>3.1 Model</h3>
+<p>Speech recognition uses <strong>Whisper</strong> (Radford et al., 2022) through the <code>faster-whisper</code> implementation, which runs the model on the CTranslate2 inference engine. The <code>base.en</code> checkpoint is used: 74M parameters, English-only (and therefore both faster and more accurate on English than the multilingual checkpoint of the same size), with <strong>int8 quantisation</strong> so that weights are stored as 8-bit integers instead of 32-bit floats. This roughly quarters memory use and materially speeds up CPU inference at negligible accuracy cost, which is what makes the model viable on a free two-core container.</p>
+<h3>3.2 How it works</h3>
+<p>Audio is resampled to 16 kHz and converted into an <strong>80-channel log-Mel spectrogram</strong>: the short-time Fourier transform gives energy per frequency per time window, the Mel scale warps the frequency axis to match human pitch perception, and the logarithm compresses the dynamic range. That representation is passed to a <strong>transformer encoder</strong>, and a <strong>transformer decoder</strong> autoregressively emits text tokens while attending to the encoder output. Whisper was trained on 680,000 hours of weakly supervised audio, which is why it generalises to unfamiliar microphones and accents without any adaptation here.</p>
+<p>Decoding uses greedy search (beam size 1), which approximately halves latency with no measurable accuracy cost on utterances this short.</p>
+<h2>4. Model architecture</h2>
+<p>Four intent classifiers were trained on identical splits so that the value of the transformer can be measured rather than assumed. Only the last is deployed. All are implemented in PyTorch; scikit-learn provides the classical baseline.</p>
+<p><strong>1. TF-IDF + Logistic Regression.</strong> Unigram and bigram TF-IDF features with sublinear term frequency scaling, fed to a multinomial logistic regression. No neural network at all — the point of reference for whether deep learning is earning its place.</p>
+<p><strong>2. Bag-of-words + MLP.</strong> A binary bag-of-words vector into a two-hidden-layer network (256 and 128 units, ReLU, dropout 0.5). This is the architecture most introductory chatbot tutorials use.</p>
+<p><strong>3. Embedding + BiLSTM.</strong> A learned 128-dimensional embedding, a bidirectional LSTM with 64 hidden units per direction, masked mean-pooling over real tokens, dropout, then a linear classifier. Unlike the first two, this model can use word order.</p>
+<p><strong>4. DistilBERT, fine-tuned (deployed).</strong> DistilBERT-base-uncased is a six-layer distillation of BERT-base: about 40% smaller and 60% faster while retaining roughly 97% of BERT's GLUE performance. A linear classification head over the <code>[CLS]</code> representation is added and the entire network is fine-tuned with cross-entropy loss.</p>
+<h2>5. Methodology</h2>
+<ol><li><strong>Data preparation.</strong> CLINC150 is downloaded, the 40 chosen intents are extracted, out-of-scope examples are subsampled with a fixed seed, and the splits are written to disk. Train, validation and test come from CLINC's own splits, so no utterance appears in more than one.</li><li><strong>Training.</strong> All four models are trained on the training split. The two from-scratch neural models and the transformer keep the checkpoint with the best validation macro F1 rather than the final epoch.</li><li><strong>Evaluation.</strong> Every model is scored once on the held-out test split. Predictions are saved so that all figures are generated from a single set of numbers.</li><li><strong>Threshold selection.</strong> The confidence threshold for rejecting an utterance as out-of-scope is chosen by sweeping it and taking the value that maximises overall macro F1.</li><li><strong>End-to-end voice evaluation.</strong> Held-out test utterances are synthesised to speech with offline system voices and run through the real pipeline, giving word error rate and the intent accuracy actually achieved from audio.</li><li><strong>Deployment.</strong> The application is containerised and deployed to a public Hugging Face Docker Space.</li></ol>
+<h3>5.1 Out-of-scope handling</h3>
+<p>A classifier with a softmax output must assign every input to some class. Asked something outside its training distribution, it will answer confidently and wrongly. Two mechanisms guard against this. First, <code>oos</code> is a trained class, so the model can predict it directly. Second, if the maximum softmax probability falls below a threshold the prediction is overridden to <code>oos</code> regardless of the argmax, and the bot says it did not understand.</p>
+<h2>6. Results</h2>
+<h3>6.1 Intent classification</h3>
+<p>All models were evaluated on the same 1,500 held-out utterances.</p>
+<table><thead><tr><th>Model</th><th>Family</th><th>Parameters</th><th>Test accuracy</th><th>Macro F1</th><th>Training time</th></tr></thead><tbody><tr><td style="text-align:left">TF-IDF + Logistic Regression</td><td style="text-align:left">classical</td><td style="text-align:right">485,071</td><td style="text-align:right">0.8800</td><td style="text-align:right">0.9055</td><td style="text-align:right">3s</td></tr><tr><td style="text-align:left">Bag-of-words + MLP</td><td style="text-align:left">neural (from scratch)</td><td style="text-align:right">375,081</td><td style="text-align:right">0.8747</td><td style="text-align:right">0.8981</td><td style="text-align:right">5s</td></tr><tr><td style="text-align:left">Embedding + BiLSTM</td><td style="text-align:left">neural (from scratch)</td><td style="text-align:right">273,833</td><td style="text-align:right">0.8860</td><td style="text-align:right">0.9015</td><td style="text-align:right">39s</td></tr></tbody></table>
+<p class="missing">[missing figure: ../results/model_comparison.png]</p>
+<p>Note that macro F1 and accuracy differ noticeably. The test set contains 300 out-of-scope utterances against 30 per in-scope intent, and out-of-scope is by far the hardest class, so it drags accuracy down more than it drags down an average taken equally over classes. Both are reported for that reason.</p>
+<p class="missing">[missing figure: ../results/training_curves.png]</p>
+<h3>6.2 Where the deployed model fails</h3>
+<p class="missing">[missing figure: ../results/confusion_matrix.png]</p>
+<p class="missing">[missing figure: ../results/per_class_f1.png]</p>
+<p>The confusion matrix is close to diagonal for in-scope intents. Nearly all remaining error is concentrated in the out-of-scope class, which is expected: it is not a topic but the absence of one, so it has no consistent vocabulary to learn.</p>
+<h2>7. Deployment</h2>
+<p>The application is live at <strong>(deployment link to be inserted)</strong>.</p>
+<p>It runs as a <strong>Hugging Face Docker Space</strong> on the free CPU tier (2 vCPU, 16 GB RAM). The image is built from <code>python:3.11-slim</code>, installs the CPU-only build of PyTorch (the default wheel would pull in roughly 2.5 GB of unusable CUDA libraries), bakes the Whisper weights in at build time so the first visitor does not wait for a download, and runs uvicorn on port 7860 as uid 1000, as Spaces requires.</p>
+<p>Both models are loaded once during the FastAPI lifespan startup hook, before the server accepts traffic. Loading them per request would dominate the latency budget entirely.</p>
+<table><thead><tr><th>Method</th><th>Endpoint</th><th>Purpose</th></tr></thead><tbody><tr><td style="text-align:left">GET</td><td style="text-align:left"><code>/</code></td><td style="text-align:left">chat interface</td></tr><tr><td style="text-align:left">POST</td><td style="text-align:left"><code>/api/voice</code></td><td style="text-align:left">audio upload to transcript, intent and reply</td></tr><tr><td style="text-align:left">POST</td><td style="text-align:left"><code>/api/transcribe</code></td><td style="text-align:left">audio upload to transcript only</td></tr><tr><td style="text-align:left">POST</td><td style="text-align:left"><code>/api/chat</code></td><td style="text-align:left">text to intent and reply</td></tr><tr><td style="text-align:left">GET</td><td style="text-align:left"><code>/api/info</code></td><td style="text-align:left">model metadata and intent list</td></tr><tr><td style="text-align:left">GET</td><td style="text-align:left"><code>/health</code></td><td style="text-align:left">liveness probe</td></tr></tbody></table>
+<p>The front end is dependency-free HTML, CSS and JavaScript. It records with the MediaRecorder API, shows a live input-level ring while recording, and renders each turn as the recognised speech, the intent with a confidence bar and the two runner-up intents, and the reply. A text box is provided for machines without a working microphone, and replies can optionally be spoken back using the browser's built-in speech synthesis.</p>
+<h2>8. Limitations and future work</h2>
+<ul><li><strong>Responses are templates, not generated text.</strong> The deep learning in this system does the understanding, not the writing. Generating replies would need a language model far larger than the deployment target allows, and would introduce hallucination risk that templates do not have.</li><li><strong>No dialogue state.</strong> Each turn is classified independently, so a follow-up like "and what about tomorrow?" cannot be resolved.</li><li><strong>No slot filling.</strong> The system knows the user wants an alarm set, but not for what time. Adding a token-level tagger would address this.</li><li><strong>Confidence scores are uncalibrated.</strong> Softmax outputs from neural networks are known to be overconfident. Temperature scaling on the validation set, or an explicit open-set recognition method, would give better-behaved rejection.</li><li><strong>Speech evaluation uses synthetic audio.</strong> Real word error rates, especially with accents and background noise, will be higher.</li><li><strong>40 of 150 intents.</strong> The method scales to the full label set; the subset was a compute and response-authoring decision, not a limitation of the approach.</li></ul>
+<h2>9. Reproducing this work</h2>
+<pre><code>pip install -r requirements-train.txt
+python train/prepare_data.py       # build the CLINC150 subset
+python train/train_baselines.py    # three reference models
+python train/train_distilbert.py   # the deployed model
+python train/evaluate.py           # figures and results tables
+python train/eval_voice.py         # end-to-end speech evaluation
+python report/build_report.py      # regenerate this document
+cd app &amp;&amp; uvicorn main:app --port 7860</code></pre>
+<p>All randomness is seeded (seed 42).</p>
+<h2>10. References</h2>
+<ol><li>Larson, S., Mahendran, A., Peper, J. J., et al. <em>An Evaluation Dataset for Intent Classification and Out-of-Scope Prediction.</em> EMNLP 2019.</li><li>Sanh, V., Debut, L., Chaumond, J., Wolf, T. <em>DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter.</em> NeurIPS EMC^2 Workshop, 2019.</li><li>Radford, A., Kim, J. W., Xu, T., et al. <em>Robust Speech Recognition via Large-Scale Weak Supervision.</em> OpenAI, 2022.</li><li>Devlin, J., Chang, M.-W., Lee, K., Toutanova, K. <em>BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding.</em> NAACL 2019.</li><li>Vaswani, A., Shazeer, N., Parmar, N., et al. <em>Attention Is All You Need.</em> NeurIPS 2017.</li></ol>
+</main>
+</body>
+</html>
