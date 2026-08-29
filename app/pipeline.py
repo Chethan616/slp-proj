@@ -52,10 +52,23 @@ _responses: dict[str, list[str]] = {}
 _source = "?"
 
 
+def _is_real_file(path: Path) -> bool:
+    """True when `path` holds actual content rather than a Git LFS pointer.
+
+    Streamlit Cloud clones the repository without fetching LFS objects, so the
+    model file is present but is a ~130 byte text stub. Loading that as an ONNX
+    graph fails confusingly, so detect it and fall through to the Hub instead.
+    """
+    if not path.exists() or path.stat().st_size < 1_000_000:
+        return False
+    with path.open("rb") as fh:
+        return not fh.read(64).startswith(b"version https://git-lfs")
+
+
 def _resolve_model() -> tuple[str, str, list[str]]:
     """Return (onnx_path, tokenizer_source, labels), preferring local files."""
     local_graph = LOCAL_ONNX_DIR / "model.onnx"
-    if local_graph.exists():
+    if _is_real_file(local_graph):
         labels = json.loads((LOCAL_ONNX_DIR / "labels.json").read_text(encoding="utf-8"))
         return str(local_graph), str(LOCAL_ONNX_DIR), labels
 
