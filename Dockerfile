@@ -1,6 +1,12 @@
 # Hugging Face Docker Space image for the voice-enabled chatbot.
 FROM python:3.11-slim
 
+# CTranslate2 (the engine under faster-whisper) links against OpenMP, which the
+# slim base image does not ship.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends libgomp1 && \
+    rm -rf /var/lib/apt/lists/*
+
 # Spaces run the container as uid 1000; everything below is owned by that user
 # so the app can read its own model files at runtime.
 RUN useradd -m -u 1000 user
