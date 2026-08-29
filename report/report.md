@@ -128,6 +128,29 @@ roughly 97% of BERT's GLUE performance. A linear classification head over the
 `[CLS]` representation is added and the entire network is fine-tuned with
 cross-entropy loss.
 
+```
+Input utterance
+   -> WordPiece tokenisation, max length 32
+   -> DistilBERT encoder: 6 transformer layers, hidden 768, 12 heads
+   -> [CLS] representation (768-d)
+   -> pre-classifier Linear(768, 768) + ReLU + dropout(0.2)
+   -> Linear(768, 41) -> softmax over 41 intents
+```
+
+Trainable parameters: **66,985,001**.
+
+| Hyperparameter | Value |
+|---|---|
+| Checkpoint | `distilbert-base-uncased` |
+| Max sequence length | 32 |
+| Batch size | 32 |
+| Epochs | 5 |
+| Learning rate | 3e-05 (AdamW) |
+| Warmup | 10% linear, then linear decay |
+| Weight decay | 0.01 |
+| Gradient clipping | 1.0 |
+| Model selection | best validation macro F1 |
+
 ## 5. Methodology
 
 1. **Data preparation.** CLINC150 is downloaded, the 40 chosen intents are
@@ -169,8 +192,17 @@ All models were evaluated on the same 1,500 held-out utterances.
 | TF-IDF + Logistic Regression | classical | 485,071 | 0.8800 | 0.9055 | 3s |
 | Bag-of-words + MLP | neural (from scratch) | 375,081 | 0.8747 | 0.8981 | 5s |
 | Embedding + BiLSTM | neural (from scratch) | 273,833 | 0.8860 | 0.9015 | 39s |
+| DistilBERT (fine-tuned) **(deployed)** | transformer (pre-trained) | 66,985,001 | 0.9460 | 0.9556 | 1297s |
 
 ![Model comparison](../results/model_comparison.png)
+
+The fine-tuned transformer reaches **0.9460** accuracy and
+**0.9556** macro F1, an improvement of
++6.0 accuracy points and +5.4 macro-F1 points over the
+best non-transformer model (Embedding + BiLSTM). The gain comes from
+pre-training: DistilBERT has already learned that "what's the forecast" and
+"will it rain tomorrow" are related, whereas the from-scratch models can only
+learn that from the hundred examples per class they are given.
 
 Note that macro F1 and accuracy differ noticeably. The test set contains 300
 out-of-scope utterances against 30 per in-scope intent, and out-of-scope is by
@@ -189,6 +221,68 @@ The confusion matrix is close to diagonal for in-scope intents. Nearly all
 remaining error is concentrated in the out-of-scope class, which is expected: it
 is not a topic but the absence of one, so it has no consistent vocabulary to
 learn.
+
+### 6.3 Out-of-scope rejection
+
+![Threshold sweep](../results/threshold_sweep.png)
+
+The threshold is a hyperparameter of the deployed system, so it was chosen by
+maximising macro F1 on the **validation** split and only then measured on test.
+Choosing it on test would leak test information into the shipped system and
+inflate the reported figures.
+
+| Split | In-scope accuracy | Out-of-scope recall | Macro F1 |
+|---|---:|---:|---:|
+| Test, no threshold | 0.9742 | 0.8333 | 0.9556 |
+| Validation, threshold 0.44 | 0.9663 | 0.9100 | 0.9672 |
+| Test, threshold 0.44 | 0.9700 | 0.9033 | 0.9651 |
+
+The chosen threshold of **0.44** raises out-of-scope
+recall on test from 83.3% to 90.3%,
+at a cost of 0.4 points of
+in-scope accuracy. This is the trade-off the sweep makes explicit: a higher
+threshold catches more unanswerable questions but starts refusing questions the
+model actually got right. The deployed application uses 0.44.
+
+### 6.4 End-to-end voice evaluation
+
+Text accuracy is not the accuracy a user experiences, because recognition
+errors propagate into the classifier. To measure that, 86 held-out
+test utterances were synthesised to speech with offline system voices and put
+through the complete deployed pipeline.
+
+| Metric | Value |
+|---|---:|
+| Utterances evaluated | 86 |
+| Word error rate | 0.0394 |
+| Transcribed with no errors | 80.2% |
+| Intent accuracy from clean text | 0.9767 |
+| Intent accuracy from speech | 0.9767 |
+| Accuracy lost to recognition | 0.0 points |
+| Mean speech recognition latency | 1219 ms |
+| Mean intent inference latency | 67 ms |
+| Real-time factor | 0.39 |
+
+![Voice evaluation](../results/voice_eval.png)
+
+A word error rate of 0.039 means roughly
+4 words in every 100 are recognised wrongly, and
+80.2% of utterances come back with no errors
+at all.
+
+Notably, intent accuracy is **identical** whether the classifier is given the
+clean reference text or Whisper's transcription of the synthesised speech. The
+recognition errors that do occur fall on words the intent classifier does not
+depend on — a misheard proper noun rarely changes whether an utterance is a
+request for the weather. The errors the pipeline makes are the classifier's own,
+not the recogniser's.
+
+A real-time factor of 0.39 means the system transcribes
+roughly 2.5 times faster than the audio was spoken.
+
+This evaluation uses synthetic speech, which is cleaner than real speech: no
+background noise, no disfluencies, limited accent variation. The figures are a
+lower bound on error, not a prediction of field performance.
 
 ## 7. Deployment
 
