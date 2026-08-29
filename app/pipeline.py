@@ -23,7 +23,7 @@ MODEL_DIR = APP_DIR / "model"
 # Below this softmax probability we treat the utterance as out-of-scope even if
 # the argmax says otherwise. Tuned on the validation set -- see
 # results/threshold_sweep.png and train/evaluate.py.
-CONF_THRESHOLD = float(os.environ.get("CONF_THRESHOLD", "0.50"))
+CONF_THRESHOLD = float(os.environ.get("CONF_THRESHOLD", "0.44"))
 
 # base.en is English-only, which is both faster and more accurate on English
 # than the multilingual base model of the same size. int8 quantisation roughly
