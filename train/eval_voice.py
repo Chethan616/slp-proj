@@ -3,7 +3,7 @@
 Text-only accuracy does not tell you how the system behaves when the input is
 speech, because recognition errors propagate into the classifier. To measure
 that without recruiting human speakers, this script synthesises spoken versions
-of held-out test utterances with the offline Windows SAPI5 voices (via pyttsx3),
+of held-out test utterances with the offline Windows System.Speech voices,
 runs the resulting audio through the deployed pipeline, and reports:
 
   * word error rate of the speech recogniser
@@ -17,6 +17,7 @@ import json
 import random
 import re
 import string
+import subprocess
 import sys
 import time
 from collections import defaultdict
@@ -46,36 +47,60 @@ def normalise(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def synthesise(rows) -> list[dict]:
-    """Render each utterance to a WAV file with an offline TTS voice."""
-    import pyttsx3
+# Synthesis is driven through Windows' built-in System.Speech engine rather than
+# a Python wrapper: the wrapper (pyttsx3) writes its files correctly but its
+# event loop does not reliably return control on Windows, which hangs the run.
+PS_SYNTH = r"""
+Add-Type -AssemblyName System.Speech
+$items = Get-Content -Raw -Encoding UTF8 '{manifest}' | ConvertFrom-Json
+$synth = New-Object System.Speech.Synthesis.SpeechSynthesizer
+$voices = @($synth.GetInstalledVoices() | ForEach-Object {{ $_.VoiceInfo.Name }})
+$synth.Rate = 0
+foreach ($item in $items) {{
+  $synth.SelectVoice($voices[$item.voice % $voices.Count])
+  $synth.SetOutputToWaveFile($item.path)
+  $synth.Speak($item.text)
+}}
+$synth.SetOutputToNull()
+$synth.Dispose()
+"""
 
+
+def synthesise(rows) -> list[dict]:
+    """Render each utterance to a WAV file with an offline system voice.
+
+    Utterances alternate between the installed voices so the evaluation is not
+    tuned to a single speaker.
+    """
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    engine = pyttsx3.init()
-    voices = engine.getProperty("voices")
-    # Alternate between up to two system voices so the evaluation is not tuned
-    # to a single speaker.
-    voice_ids = [v.id for v in voices][:2] or [None]
-    engine.setProperty("rate", 165)
+    n_voices = 2
+    plan = [
+        {"path": str(AUDIO_DIR / f"{i:03d}.wav"), "text": row["text"], "voice": i % n_voices}
+        for i, row in enumerate(rows)
+    ]
+
+    todo = [p for p in plan if not Path(p["path"]).exists()]
+    if todo:
+        manifest = AUDIO_DIR / "_manifest.json"
+        manifest.write_text(json.dumps(todo), encoding="utf-8")
+        script = PS_SYNTH.format(manifest=str(manifest).replace("'", "''"))
+        proc = subprocess.run(
+            ["powershell", "-NoProfile", "-NonInteractive", "-Command", script],
+            capture_output=True, text=True, timeout=900,
+        )
+        if proc.returncode != 0:
+            raise SystemExit(
+                "Speech synthesis failed. This step needs Windows System.Speech "
+                f"voices.\n{proc.stderr.strip()[:800]}"
+            )
+        manifest.unlink(missing_ok=True)
 
     out = []
-    for i, row in enumerate(rows):
-        path = AUDIO_DIR / f"{i:03d}.wav"
-        if not path.exists():
-            vid = voice_ids[i % len(voice_ids)]
-            if vid:
-                engine.setProperty("voice", vid)
-            engine.save_to_file(row["text"], str(path))
-            engine.runAndWait()
-        out.append({**row, "audio": path, "voice": i % len(voice_ids)})
-
-    engine.stop()
-    missing = [r for r in out if not r["audio"].exists() or r["audio"].stat().st_size < 1000]
-    if missing:
-        raise SystemExit(
-            f"TTS produced {len(missing)} empty files. Offline SAPI5 voices may be "
-            f"unavailable on this machine; skip this script and report text-only results."
-        )
+    for row, p in zip(rows, plan):
+        path = Path(p["path"])
+        if not path.exists() or path.stat().st_size < 1000:
+            raise SystemExit(f"Synthesis produced no audio for {path.name!r}.")
+        out.append({**row, "audio": path, "voice": p["voice"]})
     return out
 
 
@@ -99,7 +124,7 @@ def main() -> None:
     random.shuffle(sample)
     print(f"Evaluating {len(sample)} utterances through the full voice pipeline\n")
 
-    print("Synthesising speech with offline SAPI5 voices ...")
+    print("Synthesising speech with offline system voices ...")
     sample = synthesise(sample)
 
     pipeline.warmup()

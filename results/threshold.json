@@ -1,0 +1,19 @@
+{
+  "best_threshold": 0.44,
+  "selected_on": "validation",
+  "validation": {
+    "in_scope_accuracy": 0.96625,
+    "oos_recall": 0.91,
+    "macro_f1": 0.9671929230636104
+  },
+  "test": {
+    "in_scope_accuracy": 0.97,
+    "oos_recall": 0.9033333333333333,
+    "macro_f1": 0.9651015808286798
+  },
+  "test_at_zero": {
+    "in_scope_accuracy": 0.9741666666666666,
+    "oos_recall": 0.8333333333333334,
+    "macro_f1": 0.9556338649271682
+  }
+}

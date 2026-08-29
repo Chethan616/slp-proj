@@ -301,20 +301,26 @@ def build_markdown() -> str:
         a("")
         a("![Threshold sweep](../results/threshold_sweep.png)")
         a("")
-        a("| Setting | In-scope accuracy | Out-of-scope recall | Macro F1 |")
+        z, v, t = thresh["test_at_zero"], thresh["validation"], thresh["test"]
+        a("The threshold is a hyperparameter of the deployed system, so it was chosen by")
+        a("maximising macro F1 on the **validation** split and only then measured on test.")
+        a("Choosing it on test would leak test information into the shipped system and")
+        a("inflate the reported figures.")
+        a("")
+        a("| Split | In-scope accuracy | Out-of-scope recall | Macro F1 |")
         a("|---|---:|---:|---:|")
-        z = thresh["at_zero"]
-        a(f"| No threshold | {z['in_scope_accuracy']:.4f} | {z['oos_recall']:.4f} | {z['macro_f1']:.4f} |")
-        a(f"| Threshold = {thresh['best_threshold']:.2f} | {thresh['in_scope_accuracy']:.4f} | "
-          f"{thresh['oos_recall']:.4f} | {thresh['macro_f1']:.4f} |")
+        a(f"| Test, no threshold | {z['in_scope_accuracy']:.4f} | {z['oos_recall']:.4f} | {z['macro_f1']:.4f} |")
+        a(f"| Validation, threshold {thresh['best_threshold']:.2f} | {v['in_scope_accuracy']:.4f} | "
+          f"{v['oos_recall']:.4f} | {v['macro_f1']:.4f} |")
+        a(f"| Test, threshold {thresh['best_threshold']:.2f} | {t['in_scope_accuracy']:.4f} | "
+          f"{t['oos_recall']:.4f} | {t['macro_f1']:.4f} |")
         a("")
         a(f"The chosen threshold of **{thresh['best_threshold']:.2f}** raises out-of-scope")
-        a(f"recall from {fmt_pct(z['oos_recall'])} to {fmt_pct(thresh['oos_recall'])}")
-        a(f"while in-scope accuracy moves from {fmt_pct(z['in_scope_accuracy'])} to")
-        a(f"{fmt_pct(thresh['in_scope_accuracy'])}. This is the trade-off the sweep makes")
-        a("explicit: a higher threshold catches more unanswerable questions but starts")
-        a("refusing questions the model actually got right. The deployed application uses")
-        a(f"{thresh['best_threshold']:.2f}.")
+        a(f"recall on test from {fmt_pct(z['oos_recall'])} to {fmt_pct(t['oos_recall'])},")
+        a(f"at a cost of {(z['in_scope_accuracy'] - t['in_scope_accuracy']) * 100:.1f} points of")
+        a("in-scope accuracy. This is the trade-off the sweep makes explicit: a higher")
+        a("threshold catches more unanswerable questions but starts refusing questions the")
+        a(f"model actually got right. The deployed application uses {thresh['best_threshold']:.2f}.")
         a("")
 
     if voice:

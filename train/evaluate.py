@@ -97,49 +97,72 @@ def training_curves(metrics, present):
     plt.close(fig)
 
 
-def threshold_sweep(labels, y_true, y_pred, y_conf):
-    """The deployed app rejects a prediction whose softmax probability falls
-    below a threshold and answers 'out of scope' instead. This finds the
-    threshold that best balances keeping in-scope answers against catching
-    out-of-scope questions."""
+def _sweep(labels, y_true, y_pred, y_conf, thresholds):
+    """Score every candidate threshold on one split."""
     oos_id = labels.index("oos")
     is_oos = y_true == oos_id
-
-    thresholds = np.arange(0.0, 0.96, 0.02)
     in_acc, oos_rec, overall_f1 = [], [], []
     for t in thresholds:
         adj = np.where(y_conf < t, oos_id, y_pred)
         in_acc.append(float((adj[~is_oos] == y_true[~is_oos]).mean()))
         oos_rec.append(float((adj[is_oos] == oos_id).mean()))
         overall_f1.append(float(f1_score(y_true, adj, average="macro")))
+    return in_acc, oos_rec, overall_f1
 
-    best_i = int(np.argmax(overall_f1))
+
+def threshold_sweep(labels, val, test):
+    """The deployed app rejects a prediction whose softmax probability falls
+    below a threshold and answers 'out of scope' instead.
+
+    The threshold is a deployed hyperparameter, so it is chosen on the
+    *validation* split and only reported on test. Choosing it on test would leak
+    test information into the shipped system and inflate the reported numbers.
+    """
+    thresholds = np.arange(0.0, 0.96, 0.02)
+    v_in, v_oos, v_f1 = _sweep(labels, *val, thresholds)
+    t_in, t_oos, t_f1 = _sweep(labels, *test, thresholds)
+
+    best_i = int(np.argmax(v_f1))
     best_t = float(thresholds[best_i])
 
-    fig, ax = plt.subplots(figsize=(8.2, 4.4))
-    ax.plot(thresholds, in_acc, label="In-scope accuracy", color="#6366f1")
-    ax.plot(thresholds, oos_rec, label="Out-of-scope recall", color="#f59e0b")
-    ax.plot(thresholds, overall_f1, label="Overall macro F1", color="#22c55e", ls="--")
-    ax.axvline(best_t, color="#ef4444", ls=":", lw=1.4,
-               label=f"chosen threshold = {best_t:.2f}")
-    ax.set_xlabel("Confidence threshold")
-    ax.set_ylabel("Score")
-    ax.set_title("Out-of-scope rejection: accuracy / recall trade-off")
-    ax.grid(alpha=0.25)
-    ax.legend(fontsize=9)
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.4), sharey=True)
+    for ax, (a, r, f, title) in zip(
+        axes,
+        [(v_in, v_oos, v_f1, "Validation — threshold selected here"),
+         (t_in, t_oos, t_f1, "Test — reported here")],
+    ):
+        ax.plot(thresholds, a, label="In-scope accuracy", color="#6366f1")
+        ax.plot(thresholds, r, label="Out-of-scope recall", color="#f59e0b")
+        ax.plot(thresholds, f, label="Overall macro F1", color="#22c55e", ls="--")
+        ax.axvline(best_t, color="#ef4444", ls=":", lw=1.4,
+                   label=f"chosen threshold = {best_t:.2f}")
+        ax.set_xlabel("Confidence threshold")
+        ax.set_title(title, fontsize=11)
+        ax.grid(alpha=0.25)
+    axes[0].set_ylabel("Score")
+    axes[0].legend(fontsize=8.5)
+    fig.suptitle("Out-of-scope rejection: accuracy / recall trade-off", fontsize=12)
     fig.tight_layout()
     fig.savefig(RESULTS / "threshold_sweep.png", dpi=160)
     plt.close(fig)
 
     return {
         "best_threshold": best_t,
-        "in_scope_accuracy": in_acc[best_i],
-        "oos_recall": oos_rec[best_i],
-        "macro_f1": overall_f1[best_i],
-        "at_zero": {
-            "in_scope_accuracy": in_acc[0],
-            "oos_recall": oos_rec[0],
-            "macro_f1": overall_f1[0],
+        "selected_on": "validation",
+        "validation": {
+            "in_scope_accuracy": v_in[best_i],
+            "oos_recall": v_oos[best_i],
+            "macro_f1": v_f1[best_i],
+        },
+        "test": {
+            "in_scope_accuracy": t_in[best_i],
+            "oos_recall": t_oos[best_i],
+            "macro_f1": t_f1[best_i],
+        },
+        "test_at_zero": {
+            "in_scope_accuracy": t_in[0],
+            "oos_recall": t_oos[0],
+            "macro_f1": t_f1[0],
         },
     }
 
@@ -206,18 +229,29 @@ def main() -> None:
     if dep is not None:
         y_true, y_pred, y_conf = dep
         cm = confusion(labels, y_true, y_pred)
-        sweep = threshold_sweep(labels, y_true, y_pred, y_conf)
         rep, rows = per_class_f1(labels, y_true, y_pred)
+
+        val = load_preds("distilbert_val")
+        if val is None:
+            raise SystemExit(
+                "Missing results/preds_distilbert_val.json — run "
+                "`python train/predict_split.py val` first so the confidence "
+                "threshold can be selected on validation rather than on test."
+            )
+        sweep = threshold_sweep(labels, val, (y_true, y_pred, y_conf))
 
         oos_id = labels.index("oos")
         in_mask = y_true != oos_id
         print(f"\nDeployed model, split by scope:")
         print(f"  in-scope accuracy (no threshold) : {(y_pred[in_mask] == y_true[in_mask]).mean():.4f}")
         print(f"  out-of-scope recall (no threshold): {(y_pred[~in_mask] == oos_id).mean():.4f}")
-        print(f"\nBest confidence threshold: {sweep['best_threshold']:.2f}")
-        print(f"  in-scope accuracy : {sweep['in_scope_accuracy']:.4f}")
-        print(f"  out-of-scope recall: {sweep['oos_recall']:.4f}")
-        print(f"  overall macro F1   : {sweep['macro_f1']:.4f}")
+        print(f"\nConfidence threshold {sweep['best_threshold']:.2f} (selected on validation)")
+        print(f"  validation: in-scope {sweep['validation']['in_scope_accuracy']:.4f}  "
+              f"oos recall {sweep['validation']['oos_recall']:.4f}  "
+              f"macro F1 {sweep['validation']['macro_f1']:.4f}")
+        print(f"  test      : in-scope {sweep['test']['in_scope_accuracy']:.4f}  "
+              f"oos recall {sweep['test']['oos_recall']:.4f}  "
+              f"macro F1 {sweep['test']['macro_f1']:.4f}")
         print(f"\nHardest intents: " + ", ".join(f"{n} ({f:.2f})" for n, f, _ in rows[:6]))
 
         confusions = []
@@ -231,12 +265,19 @@ def main() -> None:
             "",
             "## Out-of-scope handling (deployed model)",
             "",
-            f"- Confidence threshold selected on macro F1: **{sweep['best_threshold']:.2f}**",
-            f"- In-scope accuracy at that threshold: **{sweep['in_scope_accuracy']:.4f}**",
-            f"- Out-of-scope recall at that threshold: **{sweep['oos_recall']:.4f}**",
-            f"- Overall macro F1 at that threshold: **{sweep['macro_f1']:.4f}**",
-            f"- Without any threshold: in-scope {sweep['at_zero']['in_scope_accuracy']:.4f}, "
-            f"OOS recall {sweep['at_zero']['oos_recall']:.4f}",
+            f"Threshold **{sweep['best_threshold']:.2f}**, selected by maximising macro F1 on "
+            f"the validation split and reported below on test.",
+            "",
+            "| Split | In-scope accuracy | Out-of-scope recall | Macro F1 |",
+            "|---|---:|---:|---:|",
+            f"| Test, no threshold | {sweep['test_at_zero']['in_scope_accuracy']:.4f} | "
+            f"{sweep['test_at_zero']['oos_recall']:.4f} | {sweep['test_at_zero']['macro_f1']:.4f} |",
+            f"| Validation, threshold {sweep['best_threshold']:.2f} | "
+            f"{sweep['validation']['in_scope_accuracy']:.4f} | "
+            f"{sweep['validation']['oos_recall']:.4f} | {sweep['validation']['macro_f1']:.4f} |",
+            f"| Test, threshold {sweep['best_threshold']:.2f} | "
+            f"{sweep['test']['in_scope_accuracy']:.4f} | "
+            f"{sweep['test']['oos_recall']:.4f} | {sweep['test']['macro_f1']:.4f} |",
             "",
             "## Most frequent confusions (deployed model)",
             "",
