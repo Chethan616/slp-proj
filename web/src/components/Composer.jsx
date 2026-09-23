@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { MetalFx } from 'metal-fx'
+import { MetalFx, useMetalBend } from 'metal-fx'
 import { VoiceBeam, useMicrophone } from 'voice-glow'
 
 /* The input bar, wrapped in VoiceBeam so the glow along its bottom edge reacts
@@ -25,6 +25,11 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
   const areaRef = useRef(null)
   const chipRef = useRef(null)
   const sttRef = useRef(null)
+  const sendRef = useRef(null)
+
+  // Cursor-driven liquid dent on the send button: the ring stretches and
+  // recoils under the pointer instead of sitting there as a static bevel.
+  useMetalBend(sendRef)
 
   useEffect(() => () => {
     clearInterval(timerRef.current)
@@ -177,33 +182,41 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
               {info ? 'DistilBERT · 41 intents' : 'connecting…'}
             </span>
 
-            {recording && <span className="timer">{elapsed.toFixed(1)}s</span>}
-
             <span className="spacer" />
 
-            <button
-              className={`round-btn${recording ? ' recording' : ''}`}
-              onClick={() => (recording ? stopRecording() : startRecording())}
-              disabled={busy || !mic.supported}
-              aria-label={recording ? 'Stop recording' : 'Start recording'}
-              title={mic.supported ? 'Record a question' : 'Microphone not supported'}
-            >
-              {recording ? (
-                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-                  <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" />
-                </svg>
-              ) : (
-                <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
-                  <path fill="currentColor" d="M12 14.5a3 3 0 0 0 3-3v-5a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z" />
-                  <path fill="currentColor" d="M17.8 11.3a.8.8 0 0 0-1.6 0 4.2 4.2 0 0 1-8.4 0 .8.8 0 0 0-1.6 0 5.8 5.8 0 0 0 5 5.7v2.2a.8.8 0 0 0 1.6 0V17a5.8 5.8 0 0 0 5-5.7Z" />
-                </svg>
-              )}
-            </button>
+            {/* Speaking is the primary way in, so the microphone is the
+                largest control and carries a standing label. */}
+            <div className="mic-group">
+              <button
+                className={`mic-btn${recording ? ' recording' : ''}`}
+                onClick={() => (recording ? stopRecording() : startRecording())}
+                disabled={busy || !mic.supported}
+                aria-label={recording ? 'Stop recording' : 'Start recording'}
+              >
+                {recording ? (
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+                    <path fill="currentColor" d="M12 14.5a3 3 0 0 0 3-3v-5a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z" />
+                    <path fill="currentColor" d="M17.8 11.3a.8.8 0 0 0-1.6 0 4.2 4.2 0 0 1-8.4 0 .8.8 0 0 0-1.6 0 5.8 5.8 0 0 0 5 5.7v2.2a.8.8 0 0 0 1.6 0V17a5.8 5.8 0 0 0 5-5.7Z" />
+                  </svg>
+                )}
+              </button>
+              <span className="mic-caption">
+                {!mic.supported
+                  ? 'No microphone'
+                  : recording
+                    ? `Listening · ${elapsed.toFixed(1)}s · tap to stop`
+                    : 'Tap to speak'}
+              </span>
+            </div>
 
             {/* The metal shader paints over its host element, so the send
-                button keeps its own markup and MetalFx wraps it. Reflection
-                targets let the model chip show up in the metal. */}
+                button keeps its own markup and MetalFx wraps it. */}
             <MetalFx
+              ref={sendRef}
               preset="chromatic"
               variant="circle"
               theme="dark"
@@ -216,7 +229,8 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
                 className="metal-circle"
                 onClick={submitText}
                 disabled={!canSend}
-                aria-label="Send message"
+                aria-label="Send typed message"
+                title="Send typed message"
               >
                 <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
                   <path
@@ -232,18 +246,34 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
       </VoiceBeam>
 
       <div className="composer-foot">
-        <label className="speak-toggle">
-          <input type="checkbox" checked={speak} onChange={(e) => setSpeak(e.target.checked)} />
-          Read replies aloud
-        </label>
-        <span>
-          {info
-            ? `${info.stt_model} → ${info.intent_model}`
-            : 'waking the model server…'}
+        {/* A real control rather than a footnote: speaking the answer back is
+            half of a voice assistant, so it reads as a toggle you can see. */}
+        <button
+          type="button"
+          className={`aloud${speak ? ' on' : ''}`}
+          onClick={() => setSpeak(!speak)}
+          aria-pressed={speak}
+          title={speak ? 'Replies are spoken aloud' : 'Replies are shown silently'}
+        >
+          {speak ? (
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4Z" />
+              <path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"
+                    d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+              <path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4Z" />
+              <path fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"
+                    d="m17 9.5 4 5m0-5-4 5" />
+            </svg>
+          )}
+          {speak ? 'Speaking replies' : 'Speak replies'}
+        </button>
+
+        <span className="foot-models">
+          {info ? `${info.stt_model} → ${info.intent_model}` : 'waking the model server…'}
         </span>
-        <a href="https://github.com/Chethan616/slp-proj" target="_blank" rel="noreferrer">
-          source
-        </a>
       </div>
     </div>
   )

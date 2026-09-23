@@ -1,7 +1,7 @@
 /* Design tokens ported from the Libraries.dev shared design system
    (sites/home/public/assets/site.css), dark-only. */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Roboto+Mono:wght@400;500&display=swap');
 
 :root {
   color-scheme: dark;
@@ -50,6 +50,7 @@
     Helvetica, Arial, sans-serif;
   --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco,
     Consolas, monospace;
+  --font-display: "Instrument Serif", Georgia, "Times New Roman", serif;
 
   --duration-quick: 150ms;
   --duration-fast: 250ms;
@@ -162,17 +163,26 @@ main.empty { justify-content: center; }
 .hero-orb { display: flex; justify-content: center; margin-bottom: 20px; }
 
 .hero h2 {
-  margin: 0 0 10px;
-  font-size: 26px;
-  line-height: 1.25;
-  font-weight: 600;
-  letter-spacing: -.02em;
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5.2vw, 46px);
+  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -.015em;
+}
+
+/* The clause that names what the model actually does gets the italic, so the
+   line has a stress rather than being uniformly decorative. */
+.hero h2 em {
+  font-style: italic;
+  color: var(--accent-ink);
 }
 
 .hero p {
   margin: 0 auto;
-  max-width: 500px;
-  font-size: 14px;
+  max-width: 520px;
+  font-size: 14.5px;
+  line-height: 1.65;
   color: var(--text-muted);
 }
 
@@ -317,8 +327,57 @@ main.empty { justify-content: center; }
    than typed text, so it is styled as a provisional reading. */
 .composer textarea.live { color: var(--text-muted); font-style: italic; }
 
-.composer-bar { display: flex; align-items: center; gap: 9px; }
+.composer-bar { display: flex; align-items: center; gap: 12px; }
 .composer-bar .spacer { flex: 1; }
+
+/* ---- microphone: the primary way in ---- */
+.mic-group { display: flex; align-items: center; gap: 11px; }
+
+.mic-btn {
+  position: relative;
+  width: 52px; height: 52px;
+  flex: none;
+  display: grid; place-items: center;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 113, 252, .34);
+  transition: background var(--duration-quick) var(--ease-smooth-out),
+              transform var(--duration-quick) var(--ease-bounce),
+              box-shadow var(--duration-quick) var(--ease-smooth-out);
+}
+
+.mic-btn:hover:not(:disabled) { transform: translateY(-1px) scale(1.03); }
+.mic-btn:active:not(:disabled) { transform: scale(.95); }
+
+.mic-btn:disabled {
+  background: var(--chip-bg);
+  color: var(--text-subtle);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.mic-btn.recording {
+  background: #e5484d;
+  box-shadow: 0 6px 20px rgba(229, 72, 77, .4);
+  animation: mic-pulse 1.9s ease-in-out infinite;
+}
+
+@keyframes mic-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .5), 0 6px 20px rgba(229, 72, 77, .4); }
+  55% { box-shadow: 0 0 0 12px rgba(229, 72, 77, 0), 0 6px 20px rgba(229, 72, 77, .4); }
+}
+
+.mic-caption {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.mic-btn.recording + .mic-caption { color: #ff9ea1; }
 
 .model-chip {
   display: inline-flex; align-items: center; gap: 7px;
@@ -390,19 +449,36 @@ main.empty { justify-content: center; }
 .composer-foot {
   display: flex; align-items: center; justify-content: space-between;
   gap: 14px; flex-wrap: wrap;
-  margin-top: 11px;
+  margin-top: 12px;
+}
+
+.aloud {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 11px;
+  border: none;
+  border-radius: 999px;
+  background: var(--chip-bg);
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-quick) var(--ease-smooth-out),
+              color var(--duration-quick) var(--ease-smooth-out);
+}
+
+.aloud:hover { background: var(--chip-bg-hover); color: var(--text); }
+
+.aloud.on {
+  background: var(--accent-tint-bg);
+  color: var(--accent-ink);
+  box-shadow: inset 0 0 0 1px rgba(0, 113, 252, .35);
+}
+
+.foot-models {
   font-family: var(--font-mono);
   font-size: 10.5px;
   color: var(--label-mono);
 }
-
-.composer-foot a { color: var(--text-subtle); text-decoration: none; }
-.composer-foot a:hover { color: var(--text-muted); }
-
-.speak-toggle { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
-.speak-toggle input { accent-color: var(--accent); }
-
-.timer { color: var(--warn-ink); }
 
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }

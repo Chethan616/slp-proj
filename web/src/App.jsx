@@ -154,11 +154,13 @@ export default function App() {
               <div className="hero-orb">
                 <ThinkingOrb state={active.orb} size={64} theme="dark" />
               </div>
-              <h2>Speak, and it works out what you meant.</h2>
+              <h2>
+                Speak, and it works out <em>what you meant</em>.
+              </h2>
               <p>
-                Your speech is transcribed by Whisper, then classified into one of 41 intents by a
-                fine-tuned DistilBERT model. Anything outside those intents is detected and refused
-                rather than guessed at.
+                Press the microphone and talk. Your speech is transcribed by Whisper, then
+                classified into one of 41 intents by a fine-tuned DistilBERT model. Anything
+                outside those intents is detected and refused rather than guessed at.
               </p>
               <ul className="suggestions">
                 {SUGGESTIONS.map((s) => (
