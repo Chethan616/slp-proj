@@ -64,6 +64,7 @@
 * { box-sizing: border-box; }
 
 html, body, #root { height: 100%; }
+html, body { overflow-x: hidden; }
 
 body {
   margin: 0;
@@ -331,6 +332,54 @@ main.empty { justify-content: center; }
 .composer-bar { display: flex; align-items: center; gap: 12px; }
 .composer-bar .spacer { flex: 1; }
 
+.model-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px;
+  min-width: 0;
+  max-width: 100%;
+
+  border: 1px solid rgba(44, 47, 54, 0.52);
+  border-radius: 36px;
+
+  background: rgba(29, 29, 29, 0.76);
+
+  box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
+
+  color: rgba(202, 204, 210, 1);
+
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.model-chip .dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+  background: #55d68a;
+  box-shadow:
+    0 0 0 2px rgba(85, 214, 138, 0.08),
+    0 0 8px rgba(85, 214, 138, 0.45);
+}
+
+.model-chip .dot.off {
+  background: var(--text-subtle);
+  box-shadow: none;
+}
+
+.mobile-model-name { display: none; }
+.agent-chevron { vertical-align: -1px; opacity: .72; }
+
 /* ---- icon buttons: same 40px circle as the metal send button, so the row
    reads as one set rather than a blue blob next to a metal ring ---- */
 .icon-circle {
@@ -340,7 +389,7 @@ main.empty { justify-content: center; }
   padding: 0;
   border: 1px solid rgba(44, 47, 54, 0.52);
   border-radius: 50%;
-  background: #1d1d1d;
+  background: rgba(29, 29, 29, 0.76);
   box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
   color: #f8f8f8;
   cursor: pointer;
@@ -351,12 +400,45 @@ main.empty { justify-content: center; }
 }
 
 .icon-circle:hover:not(:disabled) {
-  background: #242424;
+  background: rgba(36, 36, 36, 0.82);
   border-color: rgba(120, 124, 134, 0.6);
 }
 
 .icon-circle:active:not(:disabled) { transform: scale(.94); }
 .icon-circle:disabled { opacity: .45; cursor: not-allowed; }
+.mobile-close { display: none; }
+
+/* Speak / Mute pill in the prompt bar */
+.mobile-aloud {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  color: rgba(202, 204, 210, 1);
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+/* Use the mobile-style text on desktop too */
+.mobile-aloud .mobile-agent-label {
+  display: inline;
+}
+
+/* Hide the speaker icon in this pill */
+.mobile-aloud > svg {
+  display: none;
+}
+
+.mobile-agent-chevron {
+  display: none;
+}
 
 /* Recording is the one state that earns colour. */
 .icon-circle.mic.recording {
@@ -383,7 +465,7 @@ main.empty { justify-content: center; }
   padding: 0;
   border: 1px solid rgba(44, 47, 54, 0.52);
   border-radius: 50%;
-  background: #1d1d1d;
+  background: rgba(29, 29, 29, 0.76);
   box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
   color: #f8f8f8;
   cursor: pointer;
@@ -403,9 +485,10 @@ main.empty { justify-content: center; }
 .aloud {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 7px 14px 7px 11px;
-  border: none;
+  border: 1px solid rgba(44, 47, 54, 0.52);
   border-radius: 999px;
-  background: var(--chip-bg);
+  background: rgba(29, 29, 29, 0.76);
+  box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
   color: var(--text-muted);
   font-size: 12.5px;
   font-weight: 500;
@@ -414,13 +497,19 @@ main.empty { justify-content: center; }
               color var(--duration-quick) var(--ease-smooth-out);
 }
 
-.aloud:hover { background: var(--chip-bg-hover); color: var(--text); }
+.aloud:hover {
+  background: rgba(36, 36, 36, 0.82);
+  border-color: rgba(120, 124, 134, 0.6);
+  color: var(--text);
+}
 
 .aloud.on {
   background: var(--accent-tint-bg);
   color: var(--accent-ink);
   box-shadow: inset 0 0 0 1px rgba(0, 113, 252, .35);
 }
+
+
 
 .foot-models {
   font-family: var(--font-mono);
@@ -432,9 +521,155 @@ main.empty { justify-content: center; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 
-@media (max-width: 680px) {
+/* ---------------- phone ----------------
+   The composer becomes the bottom of the screen: the glow runs the full width
+   under a centred prompt, with the controls on one row beneath it — the
+   geometry voice-glow's `mobile` preset is tuned for. */
+@media (max-width: 640px) {
+  :root { --app-gutter: 0px; }
+
+  .app { max-width: none; }
+  .topbar { padding: 16px 16px 12px; align-items: flex-start; }
+  .brand { min-width: 0; }
+  .brand > div { min-width: 0; }
+  .brand .tagline { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .topbar-right { margin-left: auto; }
   .pipeline { display: none; }
+  .transcript { padding: 16px 16px 8px; }
   .said { max-width: 92%; }
-  .hero { padding: 30px 4px 24px; }
-  .hero h2 { font-size: 22px; }
+
+  .hero { padding: 24px 18px 20px; }
+  .hero h2 { font-size: clamp(26px, 8vw, 34px); }
+  .hero p { font-size: 13.5px; }
+  .hero-orb { margin-bottom: 14px; }
+  .suggestions { margin-top: 20px; }
+  .suggestions button { font-size: 12.5px; padding: 6px 11px; }
+
+  .composer-wrap {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    height: 100dvh;
+    padding: 0;
+    background: none;
+    pointer-events: none;
+  }
+
+  .composer-wrap > [data-voice-type] {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+  }
+
+  .composer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: auto;
+    border-radius: 0;
+    padding: 10px 18px calc(12px + env(safe-area-inset-bottom, 0px));
+    background: transparent;
+    box-shadow: none;
+  }
+
+  /* The field reads as the phone's centred prompt line. */
+  .composer textarea {
+    text-align: center;
+    font-size: 17px;
+    line-height: 24px;
+    padding: 6px 4px 14px;
+    color: #d8d8d8;
+  }
+
+  .composer textarea { display: none; }
+
+  .composer textarea::placeholder { color: rgba(178, 178, 178, .6); }
+  .composer textarea.live { font-style: normal; color: #ededed; }
+
+  .composer-bar { justify-content: center; gap: 8px; }
+  .composer-bar .spacer { display: none; }
+  .model-chip { height: 36px; max-width: min(58vw, 220px); font-size: 10px; padding: 0 10px; }
+  .model-chip { max-width: min(62vw, 240px); }
+  .model-chip { display: none; }
+  .model-chip .desktop-model-name { display: none; }
+  .model-chip .mobile-model-name { display: inline; }
+  .mobile-aloud { display: inline-flex; }
+  .composer-bar > .metal-fx-root { display: none; }
+
+  .icon-circle, .metal-circle {
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+  }
+  .mobile-aloud {
+    display: inline-flex;
+    height: 36px;
+    padding: 0 10px 0 14px;
+    border: 0;
+    border-radius: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+    color: rgba(202, 204, 210, 1);
+    font-size: 12px;
+    line-height: 14px;
+    font-weight: 500;
+  }
+
+  /* Mobile Speak/Mute stays in the original mobile appearance in every state.
+     Prevent the desktop hover/on styles from leaking onto touch interactions. */
+  .mobile-aloud:hover,
+  .mobile-aloud:focus,
+  .mobile-aloud:active,
+  .mobile-aloud.on {
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+    color: rgba(202, 204, 210, 1);
+    outline: none;
+  }
+
+  .mobile-aloud .desktop-speak-label,
+  .mobile-aloud > svg:first-child { display: none; }
+  .mobile-agent-label, .mobile-agent-chevron { display: inline; }
+  .mobile-close { display: inline-flex; }
+  .metal-circle { display: none; }
+
+  .composer-foot {
+    display: none;
+  }
+
+  .foot-models { display: none; }
+  .desktop-aloud { display: none; }
+
+  /* Mobile active Speak/Mute state */
+.mobile-aloud.on {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-ink);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 113, 252, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.mobile-aloud.on:hover,
+.mobile-aloud.on:focus,
+.mobile-aloud.on:active {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--accent-ink);
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 113, 252, 0.35),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
 }
