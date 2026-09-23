@@ -76,6 +76,7 @@ export default function Composer({
   const sttRef = useRef(null)
   const sendRef = useRef(null)
   const micRef = useRef(null)
+  const cancelledRef = useRef(false)
 
   // voice-glow ships a geometry preset tuned for the bottom of a phone screen.
   const isPhone = useMediaQuery('(max-width: 640px)')
@@ -191,7 +192,20 @@ export default function Composer({
     }, 100)
   }
 
+  /* Stopping submits; discarding throws the recording away. Both go through
+   * MediaRecorder.stop(), since that is the only way to release the device,
+   * so a flag tells handleStop which one asked. */
   function stopRecording() {
+    cancelledRef.current = false
+    const rec = recorderRef.current
+
+    if (rec && rec.state === 'recording') {
+      rec.stop()
+    }
+  }
+
+  function cancelRecording() {
+    cancelledRef.current = true
     const rec = recorderRef.current
 
     if (rec && rec.state === 'recording') {
@@ -209,6 +223,12 @@ export default function Composer({
     setElapsed(0)
     mic.stop()
     setLive('')
+
+    // Discarded: release the mic, keep the audio out of the conversation.
+    if (cancelledRef.current) {
+      cancelledRef.current = false
+      return
+    }
 
     const blob = new Blob(chunksRef.current, { type })
 
@@ -326,6 +346,25 @@ export default function Composer({
               <span className="rec-timer">
                 {elapsed.toFixed(1)}s
               </span>
+            )}
+
+            {recording && (
+              <button
+                className="icon-circle discard"
+                onClick={cancelRecording}
+                aria-label="Discard recording"
+                title="Discard recording"
+              >
+                <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.1"
+                    strokeLinecap="round"
+                    d="m7 7 10 10M17 7 7 17"
+                  />
+                </svg>
+              </button>
             )}
 
             <button

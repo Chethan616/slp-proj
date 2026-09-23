@@ -5,10 +5,17 @@ import Composer from './components/Composer'
 import Turn from './components/Turn'
 import { getInfo, postText, postVoice, wake } from './api'
 
+/* One per domain, so a few clicks walk through the whole label space and show
+ * a different avatar each time. The last is deliberately unanswerable: it
+ * demonstrates the out-of-scope class rather than hiding it. */
 const SUGGESTIONS = [
   "What's the weather like today?",
   'Set an alarm for 7 am',
-  'What is my account balance?',
+  'Book me a flight to London',
+  'How long will it take me to drive there?',
+  'Add milk to my shopping list',
+  'Find me a good place for dinner',
+  'When is my next payday?',
   'Tell me a joke',
   'Who won the world cup in 1994?',
 ]

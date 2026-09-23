@@ -453,6 +453,20 @@ main.empty { justify-content: center; }
   55% { box-shadow: 0 0 0 9px rgba(229, 72, 77, 0); }
 }
 
+/* Discard sits quieter than stop: it is the destructive one, so it does not
+   compete for the eye until you are looking for it. */
+.icon-circle.discard {
+  background: transparent;
+  border-color: rgba(120, 124, 134, 0.35);
+  color: var(--text-muted);
+}
+
+.icon-circle.discard:hover:not(:disabled) {
+  background: rgba(229, 72, 77, 0.12);
+  border-color: rgba(229, 72, 77, 0.55);
+  color: #ff9ea1;
+}
+
 .rec-timer {
   font-family: var(--font-mono);
   font-size: 11.5px;
