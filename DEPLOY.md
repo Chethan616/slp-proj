@@ -1,0 +1,79 @@
+# Deployment
+
+Two pieces: a React front end on Vercel, and the FastAPI backend on Google
+Cloud Run. The backend needs ~700 MB of memory to hold Whisper and the intent
+classifier, which is why it is not on a serverless or 512 MB free tier.
+
+## 1. Backend — Google Cloud Run
+
+One-time setup:
+
+```bash
+gcloud auth login                       # opens a browser
+gcloud projects create voicebot-slp     # or reuse an existing project id
+gcloud config set project voicebot-slp
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com
+```
+
+Billing must be enabled on the project (Cloud Run requires a billing account on
+file). The free tier covers 2 million requests and 360,000 GB-seconds a month,
+which is far more than a demo uses.
+
+Deploy:
+
+```bash
+gcloud run deploy voicebot-api \
+  --source . \
+  --region asia-south1 \
+  --memory 1Gi \
+  --cpu 1 \
+  --timeout 120 \
+  --concurrency 4 \
+  --min-instances 0 \
+  --allow-unauthenticated
+```
+
+`--min-instances 0` lets it scale to zero so idle time is free; the cost is a
+cold start of about 12 seconds while the container loads both models (measured
+locally on the same image). The
+front end pings `/health` on page load so that happens while the visitor is
+still reading.
+
+The command prints a service URL like `https://voicebot-api-xxxx.run.app`.
+
+## 2. Front end — Vercel
+
+```bash
+cd web
+vercel login
+vercel link                                      # create/link the project
+vercel env add VITE_API_URL production           # paste the Cloud Run URL
+vercel deploy --prod
+```
+
+`VITE_API_URL` must be the Cloud Run service URL with no trailing slash. It is
+read at build time, so changing it requires a redeploy.
+
+## 3. Lock down CORS (optional)
+
+The API allows any origin by default. Once the Vercel URL is known:
+
+```bash
+gcloud run services update voicebot-api \
+  --region asia-south1 \
+  --set-env-vars ALLOWED_ORIGINS=https://<your-app>.vercel.app
+```
+
+## Local development
+
+```bash
+pip install -r requirements-api.txt
+cd app && uvicorn main:app --port 8080      # backend
+
+cd web && npm install && npm run dev        # front end on :5173, proxies to :8080
+```
+
+## Alternative front end
+
+`streamlit_app.py` runs the same pipeline as a single-file Streamlit app
+(`pip install -r requirements-streamlit.txt`, then `streamlit run streamlit_app.py`).
