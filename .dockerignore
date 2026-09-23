@@ -1,0 +1,15 @@
+# The runtime fetches the int8 ONNX classifier from the Hub at build time; the
+# PyTorch weights are training artefacts and must not bloat the image.
+app/model/
+app/model_onnx/
+data/
+results/
+report/
+train/
+web/
+.git/
+__pycache__/
+**/__pycache__/
+*.pyc
+streamlit_app.py
+requirements-train.txt

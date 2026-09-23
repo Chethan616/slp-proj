@@ -1,8 +1,8 @@
-# Container image for the voice-enabled chatbot.
+# Container image for the voice-enabled chatbot API.
 #
-# This mirrors the deployed Streamlit app. The public deployment runs on
-# Streamlit Community Cloud, which builds from requirements.txt directly; this
-# Dockerfile exists so the same app can be reproduced or self-hosted anywhere.
+# Deployed to Google Cloud Run, which injects $PORT and expects the server to
+# bind to it on 0.0.0.0. The React front end is deployed separately to Vercel
+# and calls this service over CORS.
 FROM python:3.11-slim
 
 # CTranslate2 (the engine under faster-whisper) links against OpenMP, which the
@@ -11,7 +11,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends libgomp1 && \
     rm -rf /var/lib/apt/lists/*
 
-# Run as a non-root user, matching how most container platforms execute images.
 RUN useradd -m -u 1000 user
 USER user
 ENV HOME=/home/user \
@@ -19,20 +18,25 @@ ENV HOME=/home/user \
     HF_HOME=/home/user/.cache/huggingface \
     PYTHONUNBUFFERED=1 \
     ORT_THREADS=2 \
-    OMP_NUM_THREADS=2
+    OMP_NUM_THREADS=2 \
+    PORT=8080
 WORKDIR $HOME/app
 
-COPY --chown=user requirements.txt .
+COPY --chown=user requirements.txt requirements-api.txt ./
 RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements-api.txt
 
-# Bake the Whisper weights into the image so the first visitor does not wait for
-# a ~145 MB download. The intent classifier is fetched from the Hub at startup.
+# Bake both sets of weights into the image so a cold start does not also pay for
+# a ~210 MB download. Cloud Run scales to zero, so cold starts are routine.
 RUN python -c "from faster_whisper import WhisperModel; WhisperModel('base.en', device='cpu', compute_type='int8')"
+RUN python -c "\
+from huggingface_hub import hf_hub_download; \
+hf_hub_download('Chethan616/voice-chatbot-intent-distilbert', 'onnx/model.onnx'); \
+hf_hub_download('Chethan616/voice-chatbot-intent-distilbert', 'labels.json'); \
+hf_hub_download('Chethan616/voice-chatbot-intent-distilbert', 'tokenizer.json'); \
+hf_hub_download('Chethan616/voice-chatbot-intent-distilbert', 'tokenizer_config.json')"
 
-COPY --chown=user app/ ./app/
-COPY --chown=user streamlit_app.py .
+COPY --chown=user app/ ./
 
-EXPOSE 8501
-CMD ["streamlit", "run", "streamlit_app.py", \
-     "--server.port=8501", "--server.address=0.0.0.0", "--server.headless=true"]
+# Single worker: each one would load its own ~700 MB copy of the models.
+CMD exec uvicorn main:app --host 0.0.0.0 --port ${PORT} --workers 1

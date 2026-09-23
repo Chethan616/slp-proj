@@ -1,7 +1,6 @@
-# Runtime dependencies. Deliberately no torch: the classifier runs as an int8
-# ONNX graph and Whisper runs on CTranslate2, so the ~2.5 GB CUDA-enabled torch
-# wheel is never needed on a CPU host.
-streamlit>=1.41
+# Core inference dependencies, shared by every front end.
+# Deliberately no torch: the classifier runs as an int8 ONNX graph and Whisper
+# runs on CTranslate2, so the ~2.5 GB CUDA-enabled torch wheel is never needed.
 faster-whisper>=1.1.0
 onnxruntime>=1.19
 transformers>=4.48

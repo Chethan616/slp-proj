@@ -10,10 +10,12 @@ Endpoints
 """
 
 import logging
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
@@ -38,6 +40,18 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Voice-Enabled Chatbot", version="1.0.0", lifespan=lifespan)
+
+# The React front end is served from a different origin (Vercel) to this API
+# (Cloud Run), so the browser needs explicit permission to call it. This is a
+# public read-only demo API with no cookies or credentials, so any origin is
+# acceptable; tighten ALLOWED_ORIGINS if that ever changes.
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=os.environ.get("ALLOWED_ORIGINS", "*").split(","),
+    allow_credentials=False,
+    allow_methods=["GET", "POST"],
+    allow_headers=["*"],
+)
 
 
 class ChatRequest(BaseModel):

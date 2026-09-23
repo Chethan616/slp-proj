@@ -1,0 +1,3 @@
+# Alternative single-file Streamlit front end (streamlit_app.py).
+-r requirements.txt
+streamlit>=1.41
