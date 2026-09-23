@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import Recorder from './components/Recorder'
+import { ThinkingOrb } from 'thinking-orbs'
+import Composer from './components/Composer'
 import Turn from './components/Turn'
 import { getInfo, postText, postVoice, wake } from './api'
 
@@ -8,39 +9,44 @@ const SUGGESTIONS = [
   'Set an alarm for 7 am',
   'What is my account balance?',
   'Tell me a joke',
-  'How do I get to the airport?',
   'Who won the world cup in 1994?',
 ]
 
-const STAGES = ['record', 'stt', 'nlu', 'reply']
-const STAGE_LABELS = {
-  record: 'Record',
-  stt: 'Speech recognition',
-  nlu: 'Intent model',
-  reply: 'Response',
+/* Each pipeline phase gets the orb state that actually describes it, so the
+ * animation reports what the system is doing rather than decorating it. */
+const PHASES = {
+  idle: { orb: 'breathing', label: null },
+  listening: { orb: 'listening', label: 'Listening' },
+  transcribing: { orb: 'working', label: 'Transcribing speech' },
+  classifying: { orb: 'solving', label: 'Classifying intent' },
 }
+
+const STAGES = [
+  ['record', 'Record'],
+  ['stt', 'Speech recognition'],
+  ['nlu', 'Intent model'],
+  ['reply', 'Response'],
+]
 
 export default function App() {
   const [turns, setTurns] = useState([])
-  const [busy, setBusy] = useState(false)
+  const [phase, setPhase] = useState('idle')
   const [stage, setStage] = useState(null)
   const [error, setError] = useState(null)
-  const [thinking, setThinking] = useState(null)
   const [info, setInfo] = useState(null)
-  const [waking, setWaking] = useState(true)
   const [speak, setSpeak] = useState(false)
-  const [text, setText] = useState('')
   const bottomRef = useRef(null)
 
+  const busy = phase === 'transcribing' || phase === 'classifying'
+
   // Cloud Run scales to zero, so wake the service while the page is being read
-  // rather than making the first question pay for the cold start.
+  // rather than making the first question pay the cold start.
   useEffect(() => {
     let cancelled = false
     wake()
-      .then(() => getInfo())
+      .then(getInfo)
       .then((i) => !cancelled && setInfo(i))
       .catch(() => {})
-      .finally(() => !cancelled && setWaking(false))
     return () => {
       cancelled = true
     }
@@ -48,7 +54,7 @@ export default function App() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-  }, [turns, thinking])
+  }, [turns, phase])
 
   function say(reply) {
     if (!speak || !reply || !('speechSynthesis' in window)) return
@@ -58,11 +64,10 @@ export default function App() {
     speechSynthesis.speak(u)
   }
 
-  async function run(work, stages, thinkingLabel) {
+  async function run(work, phases, firstStage) {
     setError(null)
-    setBusy(true)
-    setThinking(thinkingLabel)
-    setStage(stages[0])
+    setPhase(phases[0])
+    setStage(firstStage)
     try {
       const data = await work()
       setStage('reply')
@@ -71,68 +76,60 @@ export default function App() {
     } catch (err) {
       setError(err.message)
     } finally {
-      setBusy(false)
-      setThinking(null)
+      setPhase('idle')
       setTimeout(() => setStage(null), 900)
     }
   }
 
-  const handleRecorded = (blob) =>
-    run(() => postVoice(blob), ['stt'], 'Transcribing and classifying')
+  const handleVoice = (blob) => run(() => postVoice(blob), ['transcribing'], 'stt')
+  const handleText = (value) => run(() => postText(value), ['classifying'], 'nlu')
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    const value = text.trim()
-    if (!value || busy) return
-    setText('')
-    run(() => postText(value), ['nlu'], 'Classifying')
-  }
-
-  const stageIdx = STAGES.indexOf(stage)
+  const stageIdx = STAGES.findIndex(([k]) => k === stage)
+  const active = PHASES[phase]
 
   return (
     <div className="app">
       <header className="topbar">
         <div className="brand">
-          <span className="logo" aria-hidden="true">◉</span>
+          <ThinkingOrb state={busy ? 'working' : 'breathing'} size={20} theme="dark" />
           <div>
             <h1>VoiceBot</h1>
-            <p className="tagline">Voice-enabled chatbot · Whisper + DistilBERT</p>
+            <p className="tagline">Speech recognition and intent classification</p>
           </div>
         </div>
         <div className="pipeline" aria-label="processing pipeline">
-          {STAGES.map((s, i) => (
-            <span key={s}>
+          {STAGES.map(([key, label], i) => (
+            <span key={key} style={{ display: 'contents' }}>
               <span
-                className={`stage${stage === s ? ' active' : ''}${
+                className={`stage${stage === key ? ' active' : ''}${
                   stageIdx >= 0 && i < stageIdx ? ' done' : ''
                 }`}
               >
-                {STAGE_LABELS[s]}
+                {label}
               </span>
-              {i < STAGES.length - 1 && <span className="arrow"> → </span>}
+              {i < STAGES.length - 1 && <span className="arrow">→</span>}
             </span>
           ))}
         </div>
       </header>
 
-      <main>
+      <main className={turns.length === 0 ? "empty" : ""}>
         <section className="transcript" aria-live="polite">
-          {turns.length === 0 && !thinking && (
-            <div className="empty-state">
-              <p className="empty-title">Press the microphone and speak.</p>
-              <p className="empty-sub">
-                Your speech is transcribed on the server by Whisper, classified into one of 41
-                intents by a fine-tuned DistilBERT model, and answered. Questions outside those
-                intents are detected and refused rather than guessed at.
+          {turns.length === 0 && (
+            <div className="hero">
+              <div className="hero-orb">
+                <ThinkingOrb state={active.orb} size={64} theme="dark" />
+              </div>
+              <h2>Speak, and it works out what you meant.</h2>
+              <p>
+                Your speech is transcribed by Whisper, then classified into one of 41 intents by a
+                fine-tuned DistilBERT model. Anything outside those intents is detected and refused
+                rather than guessed at.
               </p>
               <ul className="suggestions">
                 {SUGGESTIONS.map((s) => (
                   <li key={s}>
-                    <button
-                      onClick={() => run(() => postText(s), ['nlu'], 'Classifying')}
-                      disabled={busy}
-                    >
+                    <button onClick={() => handleText(s)} disabled={busy}>
                       {s}
                     </button>
                   </li>
@@ -141,53 +138,32 @@ export default function App() {
             </div>
           )}
 
-          {waking && turns.length === 0 && (
-            <div className="waking">Waking the model server — this takes a moment on first load.</div>
-          )}
-
           {turns.map((t, i) => (
             <Turn key={i} data={t} />
           ))}
 
-          {thinking && <div className="thinking">{thinking}</div>}
+          {active.label && turns.length > 0 && (
+            <div className="status-row">
+              <ThinkingOrb state={active.orb} size={20} theme="dark" />
+              <span>{active.label}…</span>
+            </div>
+          )}
+
           {error && <div className="error">{error}</div>}
           <div ref={bottomRef} />
         </section>
       </main>
 
-      <footer className="controls">
-        <Recorder disabled={busy} onRecorded={handleRecorded} onError={setError} />
-
-        <form className="text-row" onSubmit={handleSubmit} autoComplete="off">
-          <input
-            type="text"
-            maxLength={500}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            placeholder="…or type here if you have no microphone"
-          />
-          <button type="submit" className="send" disabled={busy}>
-            Send
-          </button>
-        </form>
-
-        <div className="footer-meta">
-          <label className="speak-toggle">
-            <input type="checkbox" checked={speak} onChange={(e) => setSpeak(e.target.checked)} />
-            Read replies aloud
-          </label>
-          <span className="model-info">
-            {info
-              ? `${info.stt_model} → ${info.intent_model} · ${info.num_intents} intents`
-              : 'connecting…'}
-          </span>
-          <span className="model-info">
-            <a href="https://github.com/Chethan616/slp-proj" target="_blank" rel="noreferrer">
-              source
-            </a>
-          </span>
-        </div>
-      </footer>
+      <Composer
+        busy={busy}
+        processing={busy}
+        info={info}
+        speak={speak}
+        setSpeak={setSpeak}
+        onVoice={handleVoice}
+        onText={handleText}
+        onError={setError}
+      />
     </div>
   )
 }
