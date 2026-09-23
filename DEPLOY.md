@@ -41,6 +41,29 @@ still reading.
 
 The command prints a service URL like `https://voicebot-api-xxxx.run.app`.
 
+## 1b. Backend — Railway (alternative to Cloud Run)
+
+Railway builds the same Dockerfile. `railway.json` pins the builder so it does
+not try to autodetect Node from `web/`, and the healthcheck points at `/health`
+with a 300s timeout because the container loads ~700 MB of models before it
+answers.
+
+```bash
+npm install -g @railway/cli
+railway login
+railway init            # create the project
+railway up              # build and deploy from this directory
+railway domain          # assign a public *.up.railway.app URL
+```
+
+Railway has no free tier: it gives a one-time $5 trial credit, then Hobby is
+$5/month which includes $5 of usage. This service idles at roughly 360 MB, so
+leaving it running costs a few dollars a month — enable **App Sleeping** in the
+service settings so it suspends when idle and the credit lasts.
+
+Measured on this image: ~12s from cold start to serving, ~2.4s per voice
+request, 358 MB under load. Give the service at least 1 GB.
+
 ## 2. Front end — Vercel
 
 ```bash
@@ -51,7 +74,8 @@ vercel env add VITE_API_URL production           # paste the Cloud Run URL
 vercel deploy --prod
 ```
 
-`VITE_API_URL` must be the Cloud Run service URL with no trailing slash. It is
+`VITE_API_URL` must be the backend URL (Cloud Run or Railway) with no trailing
+slash. It is
 read at build time, so changing it requires a redeploy.
 
 ## 3. Lock down CORS (optional)

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { MetalFx } from 'metal-fx'
 import { VoiceBeam, useMicrophone } from 'voice-glow'
 
 /* The input bar, wrapped in VoiceBeam so the glow along its bottom edge reacts
@@ -20,6 +21,7 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
   const timerRef = useRef(null)
   const startedAtRef = useRef(0)
   const areaRef = useRef(null)
+  const chipRef = useRef(null)
 
   useEffect(() => () => clearInterval(timerRef.current), [])
 
@@ -117,7 +119,7 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
           />
 
           <div className="composer-bar">
-            <span className="model-chip">
+            <span className="model-chip" ref={chipRef}>
               <span className={`dot${info ? '' : ' off'}`} />
               {info ? 'DistilBERT · 41 intents' : 'connecting…'}
             </span>
@@ -145,20 +147,33 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
               )}
             </button>
 
-            <button
-              className="round-btn send"
-              onClick={submitText}
-              disabled={!canSend}
-              aria-label="Send message"
+            {/* The metal shader paints over its host element, so the send
+                button keeps its own markup and MetalFx wraps it. Reflection
+                targets let the model chip show up in the metal. */}
+            <MetalFx
+              preset="chromatic"
+              variant="circle"
+              theme="dark"
+              innerShadow
+              reflectionTargets={[chipRef]}
+              strength={canSend ? 1 : 0.45}
             >
-              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
-                <path
-                  fill="none" stroke="currentColor" strokeWidth="2.2"
-                  strokeLinecap="round" strokeLinejoin="round"
-                  d="M12 19V5m0 0-6 6m6-6 6 6"
-                />
-              </svg>
-            </button>
+              <button
+                type="button"
+                className="metal-circle"
+                onClick={submitText}
+                disabled={!canSend}
+                aria-label="Send message"
+              >
+                <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
+                  <path
+                    fill="none" stroke="currentColor" strokeWidth="2.2"
+                    strokeLinecap="round" strokeLinejoin="round"
+                    d="M12 19V5m0 0-6 6m6-6 6 6"
+                  />
+                </svg>
+              </button>
+            </MetalFx>
           </div>
         </div>
       </VoiceBeam>

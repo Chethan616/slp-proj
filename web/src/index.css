@@ -347,8 +347,25 @@ main.empty { justify-content: center; }
   50% { box-shadow: 0 0 0 7px rgba(229, 72, 77, 0); }
 }
 
-.round-btn.send { background: #fff; color: #111; }
-.round-btn.send:hover:not(:disabled) { background: #e9e9e9; }
+/* Host element for the metal shader, copied from the Libraries.dev
+   `.mx-circle` rule. MetalFx paints its canvas and glow on top of this, so the
+   base surface stays dark and the ring does the work. */
+.metal-circle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  padding: 0;
+  border: 1px solid rgba(44, 47, 54, 0.52);
+  border-radius: 50%;
+  background: #1d1d1d;
+  box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
+  color: #f8f8f8;
+  cursor: pointer;
+  transition: transform var(--duration-quick) var(--ease-bounce),
+              opacity var(--duration-quick) var(--ease-smooth-out);
+}
+
+.metal-circle:active:not(:disabled) { transform: scale(.94); }
+.metal-circle:disabled { cursor: not-allowed; opacity: .6; }
 
 .composer-foot {
   display: flex; align-items: center; justify-content: space-between;
