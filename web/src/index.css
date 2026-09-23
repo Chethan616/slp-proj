@@ -110,7 +110,22 @@ button { font: inherit; color: inherit; }
   text-transform: uppercase;
 }
 
+.topbar-right { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
 .pipeline { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+
+.gh-link {
+  display: grid; place-items: center;
+  width: 34px; height: 34px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--chip-bg);
+  color: var(--icon-color-muted);
+  transition: background var(--duration-quick) var(--ease-smooth-out),
+              color var(--duration-quick) var(--ease-smooth-out);
+}
+
+.gh-link:hover { background: var(--chip-bg-hover); color: var(--text); }
 
 .stage {
   font-family: var(--font-mono);
@@ -296,6 +311,10 @@ main.empty { justify-content: center; }
 }
 
 .composer textarea::placeholder { color: var(--text-subtle); }
+
+/* While recording, the field shows the browser's interim transcript rather
+   than typed text, so it is styled as a provisional reading. */
+.composer textarea.live { color: var(--text-muted); font-style: italic; }
 
 .composer-bar { display: flex; align-items: center; gap: 9px; }
 .composer-bar .spacer { flex: 1; }

@@ -1,4 +1,5 @@
 import { BotAvatar } from 'bot-avatars'
+import { avatarFor } from '../avatars'
 
 /* One exchange. The assignment requires the recognised speech and the reply to
  * both be shown; the intent, its confidence and the runners-up are shown too so
@@ -6,6 +7,7 @@ import { BotAvatar } from 'bot-avatars'
 export default function Turn({ data }) {
   const pct = Math.round(data.confidence * 100)
   const low = data.below_threshold || data.intent === 'oos'
+  const avatar = avatarFor(data.intent)
   const alts = (data.top || [])
     .slice(1)
     .map((t) => `${t.intent} ${Math.round(t.confidence * 100)}%`)
@@ -18,8 +20,8 @@ export default function Turn({ data }) {
       </div>
 
       <div className="reply-row">
-        <div className="reply-avatar">
-          <BotAvatar type="clover" size={34} state="default" seed={0.2} />
+        <div className="reply-avatar" title={avatar.label}>
+          <BotAvatar type={avatar.type} size={34} state="default" seed={0.2} theme="dark" />
         </div>
 
         <div className="reply-body">
@@ -43,6 +45,8 @@ export default function Turn({ data }) {
             </span>
             <span className="sep">·</span>
             <span>intent {data.infer_ms} ms</span>
+            <span className="sep">·</span>
+            <span>{avatar.label}</span>
             {alts && (
               <>
                 <span className="sep">·</span>

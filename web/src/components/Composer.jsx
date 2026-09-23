@@ -16,14 +16,20 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
   const [elapsed, setElapsed] = useState(0)
   const [text, setText] = useState('')
 
+  const [live, setLive] = useState('')
+
   const recorderRef = useRef(null)
   const chunksRef = useRef([])
   const timerRef = useRef(null)
   const startedAtRef = useRef(0)
   const areaRef = useRef(null)
   const chipRef = useRef(null)
+  const sttRef = useRef(null)
 
-  useEffect(() => () => clearInterval(timerRef.current), [])
+  useEffect(() => () => {
+    clearInterval(timerRef.current)
+    stopLivePreview()
+  }, [])
 
   // Grow the textarea with its content, up to the CSS max-height.
   useEffect(() => {
@@ -32,6 +38,46 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
     el.style.height = 'auto'
     el.style.height = `${el.scrollHeight}px`
   }, [text])
+
+  /* A live preview of what is being said, so the field is not blank while you
+   * talk. This is the browser's own SpeechRecognition, which returns interim
+   * results as you speak — Whisper cannot, because it transcribes a complete
+   * recording in one pass on the server.
+   *
+   * It is strictly a preview: the transcript that reaches the classifier, and
+   * the one shown in the conversation, always comes from Whisper. Where the API
+   * is missing (Firefox, Safari) the preview is simply absent and nothing else
+   * changes. */
+  function startLivePreview() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!SR) return
+    try {
+      const rec = new SR()
+      rec.continuous = true
+      rec.interimResults = true
+      rec.lang = 'en-US'
+      rec.onresult = (e) => {
+        let text = ''
+        for (let i = 0; i < e.results.length; i += 1) text += e.results[i][0].transcript
+        setLive(text.trim())
+      }
+      rec.onerror = () => {}
+      rec.start()
+      sttRef.current = rec
+    } catch {
+      // A preview failing must never take the recording down with it.
+      sttRef.current = null
+    }
+  }
+
+  function stopLivePreview() {
+    try {
+      sttRef.current?.stop()
+    } catch {
+      /* already stopped */
+    }
+    sttRef.current = null
+  }
 
   async function startRecording() {
     const stream = await mic.start()
@@ -50,6 +96,9 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
     recorder.ondataavailable = (e) => e.data.size && chunksRef.current.push(e.data)
     recorder.onstop = handleStop
     recorder.start()
+
+    setLive('')
+    startLivePreview()
 
     startedAtRef.current = Date.now()
     setElapsed(0)
@@ -71,9 +120,11 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
     const seconds = (Date.now() - startedAtRef.current) / 1000
     const type = recorderRef.current?.mimeType || 'audio/webm'
     clearInterval(timerRef.current)
+    stopLivePreview()
     setRecording(false)
     setElapsed(0)
     mic.stop()
+    setLive('')
 
     const blob = new Blob(chunksRef.current, { type })
     if (seconds < 0.4 || blob.size < 1200) {
@@ -111,11 +162,13 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
             ref={areaRef}
             rows={1}
             maxLength={500}
-            value={text}
+            value={recording ? live : text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={onKeyDown}
             placeholder={recording ? 'Listening…' : 'Ask me anything..'}
             disabled={busy}
+            readOnly={recording}
+            className={recording ? 'live' : undefined}
           />
 
           <div className="composer-bar">
