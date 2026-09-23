@@ -126,7 +126,7 @@ function renderTurn(data) {
   // 3. the reply
   const bot = document.createElement("div");
   bot.className = "bubble bot";
-  bot.innerHTML = `<span class="label">Vox</span><div class="text"></div>`;
+  bot.innerHTML = `<span class="label">VoiceBot</span><div class="text"></div>`;
   bot.querySelector(".text").textContent = data.reply;
   turn.appendChild(bot);
 

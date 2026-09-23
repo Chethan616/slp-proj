@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "app"))
 
 st.set_page_config(
-    page_title="Vox — Voice-Enabled Chatbot",
+    page_title="VoiceBot — Voice-Enabled Chatbot",
     page_icon="◉",
     layout="centered",
 )
@@ -26,12 +26,12 @@ st.set_page_config(
 CSS = """
 <style>
 .block-container { padding-top: 2.2rem; max-width: 820px; }
-.vox-header { display:flex; align-items:center; gap:14px; margin-bottom:4px; }
-.vox-logo { width:44px; height:44px; border-radius:12px; background:#4f46e5; color:#fff;
+.vb-header { display:flex; align-items:center; gap:14px; margin-bottom:4px; }
+.vb-logo { width:44px; height:44px; border-radius:12px; background:#4f46e5; color:#fff;
             display:flex; align-items:center; justify-content:center; font-size:20px; }
-.vox-title { margin:0; font-size:1.45rem; font-weight:700; line-height:1.2; }
-.vox-sub { margin:0; font-size:.85rem; opacity:.65; }
-.vox-pipeline { font-size:.75rem; opacity:.6; margin:14px 0 4px; letter-spacing:.02em; }
+.vb-title { margin:0; font-size:1.45rem; font-weight:700; line-height:1.2; }
+.vb-sub { margin:0; font-size:.85rem; opacity:.65; }
+.vb-pipeline { font-size:.75rem; opacity:.6; margin:14px 0 4px; letter-spacing:.02em; }
 .turn { border:1px solid rgba(128,128,128,.25); border-radius:14px;
         padding:14px 16px; margin-bottom:14px; }
 .turn .lbl { font-size:.66rem; text-transform:uppercase; letter-spacing:.08em;
@@ -53,14 +53,14 @@ st.markdown(CSS, unsafe_allow_html=True)
 
 st.markdown(
     """
-<div class="vox-header">
-  <div class="vox-logo">◉</div>
+<div class="vb-header">
+  <div class="vb-logo">◉</div>
   <div>
-    <p class="vox-title">Vox — Voice-Enabled Chatbot</p>
-    <p class="vox-sub">Speech recognition with Whisper · intent classification with DistilBERT</p>
+    <p class="vb-title">VoiceBot — Voice-Enabled Chatbot</p>
+    <p class="vb-sub">Speech recognition with Whisper · intent classification with DistilBERT</p>
   </div>
 </div>
-<p class="vox-pipeline">microphone → Whisper (speech recognition) → DistilBERT (41-way intent) → response</p>
+<p class="vb-pipeline">microphone → Whisper (speech recognition) → DistilBERT (41-way intent) → response</p>
 """,
     unsafe_allow_html=True,
 )
@@ -94,7 +94,7 @@ def render_turn(turn: dict) -> None:
   <span class="lbl">Intent</span>
   <div><span class="chip {'oos' if low else ''}">{turn['intent']}</span>
        <span style="font-size:.8rem;opacity:.65;"> {pct}% confidence</span></div>
-  <div style="margin-top:10px;"><span class="lbl">Vox</span>
+  <div style="margin-top:10px;"><span class="lbl">VoiceBot</span>
        <div class="reply">{turn['reply']}</div></div>
   <div class="meta">{stt_meta} · intent inference {turn['infer_ms']} ms{
       ' · next: ' + alts if alts else ''}</div>
@@ -173,10 +173,10 @@ with st.sidebar:
         """
 | Metric | Value |
 |---|---:|
-| Intent accuracy | 0.9460 |
-| Macro F1 | 0.9556 |
+| Intent accuracy | 0.9473 |
+| Macro F1 | 0.9562 |
 | Word error rate | 0.0394 |
-| Accuracy from speech | 0.9767 |
+| Accuracy from speech | 0.9651 |
 """
     )
     st.caption(

@@ -195,9 +195,9 @@
   "Anything a voice assistant would do -- weather, timers, bookings, balances, music, to-do lists, plus a joke if you want one."
  ],
  "what_is_your_name": [
-  "I'm Vox, a voice-enabled chatbot built on Whisper and DistilBERT.",
-  "Call me Vox.",
-  "My name is Vox. Nice to meet you."
+  "I'm VoiceBot, a voice-enabled chatbot built on Whisper and DistilBERT.",
+  "Call me VoiceBot.",
+  "My name is VoiceBot. Nice to meet you."
  ],
  "oos": [
   "I'm not sure I follow -- that's outside what I've been trained on. Try asking about weather, travel, banking or your calendar.",

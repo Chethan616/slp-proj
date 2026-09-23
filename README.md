@@ -1,4 +1,4 @@
-# Vox — Voice-Enabled Chatbot (Speech Recognition + Deep Learning)
+# VoiceBot — Voice-Enabled Chatbot (Speech Recognition + Deep Learning)
 
 A web chatbot you talk to. Speech is transcribed by **Whisper**, the transcript is
 classified into one of **41 intents** by a **fine-tuned DistilBERT** model, and a
@@ -72,7 +72,7 @@ streamlit run streamlit_app.py     # http://localhost:8501
 Or with Docker:
 
 ```bash
-docker build -t vox . && docker run -p 8501:8501 vox
+docker build -t voicebot . && docker run -p 8501:8501 voicebot
 ```
 
 The FastAPI front end in `app/main.py` exposes the same pipeline as a service
