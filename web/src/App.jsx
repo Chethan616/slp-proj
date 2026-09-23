@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { MetalText } from 'metal-fx'
 import { ThinkingOrb } from 'thinking-orbs'
 import Composer from './components/Composer'
 import Turn from './components/Turn'
@@ -93,7 +94,16 @@ export default function App() {
         <div className="brand">
           <ThinkingOrb state={busy ? 'working' : 'breathing'} size={20} theme="dark" />
           <div>
-            <h1>VoiceBot</h1>
+            <h1>
+              <MetalText
+                className="metal-text"
+                font="600 16px/1.2 Inter, system-ui, sans-serif"
+                color="#ffffff"
+                theme="dark"
+              >
+                VoiceBot
+              </MetalText>
+            </h1>
             <p className="tagline">Speech recognition and intent classification</p>
           </div>
         </div>

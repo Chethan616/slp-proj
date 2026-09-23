@@ -209,7 +209,7 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
               theme="dark"
               innerShadow
               reflectionTargets={[chipRef]}
-              strength={canSend ? 1 : 0.45}
+              strength={canSend ? 1 : 0.72}
             >
               <button
                 type="button"
