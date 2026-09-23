@@ -118,16 +118,17 @@ button { font: inherit; color: inherit; }
 
 .gh-link {
   display: grid; place-items: center;
-  width: 34px; height: 34px;
+  width: 40px; height: 40px;
   flex: none;
+  border: 1px solid rgba(44, 47, 54, 0.52);
   border-radius: 50%;
-  background: var(--chip-bg);
-  color: var(--icon-color-muted);
-  transition: background var(--duration-quick) var(--ease-smooth-out),
-              color var(--duration-quick) var(--ease-smooth-out);
+  background: #1d1d1d;
+  box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
+  color: #f8f8f8;
+  transition: background var(--duration-quick) var(--ease-smooth-out);
 }
 
-.gh-link:hover { background: var(--chip-bg-hover); color: var(--text); }
+.gh-link:hover { background: #242424; }
 
 .stage {
   font-family: var(--font-mono);
@@ -330,105 +331,52 @@ main.empty { justify-content: center; }
 .composer-bar { display: flex; align-items: center; gap: 12px; }
 .composer-bar .spacer { flex: 1; }
 
-/* ---- microphone: the primary way in ---- */
-.mic-group { display: flex; align-items: center; gap: 11px; }
-
-.mic-btn {
-  position: relative;
-  width: 52px; height: 52px;
+/* ---- icon buttons: same 40px circle as the metal send button, so the row
+   reads as one set rather than a blue blob next to a metal ring ---- */
+.icon-circle {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
   flex: none;
-  display: grid; place-items: center;
-  border: none;
+  padding: 0;
+  border: 1px solid rgba(44, 47, 54, 0.52);
   border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
+  background: #1d1d1d;
+  box-shadow: inset 0 0 50px 0 rgba(255, 255, 255, 0.02);
+  color: #f8f8f8;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 113, 252, .34);
   transition: background var(--duration-quick) var(--ease-smooth-out),
-              transform var(--duration-quick) var(--ease-bounce),
-              box-shadow var(--duration-quick) var(--ease-smooth-out);
+              border-color var(--duration-quick) var(--ease-smooth-out),
+              color var(--duration-quick) var(--ease-smooth-out),
+              transform var(--duration-quick) var(--ease-bounce);
 }
 
-.mic-btn:hover:not(:disabled) { transform: translateY(-1px) scale(1.03); }
-.mic-btn:active:not(:disabled) { transform: scale(.95); }
-
-.mic-btn:disabled {
-  background: var(--chip-bg);
-  color: var(--text-subtle);
-  box-shadow: none;
-  cursor: not-allowed;
+.icon-circle:hover:not(:disabled) {
+  background: #242424;
+  border-color: rgba(120, 124, 134, 0.6);
 }
 
-.mic-btn.recording {
+.icon-circle:active:not(:disabled) { transform: scale(.94); }
+.icon-circle:disabled { opacity: .45; cursor: not-allowed; }
+
+/* Recording is the one state that earns colour. */
+.icon-circle.mic.recording {
   background: #e5484d;
-  box-shadow: 0 6px 20px rgba(229, 72, 77, .4);
+  border-color: #e5484d;
+  color: #fff;
   animation: mic-pulse 1.9s ease-in-out infinite;
 }
 
 @keyframes mic-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .5), 0 6px 20px rgba(229, 72, 77, .4); }
-  55% { box-shadow: 0 0 0 12px rgba(229, 72, 77, 0), 0 6px 20px rgba(229, 72, 77, .4); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .45); }
+  55% { box-shadow: 0 0 0 9px rgba(229, 72, 77, 0); }
 }
 
-.mic-caption {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--text-muted);
-  white-space: nowrap;
-}
-
-.mic-btn.recording + .mic-caption { color: #ff9ea1; }
-
-.model-chip {
-  display: inline-flex; align-items: center; gap: 7px;
-  padding: 7px 13px;
-  border-radius: 999px;
-  background: var(--chip-bg);
-  color: var(--text-muted);
+.rec-timer {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  white-space: nowrap;
+  color: #ff9ea1;
 }
 
-.model-chip .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #35d07f;
-  box-shadow: 0 0 8px rgba(53, 208, 127, .7);
-}
-
-.model-chip .dot.off { background: var(--text-subtle); box-shadow: none; }
-
-.round-btn {
-  width: 38px; height: 38px;
-  display: grid; place-items: center;
-  border: none;
-  border-radius: 50%;
-  background: var(--chip-bg);
-  color: var(--icon-color);
-  cursor: pointer;
-  transition: background var(--duration-quick) var(--ease-smooth-out),
-              transform var(--duration-quick) var(--ease-bounce),
-              color var(--duration-quick) var(--ease-smooth-out);
-}
-
-.round-btn:hover:not(:disabled) { background: var(--chip-bg-hover); }
-.round-btn:active:not(:disabled) { transform: scale(.94); }
-.round-btn:disabled { opacity: .4; cursor: not-allowed; }
-
-.round-btn.recording {
-  background: #e5484d;
-  color: #fff;
-  animation: pulse 1.8s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .45); }
-  50% { box-shadow: 0 0 0 7px rgba(229, 72, 77, 0); }
-}
-
-/* Host element for the metal shader, copied from the Libraries.dev
-   `.mx-circle` rule. MetalFx paints its canvas and glow on top of this, so the
-   base surface stays dark and the ring does the work. */
 .metal-circle {
   display: inline-flex; align-items: center; justify-content: center;
   width: 40px; height: 40px;

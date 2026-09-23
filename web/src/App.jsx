@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { MetalText } from 'metal-fx'
+import { MetalFx, MetalText, useMetalBend } from 'metal-fx'
 import { ThinkingOrb } from 'thinking-orbs'
 import Composer from './components/Composer'
 import Turn from './components/Turn'
@@ -37,6 +37,10 @@ export default function App() {
   const [info, setInfo] = useState(null)
   const [speak, setSpeak] = useState(false)
   const bottomRef = useRef(null)
+  const ghRef = useRef(null)
+
+  // Same cursor-driven liquid dent as the send button.
+  useMetalBend(ghRef)
 
   const busy = phase === 'transcribing' || phase === 'classifying'
 
@@ -122,6 +126,14 @@ export default function App() {
             </span>
             ))}
           </div>
+          <MetalFx
+            ref={ghRef}
+            preset="chromatic"
+            variant="circle"
+            theme="dark"
+            innerShadow
+            strength={0.85}
+          >
           <a
             className="gh-link"
             href="https://github.com/Chethan616/slp-proj"
@@ -144,6 +156,7 @@ export default function App() {
               />
             </svg>
           </a>
+          </MetalFx>
         </div>
       </header>
 

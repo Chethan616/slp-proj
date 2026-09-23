@@ -184,34 +184,26 @@ export default function Composer({ busy, processing, onVoice, onText, onError, i
 
             <span className="spacer" />
 
-            {/* Speaking is the primary way in, so the microphone is the
-                largest control and carries a standing label. */}
-            <div className="mic-group">
-              <button
-                className={`mic-btn${recording ? ' recording' : ''}`}
-                onClick={() => (recording ? stopRecording() : startRecording())}
-                disabled={busy || !mic.supported}
-                aria-label={recording ? 'Stop recording' : 'Start recording'}
-              >
-                {recording ? (
-                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                    <rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor" />
-                  </svg>
-                ) : (
-                  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
-                    <path fill="currentColor" d="M12 14.5a3 3 0 0 0 3-3v-5a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z" />
-                    <path fill="currentColor" d="M17.8 11.3a.8.8 0 0 0-1.6 0 4.2 4.2 0 0 1-8.4 0 .8.8 0 0 0-1.6 0 5.8 5.8 0 0 0 5 5.7v2.2a.8.8 0 0 0 1.6 0V17a5.8 5.8 0 0 0 5-5.7Z" />
-                  </svg>
-                )}
-              </button>
-              <span className="mic-caption">
-                {!mic.supported
-                  ? 'No microphone'
-                  : recording
-                    ? `Listening · ${elapsed.toFixed(1)}s · tap to stop`
-                    : 'Tap to speak'}
-              </span>
-            </div>
+            {recording && <span className="rec-timer">{elapsed.toFixed(1)}s</span>}
+
+            <button
+              className={`icon-circle mic${recording ? ' recording' : ''}`}
+              onClick={() => (recording ? stopRecording() : startRecording())}
+              disabled={busy || !mic.supported}
+              aria-label={recording ? 'Stop recording' : 'Record a question'}
+              title={mic.supported ? (recording ? 'Stop recording' : 'Record a question') : 'No microphone available'}
+            >
+              {recording ? (
+                <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+                  <rect x="6" y="6" width="12" height="12" rx="2.5" fill="currentColor" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true">
+                  <path fill="currentColor" d="M12 14.5a3 3 0 0 0 3-3v-5a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Z" />
+                  <path fill="currentColor" d="M17.8 11.3a.8.8 0 0 0-1.6 0 4.2 4.2 0 0 1-8.4 0 .8.8 0 0 0-1.6 0 5.8 5.8 0 0 0 5 5.7v2.2a.8.8 0 0 0 1.6 0V17a5.8 5.8 0 0 0 5-5.7Z" />
+                </svg>
+              )}
+            </button>
 
             {/* The metal shader paints over its host element, so the send
                 button keeps its own markup and MetalFx wraps it. */}
