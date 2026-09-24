@@ -29,12 +29,39 @@ const PHASES = {
   classifying: { orb: 'solving', label: 'Classifying intent' },
 }
 
+/* The strip names each stage and the technique that performs it, and stays on
+ * screen for the whole session. The hero paragraph explains the same thing in
+ * prose, but it is replaced by the conversation on the first turn, so without
+ * this the pipeline would be invisible during an actual demonstration. */
 const STAGES = [
-  ['record', 'Record'],
-  ['stt', 'Speech recognition'],
-  ['nlu', 'Intent model'],
-  ['reply', 'Response'],
+  { key: 'record', label: 'Voice input', short: 'Voice', tech: 'microphone' },
+  { key: 'stt', label: 'Speech recognition', short: 'Whisper', tech: 'Whisper base.en' },
+  { key: 'nlu', label: 'Intent classification', short: 'DistilBERT', tech: 'DistilBERT, 41 intents' },
+  { key: 'reply', label: 'Response', short: 'Reply', tech: 'generated reply' },
 ]
+
+function Pipeline({ stage }) {
+  const idx = STAGES.findIndex((s) => s.key === stage)
+
+  return (
+    <div className="pipeline" aria-label="Processing pipeline">
+      {STAGES.map((s, i) => (
+        <div className="pipe-step-wrap" key={s.key}>
+          <div
+            className={`pipe-step${stage === s.key ? ' active' : ''}${
+              idx >= 0 && i < idx ? ' done' : ''
+            }`}
+          >
+            <span className="pipe-label">{s.label}</span>
+            <span className="pipe-short">{s.short}</span>
+            <span className="pipe-tech">{s.tech}</span>
+          </div>
+          {i < STAGES.length - 1 && <span className="pipe-arrow" aria-hidden="true">→</span>}
+        </div>
+      ))}
+    </div>
+  )
+}
 
 export default function App() {
   const [turns, setTurns] = useState([])
@@ -134,7 +161,6 @@ export default function App() {
   const handleVoice = guarded((blob) => run(() => postVoice(blob), ['transcribing'], 'stt'))
   const handleText = guarded((value) => run(() => postText(value), ['classifying'], 'nlu'))
 
-  const stageIdx = STAGES.findIndex(([k]) => k === stage)
   const active = PHASES[phase]
 
   return (
@@ -157,20 +183,6 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
-          <div className="pipeline" aria-label="processing pipeline">
-          {STAGES.map(([key, label], i) => (
-            <span key={key} style={{ display: 'contents' }}>
-              <span
-                className={`stage${stage === key ? ' active' : ''}${
-                  stageIdx >= 0 && i < stageIdx ? ' done' : ''
-                }`}
-              >
-                {label}
-              </span>
-              {i < STAGES.length - 1 && <span className="arrow">→</span>}
-            </span>
-            ))}
-          </div>
           <MetalFx
             ref={ghRef}
             preset="chromatic"
@@ -204,6 +216,8 @@ export default function App() {
           </MetalFx>
         </div>
       </header>
+
+      <Pipeline stage={stage} />
 
       <main className={turns.length === 0 ? "empty" : ""}>
         <section className="transcript" aria-live="polite">
