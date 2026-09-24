@@ -93,7 +93,7 @@ def build_markdown() -> str:
     a("The intent classifier is trained on **CLINC150** (Larson et al., EMNLP 2019), a")
     a("benchmark created specifically for intent classification. It contains 150")
     a("in-scope intents spread over 10 domains, with 150 crowdsourced utterances per")
-    a("intent, and — unusually for an intent dataset — an explicit **out-of-scope**")
+    a("intent, and - unusually for an intent dataset - an explicit **out-of-scope**")
     a("class of queries that a task-oriented assistant is not built to answer.")
     a("")
     a("### 2.2 Subset used")
@@ -114,7 +114,7 @@ def build_markdown() -> str:
     a("| Home | play_music, next_song, shopping_list, todo_list, reminder |")
     a("| Work | payday, meeting_schedule, pto_balance |")
     a("| Kitchen and dining | recipe, restaurant_suggestion, calories |")
-    a("| — | oos (out of scope) |")
+    a("| - | oos (out of scope) |")
     a("")
     a("| Split | Utterances | Per in-scope intent | Out-of-scope |")
     a("|---|---:|---:|---:|")
@@ -173,7 +173,7 @@ def build_markdown() -> str:
     a("")
     a("**1. TF-IDF + Logistic Regression.** Unigram and bigram TF-IDF features with")
     a("sublinear term frequency scaling, fed to a multinomial logistic regression. No")
-    a("neural network at all — the point of reference for whether deep learning is")
+    a("neural network at all - the point of reference for whether deep learning is")
     a("earning its place.")
     a("")
     a("**2. Bag-of-words + MLP.** A binary bag-of-words vector into a two-hidden-layer")
@@ -355,7 +355,7 @@ def build_markdown() -> str:
             a("Notably, intent accuracy is **identical** whether the classifier is given the")
             a("clean reference text or Whisper's transcription of the synthesised speech. The")
             a("recognition errors that do occur fall on words the intent classifier does not")
-            a("depend on — a misheard proper noun rarely changes whether an utterance is a")
+            a("depend on - a misheard proper noun rarely changes whether an utterance is a")
             a("request for the weather. The errors the pipeline makes are the classifier's own,")
             a("not the recogniser's.")
         elif s["accuracy_drop"] > 0:
@@ -365,7 +365,7 @@ def build_markdown() -> str:
             a("determine the intent.")
         else:
             a(f"Intent accuracy is in fact {abs(s['accuracy_drop']) * 100:.1f} points *higher*")
-            a("from speech than from the reference text — an artefact of the small sample")
+            a("from speech than from the reference text - an artefact of the small sample")
             a("rather than a meaningful effect.")
         a("")
         a(f"A real-time factor of {s['real_time_factor']:.2f} means the system transcribes")
@@ -655,7 +655,7 @@ def main() -> None:
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Voice-Enabled Chatbot — Report</title>
+<title>Voice-Enabled Chatbot - Report</title>
 <style>{CSS}</style>
 </head>
 <body>

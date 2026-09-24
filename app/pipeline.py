@@ -198,7 +198,7 @@ def voice_chat(audio_bytes: bytes) -> dict:
             "confidence": 0.0,
             "top": [],
             "infer_ms": 0,
-            "reply": "I didn't catch any speech there — try again a bit closer to the mic.",
+            "reply": "I didn't catch any speech there - try again a bit closer to the mic.",
             "empty_audio": True,
         }
     return {**stt, **chat(stt["transcript"])}

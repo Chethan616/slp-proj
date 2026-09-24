@@ -1,4 +1,4 @@
-# Viva preparation — questions you are likely to be asked
+# Viva preparation - questions you are likely to be asked
 
 Short, honest answers for every part of the system. If you can answer these, you
 can defend the whole project.
@@ -22,7 +22,7 @@ Because they solve different problems and are trained on different data. Whisper
 is a general-purpose speech recogniser trained on 680k hours of audio; retraining
 it is out of reach here. Intent classification is a small, domain-specific
 problem where a fine-tuned text model does well with a few thousand examples.
-Splitting the pipeline also means each stage can be evaluated separately — which
+Splitting the pipeline also means each stage can be evaluated separately - which
 is exactly what the results section does.
 
 ---
@@ -31,7 +31,7 @@ is exactly what the results section does.
 
 **Q. How does Whisper work?**
 Audio is resampled to 16 kHz and converted into an 80-channel log-Mel
-spectrogram — a time-frequency representation on a perceptually spaced frequency
+spectrogram - a time-frequency representation on a perceptually spaced frequency
 axis. That spectrogram is fed to a transformer encoder, and a transformer decoder
 autoregressively generates text tokens while attending to the encoder output. It
 is a sequence-to-sequence model trained on 680,000 hours of weakly supervised
@@ -42,7 +42,7 @@ A spectrogram is the magnitude of the short-time Fourier transform: how much
 energy sits at each frequency in each short time window. The Mel scale warps the
 frequency axis to match human pitch perception, and the log compresses the
 dynamic range. It is a compact representation that discards phase information the
-model does not need — far easier to learn from than a raw 16,000-samples-per-
+model does not need - far easier to learn from than a raw 16,000-samples-per-
 second waveform.
 
 **Q. Why `base.en` and not a larger Whisper model?**
@@ -80,7 +80,7 @@ thing on our labelled utterances with cross-entropy loss. The pre-trained weight
 provide the language understanding; the fine-tuning teaches it our 41 categories.
 
 **Q. What are the hyperparameters and why?**
-Max sequence length 32 (these utterances are short — that covers essentially all
+Max sequence length 32 (these utterances are short - that covers essentially all
 of them without wasting computation), batch size 32, learning rate 3e-5 with 10%
 linear warmup then linear decay, weight decay 0.01, 5 epochs, gradient clipping
 at 1.0. The small learning rate is standard for fine-tuning: large steps would
@@ -96,7 +96,7 @@ pre-trained encoder.
 Accuracy is dominated by whichever classes have the most test examples. Macro F1
 averages the per-class F1 equally, so a model that ignores a rare class is
 penalised. Our test set has 30 utterances for each in-scope intent but 300
-out-of-scope ones, so the two metrics genuinely differ — reporting both is
+out-of-scope ones, so the two metrics genuinely differ - reporting both is
 honest.
 
 **Q. What is F1?**
@@ -123,7 +123,7 @@ demonstrate the method and still be a usable assistant. The selection is fixed i
 
 **Q. What is the out-of-scope class and why does it matter?**
 It is a class of user queries the assistant is not built to handle. Without it, a
-classifier must assign every input to one of its known intents — so "who was the
+classifier must assign every input to one of its known intents - so "who was the
 first Capcom character" gets confidently labelled as, say, `definition`, and the
 bot answers nonsense. Modelling out-of-scope explicitly lets the system say "I
 don't know", which is what a deployed assistant needs to do.
@@ -132,14 +132,14 @@ don't know", which is what a deployed assistant needs to do.
 Two routes. The classifier can predict the `oos` class directly, or the maximum
 softmax probability can fall below a confidence threshold, in which case we
 override the prediction to `oos`. The threshold was chosen by sweeping it on the
-test predictions and taking the value that maximises overall macro F1 — see the
+test predictions and taking the value that maximises overall macro F1 - see the
 threshold sweep figure.
 
 **Q. Isn't a softmax probability a bad confidence estimate?**
 Yes, neural networks are known to be overconfident, and the raw softmax is not a
 calibrated probability. It is still a usable *ranking* signal, which is all the
 threshold needs. Proper calibration (temperature scaling) or an explicit
-open-set method would be the next step — that is noted in the limitations.
+open-set method would be the next step - that is noted in the limitations.
 
 ---
 
@@ -152,7 +152,7 @@ from-scratch neural approaches. Reporting only the best model tells you nothing
 about whether the complexity was justified.
 
 **Q. Your baselines are quite close to the transformer. Doesn't that undermine it?**
-It shows the task is not especially hard for in-scope classification — with 100
+It shows the task is not especially hard for in-scope classification - with 100
 clean examples per class, keyword evidence goes a long way. The gap opens up on
 the harder cases: out-of-scope rejection and paraphrases that share no vocabulary
 with the training data, where pre-trained representations help most. Look at the
@@ -168,7 +168,7 @@ between those two numbers is exactly the accuracy lost to recognition errors.
 Synthetic speech is cleaner than real speech: no background noise, no accents
 beyond the installed voices, no disfluencies, consistent pacing. Real WER would
 be higher. It is a lower bound on the error, not an estimate of field
-performance — a proper evaluation would need recorded human speakers.
+performance - a proper evaluation would need recorded human speakers.
 
 ---
 
@@ -195,7 +195,7 @@ You export once and can then serve the model without the training framework.
 **Q. What is dynamic quantisation, and did it hurt accuracy?**
 The weights are converted from 32-bit floats to 8-bit integers, and activations
 are quantised on the fly at inference. It cut the model from 268 MB to 67 MB and
-made inference about 1.8x faster. Accuracy did not drop — it went from 0.9460 to
+made inference about 1.8x faster. Accuracy did not drop - it went from 0.9460 to
 0.9473. The int8 graph agrees with the full-precision one on about 98% of test
 utterances, and where they disagree the differences happen to cancel out. That
 last part is luck, not a general rule; the honest claim is that quantisation was
@@ -227,7 +227,7 @@ duration) is the scale-free way to read the STT number.
   compute and would introduce hallucination risk.
 - There is no dialogue state: each turn is classified independently, so the bot
   cannot handle "and what about tomorrow?".
-- Slot filling is not implemented — the system knows you want to set an alarm but
+- Slot filling is not implemented - the system knows you want to set an alarm but
   not what time you said.
 - Confidence scores are uncalibrated softmax probabilities.
 - The speech evaluation uses synthetic rather than human speech.

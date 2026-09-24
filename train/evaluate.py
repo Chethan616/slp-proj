@@ -69,7 +69,7 @@ def confusion(labels, y_true, y_pred):
     ax.set_yticklabels(labels, fontsize=6.5)
     ax.set_xlabel("Predicted intent")
     ax.set_ylabel("True intent")
-    ax.set_title("Confusion matrix — fine-tuned DistilBERT (test set)")
+    ax.set_title("Confusion matrix - fine-tuned DistilBERT (test set)")
     fig.colorbar(im, ax=ax, shrink=0.75, label="utterances")
     fig.tight_layout()
     fig.savefig(RESULTS / "confusion_matrix.png", dpi=150)
@@ -128,8 +128,8 @@ def threshold_sweep(labels, val, test):
     fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.4), sharey=True)
     for ax, (a, r, f, title) in zip(
         axes,
-        [(v_in, v_oos, v_f1, "Validation — threshold selected here"),
-         (t_in, t_oos, t_f1, "Test — reported here")],
+        [(v_in, v_oos, v_f1, "Validation - threshold selected here"),
+         (t_in, t_oos, t_f1, "Test - reported here")],
     ):
         ax.plot(thresholds, a, label="In-scope accuracy", color="#6366f1")
         ax.plot(thresholds, r, label="Out-of-scope recall", color="#f59e0b")
@@ -234,7 +234,7 @@ def main() -> None:
         val = load_preds("distilbert_val")
         if val is None:
             raise SystemExit(
-                "Missing results/preds_distilbert_val.json — run "
+                "Missing results/preds_distilbert_val.json - run "
                 "`python train/predict_split.py val` first so the confidence "
                 "threshold can be selected on validation rather than on test."
             )

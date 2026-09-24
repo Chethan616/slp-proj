@@ -98,7 +98,7 @@ export default function App() {
         setError(
           conn === 'failed'
             ? 'The model server is not responding. Give it a moment and reload the page.'
-            : 'Still connecting to the model server — one moment.',
+            : 'Still connecting to the model server - one moment.',
         )
         return
       }
@@ -258,7 +258,7 @@ export default function App() {
           setError(
             conn === 'failed'
               ? 'The model server is not responding. Give it a moment and reload the page.'
-              : 'Still connecting to the model server — one moment.',
+              : 'Still connecting to the model server - one moment.',
           )
         }
         speak={speak}

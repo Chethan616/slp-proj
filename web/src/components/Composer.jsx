@@ -111,7 +111,7 @@ export default function Composer({
 
   /* A live preview of what is being said, so the field is not blank while you
    * talk. This is the browser's own SpeechRecognition, which returns interim
-   * results as you speak — Whisper cannot, because it transcribes a complete
+   * results as you speak - Whisper cannot, because it transcribes a complete
    * recording in one pass on the server.
    *
    * It is strictly a preview: the transcript that reaches the classifier, and
@@ -170,7 +170,7 @@ export default function Composer({
       onError(
         mic.state === 'denied'
           ? 'Microphone access was blocked. Allow the mic in your browser, or type instead.'
-          : 'No microphone available — type your question instead.'
+          : 'No microphone available - type your question instead.'
       )
       return
     }
@@ -250,7 +250,7 @@ export default function Composer({
 
     if (seconds < 0.4 || blob.size < 1200) {
       onError(
-        'That recording was too short — hold on a moment longer and speak clearly.'
+        'That recording was too short - hold on a moment longer and speak clearly.'
       )
       return
     }
@@ -275,7 +275,7 @@ export default function Composer({
   }
 
   function clearComposer() {
-    // While recording, the cross discards. Only the square stop submits —
+    // While recording, the cross discards. Only the square stop submits -
     // stopRecording() would have sent the audio the user just asked to drop.
     if (recording) {
       cancelRecording()
@@ -542,7 +542,7 @@ export default function Composer({
 }
 
 /* Owns its own tick so the elapsed reading updates without re-rendering the
- * composer — and therefore without disturbing the metal. */
+ * composer - and therefore without disturbing the metal. */
 function RecTimer({ startedAt }) {
   const [secs, setSecs] = useState(0)
 
@@ -560,7 +560,7 @@ function RecTimer({ startedAt }) {
 /* Holds the typed text and the live speech preview.
  *
  * These change many times a second while you speak, and the composer sits
- * inside VoiceBeam and around MetalFx — both of which re-measure and rebuild
+ * inside VoiceBeam and around MetalFx - both of which re-measure and rebuild
  * when their subtree re-renders. Keeping this state in a leaf means the beam
  * and the metal never see those updates at all.
  */

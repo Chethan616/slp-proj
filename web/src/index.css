@@ -566,7 +566,7 @@ main.empty { justify-content: center; }
 
 /* ---------------- phone ----------------
    The composer becomes the bottom of the screen: the glow runs the full width
-   under a centred prompt, with the controls on one row beneath it — the
+   under a centred prompt, with the controls on one row beneath it - the
    geometry voice-glow's `mobile` preset is tuned for. */
 @media (max-width: 640px) {
   :root { --app-gutter: 0px; }

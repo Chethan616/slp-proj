@@ -1,4 +1,4 @@
-# VoiceBot — Voice-Enabled Chatbot
+# VoiceBot - Voice-Enabled Chatbot
 
 A web application that is operated by speech. The browser records a spoken
 question, the server transcribes it with Whisper, a fine-tuned DistilBERT model
@@ -27,8 +27,8 @@ small enough for a free hosting tier.
 
 **CLINC150** (Larson et al., EMNLP 2019), a benchmark built for intent
 classification that includes an explicit out-of-scope class. This project uses a
-40-intent subset spanning eight domains — small talk, utility, travel, auto and
-commute, banking, home, work, and kitchen and dining — plus the `oos` class,
+40-intent subset spanning eight domains - small talk, utility, travel, auto and
+commute, banking, home, work, and kitchen and dining - plus the `oos` class,
 giving 41 classes in total.
 
 | Split | Utterances | Per in-scope intent | Out-of-scope |
@@ -52,7 +52,7 @@ could be measured rather than assumed. Only the last is deployed.
 | Bag-of-words + MLP | 375,081 | 0.8747 | 0.8981 |
 | Embedding + BiLSTM | 273,833 | 0.8860 | 0.9015 |
 | DistilBERT, fine-tuned | 66,985,001 | 0.9460 | 0.9556 |
-| DistilBERT, int8 ONNX (deployed) | — | **0.9473** | **0.9562** |
+| DistilBERT, int8 ONNX (deployed) | - | **0.9473** | **0.9562** |
 
 Speech recognition uses Whisper `base.en` with int8 quantisation, through the
 `faster-whisper` implementation on the CTranslate2 engine.

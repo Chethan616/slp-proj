@@ -1,4 +1,4 @@
-"""Voice-enabled chatbot — Streamlit deployment.
+"""Voice-enabled chatbot - Streamlit deployment.
 
 Same two-stage pipeline as the FastAPI app in app/: Whisper transcribes the
 recorded audio, a fine-tuned DistilBERT classifies the transcript into one of 41
@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "app"))
 
 st.set_page_config(
-    page_title="VoiceBot — Voice-Enabled Chatbot",
+    page_title="VoiceBot - Voice-Enabled Chatbot",
     page_icon="◉",
     layout="centered",
 )
@@ -56,7 +56,7 @@ st.markdown(
 <div class="vb-header">
   <div class="vb-logo">◉</div>
   <div>
-    <p class="vb-title">VoiceBot — Voice-Enabled Chatbot</p>
+    <p class="vb-title">VoiceBot - Voice-Enabled Chatbot</p>
     <p class="vb-sub">Speech recognition with Whisper · intent classification with DistilBERT</p>
   </div>
 </div>
@@ -117,7 +117,7 @@ with tab_voice:
     if audio is not None:
         data = audio.getvalue()
         if len(data) < 1200:
-            st.warning("That recording was too short — hold the button a little longer.")
+            st.warning("That recording was too short - hold the button a little longer.")
         else:
             with st.spinner("Transcribing and classifying…"):
                 t0 = time.perf_counter()

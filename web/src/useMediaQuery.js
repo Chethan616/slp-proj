@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
  *
  *  `query` is expected to be a constant string. The initial value is read
  *  during render and the listener carries every change after that, so the
- *  effect only subscribes — it never needs to set state on mount. */
+ *  effect only subscribes - it never needs to set state on mount. */
 export function useMediaQuery(query) {
   const [matches, setMatches] = useState(
     () => typeof window !== 'undefined' && window.matchMedia(query).matches,

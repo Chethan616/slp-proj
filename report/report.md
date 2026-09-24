@@ -34,7 +34,7 @@ microphone --> recorded audio --> server
 The intent classifier is trained on **CLINC150** (Larson et al., EMNLP 2019), a
 benchmark created specifically for intent classification. It contains 150
 in-scope intents spread over 10 domains, with 150 crowdsourced utterances per
-intent, and — unusually for an intent dataset — an explicit **out-of-scope**
+intent, and - unusually for an intent dataset - an explicit **out-of-scope**
 class of queries that a task-oriented assistant is not built to answer.
 
 ### 2.2 Subset used
@@ -55,7 +55,7 @@ every intent needs a written response template for the chatbot to reply at all.
 | Home | play_music, next_song, shopping_list, todo_list, reminder |
 | Work | payday, meeting_schedule, pto_balance |
 | Kitchen and dining | recipe, restaurant_suggestion, calories |
-| — | oos (out of scope) |
+| - | oos (out of scope) |
 
 | Split | Utterances | Per in-scope intent | Out-of-scope |
 |---|---:|---:|---:|
@@ -110,7 +110,7 @@ All are implemented in PyTorch; scikit-learn provides the classical baseline.
 
 **1. TF-IDF + Logistic Regression.** Unigram and bigram TF-IDF features with
 sublinear term frequency scaling, fed to a multinomial logistic regression. No
-neural network at all — the point of reference for whether deep learning is
+neural network at all - the point of reference for whether deep learning is
 earning its place.
 
 **2. Bag-of-words + MLP.** A binary bag-of-words vector into a two-hidden-layer

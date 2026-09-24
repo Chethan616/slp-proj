@@ -218,7 +218,7 @@ async function startRecording() {
 
   micBtn.classList.add("recording");
   micBtn.setAttribute("aria-label", "Stop recording");
-  micLabel.textContent = "Listening — click to stop";
+  micLabel.textContent = "Listening - click to stop";
   setStage("record");
 }
 
@@ -248,7 +248,7 @@ async function handleRecordingStopped() {
 
   if (elapsed < 0.4 || blob.size < 1200) {
     micLabel.textContent = "Click to speak";
-    addError("That recording was too short — hold on a moment longer and speak clearly.");
+    addError("That recording was too short - hold on a moment longer and speak clearly.");
     clearStages();
     return;
   }
@@ -332,7 +332,7 @@ SUGGESTIONS.forEach((text) => {
 
 if (!navigator.mediaDevices || !window.MediaRecorder) {
   micBtn.disabled = true;
-  micLabel.textContent = "Microphone not supported — use the text box";
+  micLabel.textContent = "Microphone not supported - use the text box";
 }
 
 fetch("/api/info")
