@@ -308,8 +308,14 @@ export default function Composer({
          * afford it at full radius: a full-height host ran the page at 7fps,
          * which is what looked like flicker. Tighter halo and single-band
          * lobes on phones only. */
-        glowSize={isPhone ? 0.6 : 1}
+        glowSize={isPhone ? 0.75 : 1}
         bands={!isPhone}
+        /* The mobile preset's default reach is 3, sized for a host the height
+         * of a phone screen. In a short band that overflows and VoiceBeam's own
+         * overflow:hidden cuts it off in a straight line, so bring the bloom
+         * back inside the band. */
+        reach={isPhone ? 1.3 : undefined}
+        spread={isPhone ? 0.52 : undefined}
       >
         <div className="composer">
           <ComposerField

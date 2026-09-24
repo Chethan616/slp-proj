@@ -603,10 +603,19 @@ main.empty { justify-content: center; }
     bottom: 0;
     left: 0;
     z-index: 10;
-    height: 120px;
+    height: 156px;
     padding: 0;
     background: none;
     pointer-events: none;
+  }
+
+  /* VoiceBeam clips its own container to the host box, so any bloom that
+     reaches the top of the band ends on a straight line. Fading the top of
+     that container turns the cut into a falloff. The mask is fully opaque
+     across the lower half, where the controls sit. */
+  .composer-wrap > div:first-of-type {
+    -webkit-mask-image: linear-gradient(to top, #000 58%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 58%, transparent 100%);
   }
 
   .composer-wrap > [data-voice-type] {
