@@ -42,6 +42,9 @@ export default function App() {
   const [stage, setStage] = useState(null)
   const [error, setError] = useState(null)
   const [info, setInfo] = useState(null)
+  // 'connecting' until the backend answers, then 'ready'; 'failed' once the
+  // retries are exhausted. Every control is inert until this is 'ready'.
+  const [conn, setConn] = useState('connecting')
   const [speak, setSpeak] = useState(false)
   const bottomRef = useRef(null)
   const ghRef = useRef(null)
@@ -55,18 +58,53 @@ export default function App() {
   // rather than making the first question pay the cold start.
   useEffect(() => {
     let cancelled = false
-    wake()
-      .then(getInfo)
-      .then((i) => !cancelled && setInfo(i))
-      .catch(() => {})
-    return () => {
-      cancelled = true
+    let attempt = 0
+
+    /* The backend scales to zero, so the first request after an idle period
+     * has to start a container and load both models. That takes longer than a
+     * single request will wait, hence the retries with a growing pause. */
+    async function connect() {
+      while (!cancelled && attempt < 6) {
+        attempt += 1
+        try {
+          await wake()
+          const i = await getInfo()
+          if (!cancelled) {
+            setInfo(i)
+            setConn('ready')
+          }
+          return
+        } catch {
+          await new Promise((r) => setTimeout(r, Math.min(2000 * attempt, 8000)))
+        }
+      }
+      if (!cancelled) setConn('failed')
     }
+
+    connect()
   }, [])
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }, [turns, phase])
+
+  const ready = conn === 'ready'
+
+  /* Wraps any action so that pressing a control before the backend is up
+   * explains itself rather than failing silently or throwing. */
+  function guarded(run) {
+    return (...args) => {
+      if (!ready) {
+        setError(
+          conn === 'failed'
+            ? 'The model server is not responding. Give it a moment and reload the page.'
+            : 'Still connecting to the model server — one moment.',
+        )
+        return
+      }
+      run(...args)
+    }
+  }
 
   function say(reply) {
     if (!speak || !reply || !('speechSynthesis' in window)) return
@@ -93,8 +131,8 @@ export default function App() {
     }
   }
 
-  const handleVoice = (blob) => run(() => postVoice(blob), ['transcribing'], 'stt')
-  const handleText = (value) => run(() => postText(value), ['classifying'], 'nlu')
+  const handleVoice = guarded((blob) => run(() => postVoice(blob), ['transcribing'], 'stt'))
+  const handleText = guarded((value) => run(() => postText(value), ['classifying'], 'nlu'))
 
   const stageIdx = STAGES.findIndex(([k]) => k === stage)
   const active = PHASES[phase]
@@ -214,6 +252,15 @@ export default function App() {
         busy={busy}
         processing={busy}
         info={info}
+        ready={ready}
+        conn={conn}
+        onNotReady={() =>
+          setError(
+            conn === 'failed'
+              ? 'The model server is not responding. Give it a moment and reload the page.'
+              : 'Still connecting to the model server — one moment.',
+          )
+        }
         speak={speak}
         setSpeak={setSpeak}
         onVoice={handleVoice}

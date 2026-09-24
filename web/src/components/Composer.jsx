@@ -66,7 +66,10 @@ export default function Composer({
   onError,
   info,
   speak,
-  setSpeak
+  setSpeak,
+  ready,
+  conn,
+  onNotReady
 }) {
   const mic = useMicrophone()
   const [recording, setRecording] = useState(false)
@@ -156,6 +159,11 @@ export default function Composer({
   }
 
   async function startRecording() {
+    if (!ready) {
+      onNotReady()
+      return
+    }
+
     const stream = await mic.start()
 
     if (!stream) {
@@ -253,6 +261,11 @@ export default function Composer({
   function submitText(e) {
     e?.preventDefault()
 
+    if (!ready) {
+      onNotReady()
+      return
+    }
+
     const value = (fieldRef.current?.getText() ?? '').trim()
 
     if (!value || busy) return
@@ -278,6 +291,8 @@ export default function Composer({
     }
   }
 
+  /* Deliberately not gated on `ready`: a disabled button swallows the click,
+   * and the point is that pressing it explains the wait. submitText guards. */
   const canSend = hasText && !busy
 
   return (
@@ -301,6 +316,7 @@ export default function Composer({
             ref={fieldRef}
             recording={recording}
             busy={busy}
+            ready={ready}
             onKeyDown={onKeyDown}
             onEmptyChange={setHasText}
           />
@@ -343,12 +359,21 @@ export default function Composer({
               )}
             </span>
 
-            {/* Single Speak replies button — kept inside the prompt bar */}
+            {!ready ? (
+              <span
+                className={`conn-pill${conn === 'failed' ? ' failed' : ''}`}
+                role="status"
+              >
+                <span className="dot" />
+                {conn === 'failed' ? 'Server unavailable' : 'Connecting…'}
+              </span>
+            ) : (
             <SpeakToggle
               speak={speak}
               setSpeak={setSpeak}
               className="mobile-aloud"
             />
+            )}
 
             <span className="spacer" />
 
@@ -382,6 +407,7 @@ export default function Composer({
                 recording ? stopRecording() : startRecording()
               }
               disabled={busy || !mic.supported}
+              data-waiting={!ready ? 'true' : undefined}
               aria-label={
                 recording ? 'Stop recording' : 'Record a question'
               }
@@ -463,7 +489,7 @@ export default function Composer({
               theme="dark"
               innerShadow
               reflectionTargets={reflectTargets}
-              strength={canSend ? 1 : 0.72}
+              strength={canSend && ready ? 1 : 0.72}
             >
               <button
                 type="button"
@@ -533,7 +559,7 @@ function RecTimer({ startedAt }) {
  * and the metal never see those updates at all.
  */
 const ComposerField = forwardRef(function ComposerField(
-  { recording, busy, onKeyDown, onEmptyChange },
+  { recording, busy, ready, onKeyDown, onEmptyChange },
   ref,
 ) {
   const [text, setText] = useState('')
@@ -574,7 +600,13 @@ const ComposerField = forwardRef(function ComposerField(
       value={recording ? live : text}
       onChange={onChange}
       onKeyDown={onKeyDown}
-      placeholder={recording ? 'Listening…' : 'Ask me anything..'}
+      placeholder={
+        recording
+          ? 'Listening…'
+          : ready
+            ? 'Ask me anything..'
+            : 'Connecting to the model server…'
+      }
       disabled={busy}
       readOnly={recording}
       className={recording ? 'live' : undefined}
