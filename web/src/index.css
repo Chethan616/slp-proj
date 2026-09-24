@@ -441,19 +441,6 @@ main.empty { justify-content: center; }
   display: none;
 }
 
-/* Recording is the one state that earns colour. */
-.icon-circle.mic.recording {
-  background: #e5484d;
-  border-color: #e5484d;
-  color: #fff;
-  animation: mic-pulse 1.9s ease-in-out infinite;
-}
-
-@keyframes mic-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, .45); }
-  55% { box-shadow: 0 0 0 9px rgba(229, 72, 77, 0); }
-}
-
 /* Discard sits quieter than stop: it is the destructive one, so it does not
    compete for the eye until you are looking for it. */
 .icon-circle.discard {
@@ -468,10 +455,17 @@ main.empty { justify-content: center; }
   color: #ff9ea1;
 }
 
+/* Recording state is shown by the icon changing to a stop square and by the
+   beam responding to your voice, not by turning the control red. */
+.icon-circle.mic.recording {
+  background: #3a3a3f;
+  color: #fff;
+}
+
 .rec-timer {
   font-family: var(--font-mono);
   font-size: 11.5px;
-  color: #ff9ea1;
+  color: var(--text-muted);
 }
 
 .metal-circle {
@@ -564,13 +558,18 @@ main.empty { justify-content: center; }
   .suggestions button { font-size: 12.5px; padding: 6px 11px; }
   .suggestions li:nth-child(n + 4) { display: none; }
 
+  /* The beam host is a band at the bottom, not the whole screen.
+     At 100dvh the canvas was 780x1328 = about a million pixels, repainted
+     every frame with blur, and the page ran at 7fps -- which is what the
+     flicker actually was. A fixed pixel height also avoids the resize thrash
+     that dvh causes as mobile browser chrome slides in and out. */
   .composer-wrap {
     position: fixed;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10;
-    height: 100dvh;
+    height: 120px;
     padding: 0;
     background: none;
     pointer-events: none;
@@ -614,7 +613,10 @@ main.empty { justify-content: center; }
   .composer-bar { justify-content: flex-start; gap: 10px; }
   .composer-bar .spacer { display: block; flex: 1; }
 
-  .mobile-aloud { display: none; }
+  /* Left slot is the speak/mute toggle on phones; the model chip is desktop
+     detail that does not earn the width here. */
+  .model-chip { display: none; }
+  .mobile-aloud { display: inline-flex; }
   .rec-timer { display: none; }
   .icon-circle.discard { display: none; }
   .metal-circle, .composer-bar > [class*='metal-fx'] { display: none; }

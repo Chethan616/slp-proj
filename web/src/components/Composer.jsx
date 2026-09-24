@@ -289,6 +289,12 @@ export default function Composer({
         theme="dark"
         type={isPhone ? 'mobile' : 'default'}
         borderRadius={isPhone ? 0 : undefined}
+        /* The bloom blur is the expensive part of the effect and phones cannot
+         * afford it at full radius: a full-height host ran the page at 7fps,
+         * which is what looked like flicker. Tighter halo and single-band
+         * lobes on phones only. */
+        glowSize={isPhone ? 0.6 : 1}
+        bands={!isPhone}
       >
         <div className="composer">
           <ComposerField

@@ -115,7 +115,7 @@ export default function App() {
                 VoiceBot
               </MetalText>
             </h1>
-            <p className="tagline">Speech recognition and intent classification</p>
+            <p className="tagline">Whisper → DistilBERT</p>
           </div>
         </div>
         <div className="topbar-right">
