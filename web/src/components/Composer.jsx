@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { MetalFx, useMetalBend } from 'metal-fx'
 import { VoiceBeam, useMicrophone } from 'voice-glow'
 import { useMediaQuery } from '../useMediaQuery'
@@ -63,7 +63,6 @@ export default function Composer({
 }) {
   const mic = useMicrophone()
   const [recording, setRecording] = useState(false)
-  const [elapsed, setElapsed] = useState(0)
   const [text, setText] = useState('')
   const [live, setLive] = useState('')
 
@@ -80,6 +79,11 @@ export default function Composer({
 
   // voice-glow ships a geometry preset tuned for the bottom of a phone screen.
   const isPhone = useMediaQuery('(max-width: 640px)')
+
+  /* Stable identities: a fresh array each render makes MetalFx tear down and
+   * rebuild its reflections on every re-render. */
+  const reflectIdle = useMemo(() => [chipRef, micRef], [])
+  const reflectRecording = useMemo(() => [chipRef], [])
 
   // Cursor-driven liquid dent on the send button: the ring stretches and
   // recoils under the pointer instead of sitting there as a static bevel.
@@ -178,18 +182,20 @@ export default function Composer({
     startLivePreview()
 
     startedAtRef.current = Date.now()
-    setElapsed(0)
     setRecording(true)
 
+    /* This interval deliberately sets no state. The elapsed reading lives in
+     * <RecTimer>, which re-renders itself; if the whole composer re-rendered
+     * ten times a second, MetalFx would rebuild its reflections just as often
+     * and the controls would visibly flicker. */
     timerRef.current = setInterval(() => {
       const secs = (Date.now() - startedAtRef.current) / 1000
-      setElapsed(secs)
 
       // Hard stop so a forgotten open mic cannot upload a huge file.
       if (secs > 30) {
         stopRecording()
       }
-    }, 100)
+    }, 250)
   }
 
   /* Stopping submits; discarding throws the recording away. Both go through
@@ -220,7 +226,6 @@ export default function Composer({
     clearInterval(timerRef.current)
     stopLivePreview()
     setRecording(false)
-    setElapsed(0)
     mic.stop()
     setLive('')
 
@@ -254,8 +259,10 @@ export default function Composer({
   }
 
   function clearComposer() {
+    // While recording, the cross discards. Only the square stop submits —
+    // stopRecording() would have sent the audio the user just asked to drop.
     if (recording) {
-      stopRecording()
+      cancelRecording()
       return
     }
 
@@ -343,9 +350,7 @@ export default function Composer({
             <span className="spacer" />
 
             {recording && (
-              <span className="rec-timer">
-                {elapsed.toFixed(1)}s
-              </span>
+              <RecTimer startedAt={startedAtRef} />
             )}
 
             {recording && (
@@ -452,9 +457,7 @@ export default function Composer({
               variant="circle"
               theme="dark"
               innerShadow
-              reflectionTargets={
-                recording ? [chipRef] : [chipRef, micRef]
-              }
+              reflectionTargets={recording ? reflectRecording : reflectIdle}
               strength={canSend ? 1 : 0.72}
             >
               <button
@@ -497,4 +500,20 @@ export default function Composer({
       </div>
     </div>
   )
+}
+
+/* Owns its own tick so the elapsed reading updates without re-rendering the
+ * composer — and therefore without disturbing the metal. */
+function RecTimer({ startedAt }) {
+  const [secs, setSecs] = useState(0)
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setSecs((Date.now() - startedAt.current) / 1000),
+      100,
+    )
+    return () => clearInterval(id)
+  }, [startedAt])
+
+  return <span className="rec-timer">{secs.toFixed(1)}s</span>
 }

@@ -81,6 +81,7 @@ button { font: inherit; color: inherit; }
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  min-height: 100dvh;
   max-width: 940px;
   margin: 0 auto;
   padding: 0 var(--app-gutter);
@@ -552,12 +553,16 @@ main.empty { justify-content: center; }
   .transcript { padding: 16px 16px 8px; }
   .said { max-width: 92%; }
 
-  .hero { padding: 24px 18px 20px; }
-  .hero h2 { font-size: clamp(26px, 8vw, 34px); }
-  .hero p { font-size: 13.5px; }
-  .hero-orb { margin-bottom: 14px; }
-  .suggestions { margin-top: 20px; }
+  .hero { padding: 12px 18px 16px; }
+  .hero h2 { font-size: clamp(24px, 7.4vw, 30px); margin-bottom: 10px; }
+  .hero p { font-size: 13px; line-height: 1.55; }
+  .hero-orb { margin-bottom: 10px; }
+  /* Three prompts only on a phone. Nine wrap to four rows and push the hero
+     past the fold, and the composer is fixed to the bottom here, so anything
+     that overflows is simply lost behind it. */
+  .suggestions { margin-top: 18px; gap: 7px; }
   .suggestions button { font-size: 12.5px; padding: 6px 11px; }
+  .suggestions li:nth-child(n + 4) { display: none; }
 
   .composer-wrap {
     position: fixed;
