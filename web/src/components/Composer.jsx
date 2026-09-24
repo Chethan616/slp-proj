@@ -1,4 +1,11 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { MetalFx, useMetalBend } from 'metal-fx'
 import { VoiceBeam, useMicrophone } from 'voice-glow'
 import { useMediaQuery } from '../useMediaQuery'
@@ -63,14 +70,15 @@ export default function Composer({
 }) {
   const mic = useMicrophone()
   const [recording, setRecording] = useState(false)
-  const [text, setText] = useState('')
-  const [live, setLive] = useState('')
+  /* Only whether the field is empty, not its contents: this flips once when you
+   * start typing and once when you clear, rather than on every keystroke. */
+  const [hasText, setHasText] = useState(false)
 
   const recorderRef = useRef(null)
   const chunksRef = useRef([])
   const timerRef = useRef(null)
   const startedAtRef = useRef(0)
-  const areaRef = useRef(null)
+  const fieldRef = useRef(null)
   const chipRef = useRef(null)
   const sttRef = useRef(null)
   const sendRef = useRef(null)
@@ -80,10 +88,14 @@ export default function Composer({
   // voice-glow ships a geometry preset tuned for the bottom of a phone screen.
   const isPhone = useMediaQuery('(max-width: 640px)')
 
-  /* Stable identities: a fresh array each render makes MetalFx tear down and
-   * rebuild its reflections on every re-render. */
-  const reflectIdle = useMemo(() => [chipRef, micRef], [])
-  const reflectRecording = useMemo(() => [chipRef], [])
+  /* Stable identity: a fresh array each render makes MetalFx tear down and
+   * rebuild its reflections on every re-render.
+   *
+   * The microphone is deliberately not a reflection target. MetalFx paints a
+   * reflection canvas on top of each target and repaints it continuously, so
+   * putting one over a button that sits above the animating beam made the
+   * control look like it was flickering. */
+  const reflectTargets = useMemo(() => [chipRef], [])
 
   // Cursor-driven liquid dent on the send button: the ring stretches and
   // recoils under the pointer instead of sitting there as a static bevel.
@@ -93,15 +105,6 @@ export default function Composer({
     clearInterval(timerRef.current)
     stopLivePreview()
   }, [])
-
-  // Grow the textarea with its content, up to the CSS max-height.
-  useEffect(() => {
-    const el = areaRef.current
-    if (!el) return
-
-    el.style.height = 'auto'
-    el.style.height = `${el.scrollHeight}px`
-  }, [text])
 
   /* A live preview of what is being said, so the field is not blank while you
    * talk. This is the browser's own SpeechRecognition, which returns interim
@@ -130,7 +133,7 @@ export default function Composer({
           text += e.results[i][0].transcript
         }
 
-        setLive(text.trim())
+        fieldRef.current?.setLive(text.trim())
       }
 
       rec.onerror = () => {}
@@ -178,7 +181,7 @@ export default function Composer({
     recorder.onstop = handleStop
     recorder.start()
 
-    setLive('')
+    fieldRef.current?.setLive('')
     startLivePreview()
 
     startedAtRef.current = Date.now()
@@ -227,7 +230,7 @@ export default function Composer({
     stopLivePreview()
     setRecording(false)
     mic.stop()
-    setLive('')
+    fieldRef.current?.setLive('')
 
     // Discarded: release the mic, keep the audio out of the conversation.
     if (cancelledRef.current) {
@@ -250,11 +253,11 @@ export default function Composer({
   function submitText(e) {
     e?.preventDefault()
 
-    const value = text.trim()
+    const value = (fieldRef.current?.getText() ?? '').trim()
 
     if (!value || busy) return
 
-    setText('')
+    fieldRef.current?.clear()
     onText(value)
   }
 
@@ -266,8 +269,7 @@ export default function Composer({
       return
     }
 
-    setText('')
-    setLive('')
+    fieldRef.current?.clear()
   }
 
   function onKeyDown(e) {
@@ -276,7 +278,7 @@ export default function Composer({
     }
   }
 
-  const canSend = text.trim().length > 0 && !busy
+  const canSend = hasText && !busy
 
   return (
     <div className="composer-wrap">
@@ -289,17 +291,12 @@ export default function Composer({
         borderRadius={isPhone ? 0 : undefined}
       >
         <div className="composer">
-          <textarea
-            ref={areaRef}
-            rows={1}
-            maxLength={500}
-            value={recording ? live : text}
-            onChange={(e) => setText(e.target.value)}
+          <ComposerField
+            ref={fieldRef}
+            recording={recording}
+            busy={busy}
             onKeyDown={onKeyDown}
-            placeholder={recording ? 'Listening…' : 'Ask me anything..'}
-            disabled={busy}
-            readOnly={recording}
-            className={recording ? 'live' : undefined}
+            onEmptyChange={setHasText}
           />
 
           <div className="composer-bar">
@@ -449,6 +446,8 @@ export default function Composer({
               </svg>
             </button>
 
+            {!isPhone && (
+            <>
             {/* The metal shader paints over its host element, so the send
                 button keeps its own markup and MetalFx wraps it. */}
             <MetalFx
@@ -457,7 +456,7 @@ export default function Composer({
               variant="circle"
               theme="dark"
               innerShadow
-              reflectionTargets={recording ? reflectRecording : reflectIdle}
+              reflectionTargets={reflectTargets}
               strength={canSend ? 1 : 0.72}
             >
               <button
@@ -485,6 +484,8 @@ export default function Composer({
                 </svg>
               </button>
             </MetalFx>
+            </>
+            )}
           </div>
         </div>
       </VoiceBeam>
@@ -517,3 +518,60 @@ function RecTimer({ startedAt }) {
 
   return <span className="rec-timer">{secs.toFixed(1)}s</span>
 }
+
+/* Holds the typed text and the live speech preview.
+ *
+ * These change many times a second while you speak, and the composer sits
+ * inside VoiceBeam and around MetalFx — both of which re-measure and rebuild
+ * when their subtree re-renders. Keeping this state in a leaf means the beam
+ * and the metal never see those updates at all.
+ */
+const ComposerField = forwardRef(function ComposerField(
+  { recording, busy, onKeyDown, onEmptyChange },
+  ref,
+) {
+  const [text, setText] = useState('')
+  const [live, setLive] = useState('')
+  const areaRef = useRef(null)
+
+  useImperativeHandle(ref, () => ({
+    getText: () => text,
+    clear: () => {
+      setText('')
+      setLive('')
+      onEmptyChange(false)
+    },
+    setLive,
+  }), [text, onEmptyChange])
+
+  // Grow with the content, up to the CSS max-height.
+  useEffect(() => {
+    const el = areaRef.current
+    if (!el) return
+
+    el.style.height = 'auto'
+    el.style.height = `${el.scrollHeight}px`
+  }, [text])
+
+  function onChange(e) {
+    const next = e.target.value
+    setText(next)
+    // Tell the composer only when emptiness actually changes.
+    onEmptyChange(next.trim().length > 0)
+  }
+
+  return (
+    <textarea
+      ref={areaRef}
+      rows={1}
+      maxLength={500}
+      value={recording ? live : text}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      placeholder={recording ? 'Listening…' : 'Ask me anything..'}
+      disabled={busy}
+      readOnly={recording}
+      className={recording ? 'live' : undefined}
+    />
+  )
+})

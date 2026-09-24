@@ -609,41 +609,43 @@ main.empty { justify-content: center; }
   .composer textarea::placeholder { color: rgba(178, 178, 178, .6); }
   .composer textarea.live { font-style: normal; color: #ededed; }
 
-  .composer-bar { justify-content: center; gap: 8px; }
-  .composer-bar .spacer { display: none; }
-  .model-chip { height: 36px; max-width: min(58vw, 220px); font-size: 10px; padding: 0 10px; }
-  .model-chip { max-width: min(62vw, 240px); }
-  .model-chip { display: none; }
+  /* The reference layout is exactly three things: the agent chip on the left,
+     then the microphone and the cross on the right. Nothing else. */
+  .composer-bar { justify-content: flex-start; gap: 10px; }
+  .composer-bar .spacer { display: block; flex: 1; }
+
+  .mobile-aloud { display: none; }
+  .rec-timer { display: none; }
+  .icon-circle.discard { display: none; }
+  .metal-circle, .composer-bar > [class*='metal-fx'] { display: none; }
+  .model-chip {
+    background: #2b2b2e;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    height: 40px;
+    max-width: min(62vw, 240px);
+    font-size: 11px;
+    padding: 0 14px;
+    font-family: var(--font-sans);
+  }
   .model-chip .desktop-model-name { display: none; }
   .model-chip .mobile-model-name { display: inline; }
-  .mobile-aloud { display: inline-flex; }
   .composer-bar > .metal-fx-root { display: none; }
 
-  .icon-circle, .metal-circle {
-    width: 36px;
-    height: 36px;
+  /* Opaque on purpose: the voice beam animates immediately behind this row,
+     and a translucent fill lets that motion show through the buttons, which
+     reads as flicker. */
+  .icon-circle {
+    width: 40px;
+    height: 40px;
     border: 0;
-    border-radius: 36px;
-    background: rgba(255, 255, 255, 0.1);
+    border-radius: 40px;
+    background: #2b2b2e;
     box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
   }
-  .mobile-aloud {
-    display: inline-flex;
-    height: 36px;
-    padding: 0 10px 0 14px;
-    border: 0;
-    border-radius: 36px;
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow:
-      inset 0 0 0 1px rgba(255, 255, 255, 0.04),
-      inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
-    color: rgba(202, 204, 210, 1);
-    font-size: 12px;
-    line-height: 14px;
-    font-weight: 500;
-  }
+
+  .icon-circle:hover:not(:disabled) { background: #333336; }
 
   /* Mobile Speak/Mute stays in the original mobile appearance in every state.
      Prevent the desktop hover/on styles from leaking onto touch interactions. */
