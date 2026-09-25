@@ -9,14 +9,11 @@ import { getInfo, postText, postVoice, wake } from './api'
  * a different avatar each time. The last is deliberately unanswerable: it
  * demonstrates the out-of-scope class rather than hiding it. */
 const SUGGESTIONS = [
-  "What's the weather like today?",
-  'Set an alarm for 7 am',
-  'Book me a flight to London',
-  'How long will it take me to drive there?',
-  'Add milk to my shopping list',
-  'Find me a good place for dinner',
-  'When is my next payday?',
-  'Tell me a joke',
+  'How many calories are in butter chicken?',
+  'What ingredients do I need for tiramisu?',
+  'Give me a recipe for banana bread',
+  'Nutrition info for pad thai',
+  'Book a table for four at eight',
   'Who won the world cup in 1994?',
 ]
 
@@ -213,12 +210,13 @@ export default function App() {
                 <ThinkingOrb state={active.orb} size={64} theme="dark" />
               </div>
               <h2>
-                Speak, and it works out <em>what you meant</em>.
+                Ask about <em>any dish</em>, and it looks it up.
               </h2>
               <p>
-                Press the microphone and talk. Your speech is transcribed by Whisper, then
-                classified into one of 41 intents by a fine-tuned DistilBERT model. Anything
-                outside those intents is detected and refused rather than guessed at.
+                Press the microphone and talk. Whisper transcribes your speech, a fine-tuned
+                DistilBERT model classifies it into one of 16 food and nutrition intents, and
+                the answer is looked up in a corpus of 39,447 real recipes. Anything outside
+                food is detected and refused rather than guessed at.
               </p>
               <ul className="suggestions">
                 {SUGGESTIONS.map((s) => (

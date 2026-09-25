@@ -1,10 +1,14 @@
-# VoiceBot - Voice-Enabled Chatbot
+# VoiceBot - Voice-Enabled Food and Nutrition Assistant
 
 A web application that is operated by speech. The browser records a spoken
 question, the server transcribes it with Whisper, a fine-tuned DistilBERT model
-classifies the transcript into one of 41 intents, and a response is returned for
-that intent. The recognised speech and the reply are both displayed, along with
-the predicted intent and its confidence.
+classifies the transcript into one of 16 food and nutrition intents, and the
+answer is looked up in a corpus of 39,447 real recipes. The recognised speech
+and the reply are both displayed, along with the predicted intent and its
+confidence.
+
+Ask it how many calories are in butter chicken and the figure it quotes is real,
+read from the corpus rather than written into the code.
 
 **Live application:** https://voicebot-slp.vercel.app
 
@@ -25,11 +29,19 @@ small enough for a free hosting tier.
 
 ## Dataset
 
-**CLINC150** (Larson et al., EMNLP 2019), a benchmark built for intent
-classification that includes an explicit out-of-scope class. This project uses a
-40-intent subset spanning eight domains - small talk, utility, travel, auto and
-commute, banking, home, work, and kitchen and dining - plus the `oos` class,
-giving 41 classes in total.
+Two datasets, doing different jobs.
+
+**CLINC150** (Larson et al., EMNLP 2019) trains the classifier. It is a
+benchmark built for intent classification that includes an explicit out-of-scope
+class. This project uses one domain in full - kitchen and dining, 15 intents -
+plus the `oos` class, giving 16 classes.
+
+**recipes-with-nutrition** (datahiveai) supplies the answers: 39,447 recipes
+with servings, energy, nutrient breakdowns, ingredients and dietary labels. It
+cannot train an intent classifier, since it holds recipes rather than user
+utterances, but it is the knowledge base the cooking and nutrition intents
+answer from. `train/build_recipes.py` reduces the published 450 MB CSV to the
+2.4 MB gzipped table the app ships.
 
 | Split | Utterances | Per in-scope intent | Out-of-scope |
 |---|---:|---:|---:|
@@ -37,9 +49,10 @@ giving 41 classes in total.
 | Validation | 900 | 20 | 100 |
 | Test | 1,500 | 30 | 300 |
 
-CLINC150 is a classification dataset and ships no replies, so `app/responses.json`
-maps each intent to two or three written responses. A few carry placeholders that
-are filled at request time, so the clock, date and coin-flip answers are live.
+Where an utterance names a dish, the cooking and nutrition intents fill their
+response from the corpus. Where it does not, or where the corpus holds nothing
+relevant - it records no cooking times - a written template is used instead.
+Templates are chosen so no placeholder ever reaches the user unfilled.
 
 ## Models
 
@@ -106,7 +119,8 @@ report/           written report and viva preparation notes
 ```bash
 pip install -r requirements-train.txt
 
-python train/prepare_data.py       # build the CLINC150 subset
+python train/prepare_data.py       # build the CLINC150 food subset
+python train/build_recipes.py     # condense the recipe corpus to a lookup table
 python train/train_baselines.py    # the three reference models
 python train/train_distilbert.py   # the transformer
 python train/predict_split.py val  # validation predictions for the threshold

@@ -47,6 +47,12 @@ export default function Turn({ data }) {
             <span>intent {data.infer_ms} ms</span>
             <span className="sep">·</span>
             <span>{avatar.label}</span>
+            {data.answer_source === 'recipe corpus' && (
+              <>
+                <span className="sep">·</span>
+                <span className="from-corpus">from recipe corpus</span>
+              </>
+            )}
             {alts && (
               <>
                 <span className="sep">·</span>

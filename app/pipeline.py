@@ -19,10 +19,14 @@ import time
 from datetime import datetime
 from pathlib import Path
 
+import re
+
 import numpy as np
 import onnxruntime as ort
 from faster_whisper import WhisperModel
 from transformers import AutoTokenizer
+
+import recipes
 
 APP_DIR = Path(__file__).resolve().parent
 LOCAL_ONNX_DIR = APP_DIR / "model_onnx"
@@ -35,7 +39,7 @@ HUB_MODEL_ID = os.environ.get("MODEL_ID", "Chethan616/voice-chatbot-intent-disti
 # Below this softmax probability we treat the utterance as out-of-scope even if
 # the argmax says otherwise. Selected on the validation split -- see
 # results/threshold_sweep.png and train/evaluate.py.
-CONF_THRESHOLD = float(os.environ.get("CONF_THRESHOLD", "0.44"))
+CONF_THRESHOLD = float(os.environ.get("CONF_THRESHOLD", "0.38"))
 
 # base.en is English-only, which is both faster and more accurate on English than
 # the multilingual model of the same size. int8 quantisation roughly quarters
@@ -169,22 +173,58 @@ def classify(text: str) -> dict:
     }
 
 
-def respond(intent: str) -> str:
-    """Pick a reply template and fill any live placeholders."""
+def respond(intent: str, text: str = "") -> dict:
+    """Build the reply for an intent.
+
+    Where the utterance names a dish, the food intents answer from the recipe
+    corpus, so the numbers quoted are real. Where it does not - or where the
+    corpus has nothing to say, as with cooking times, which it does not record -
+    the plain template is used instead. Templates are chosen so no placeholder
+    can ever reach the user unfilled.
+    """
     _load()
-    template = random.choice(_responses.get(intent, _responses["oos"]))
-    now = datetime.now()
-    return (
-        template.replace("{time}", now.strftime("%I:%M %p").lstrip("0"))
-        .replace("{date}", now.strftime("%A, %d %B %Y"))
-        .replace("{coin}", random.choice(["heads", "tails"]))
-    )
+
+    entry = _responses.get(intent) or _responses["oos"]
+    matched_templates = entry.get("matched") or []
+    default_templates = entry.get("default") or []
+
+    recipe = None
+    fields = {}
+    if matched_templates and text:
+        recipe = recipes.lookup(text)
+        fields = recipes.describe(recipe)
+
+    if recipe and fields:
+        usable = [t for t in matched_templates if _fillable(t, fields)]
+        if usable:
+            return {
+                "reply": _fill(random.choice(usable), fields),
+                "source": "recipe corpus",
+                "dish": recipe["name"],
+            }
+
+    return {"reply": random.choice(default_templates), "source": "template"}
+
+
+def _fillable(template: str, fields: dict) -> bool:
+    """True when every placeholder in the template has a value."""
+    return all(k in fields and fields[k] for k in re.findall(r"{(\w+)}", template))
+
+
+def _fill(template: str, fields: dict) -> str:
+    for key, value in fields.items():
+        template = template.replace("{" + key + "}", value)
+    return template
 
 
 def chat(text: str) -> dict:
     """Full text-side turn: classify, then answer."""
     result = classify(text)
-    result["reply"] = respond(result["intent"])
+    answer = respond(result["intent"], text)
+    result["reply"] = answer["reply"]
+    result["answer_source"] = answer["source"]
+    if answer.get("dish"):
+        result["dish"] = answer["dish"]
     return result
 
 
@@ -199,6 +239,7 @@ def voice_chat(audio_bytes: bytes) -> dict:
             "top": [],
             "infer_ms": 0,
             "reply": "I didn't catch any speech there - try again a bit closer to the mic.",
+            "answer_source": "template",
             "empty_audio": True,
         }
     return {**stt, **chat(stt["transcript"])}
@@ -210,6 +251,7 @@ def model_info() -> dict:
         "stt_model": f"faster-whisper {WHISPER_SIZE} (int8)",
         "intent_model": "DistilBERT, ONNX int8",
         "num_intents": len(_labels),
+        "recipes_indexed": recipes.count(),
         "conf_threshold": CONF_THRESHOLD,
         "weights_from": _source,
         "intents": _labels,

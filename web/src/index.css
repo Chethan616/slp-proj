@@ -278,6 +278,10 @@ main.empty { justify-content: center; }
 
 .sep { opacity: .35; }
 
+/* Marks an answer that came from the recipe corpus rather than a fixed
+   template, so the two are distinguishable at a glance. */
+.from-corpus { color: #35d07f; }
+
 .status-row {
   display: flex; align-items: center; gap: 11px;
   color: var(--text-muted);

@@ -358,7 +358,7 @@ export default function Composer({
                     ·{' '}
                   </span>
 
-                  41 intents
+                  16 intents
                 </>
               ) : (
                 'connecting…'

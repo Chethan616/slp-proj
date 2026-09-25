@@ -1,10 +1,13 @@
-"""Build a 40-intent + OOS subset of CLINC150 for the voice chatbot.
+"""Build the food-and-nutrition subset of CLINC150 for the voice chatbot.
 
-CLINC150 (Larson et al., EMNLP 2019) ships 150 in-scope intents across 10 domains
-plus a deliberate out-of-scope class. The full 150-way problem is more than this
-assessment needs, so we take a 40-intent slice that spans eight domains and is
-realistic for a voice assistant, and keep `oos` so the bot can admit confusion
-instead of guessing.
+CLINC150 (Larson et al., EMNLP 2019) ships 150 in-scope intents across 10
+domains plus a deliberate out-of-scope class. This project uses one domain in
+full - kitchen and dining, 15 intents - so the assistant has a coherent subject
+it can actually answer about, and keeps `oos` so it can refuse everything else
+rather than guessing.
+
+A narrow assistant is asked out-of-scope questions far more often than a general
+one, which makes the out-of-scope class the most important one here.
 
 Writes data/{train,val,test}.json and data/labels.json.
 """
@@ -24,37 +27,34 @@ SEED = 42
 # realism and demo value -- every one of these is something you would plausibly
 # say out loud to a phone.
 SELECTED = {
-    "small_talk": [
-        "greeting", "goodbye", "thank_you", "tell_joke",
-        "what_is_your_name", "how_old_are_you", "are_you_a_bot",
-        "what_can_i_ask_you",
+    # CLINC150's kitchen-and-dining domain in full: the 15 intents a food and
+    # nutrition assistant actually needs, grouped here by what they are about so
+    # the interface can show which part of the domain answered.
+    "cooking": [
+        "recipe", "ingredients_list", "ingredient_substitution",
+        "cook_time", "meal_suggestion",
     ],
-    "utility": [
-        "weather", "time", "date", "alarm", "timer",
-        "definition", "calculator", "flip_coin",
+    "nutrition": [
+        "calories", "nutrition_info", "food_last",
     ],
-    "travel": [
-        "flight_status", "book_flight", "book_hotel",
-        "translate", "exchange_rate",
+    "restaurants": [
+        "restaurant_suggestion", "restaurant_reviews", "how_busy",
+        "restaurant_reservation", "confirm_reservation", "cancel_reservation",
+        "accept_reservations",
     ],
-    "auto_commute": ["directions", "traffic", "distance", "gas"],
-    "banking": ["balance", "transactions", "pay_bill", "credit_score"],
-    "home": ["play_music", "next_song", "shopping_list", "todo_list", "reminder"],
-    "work": ["payday", "meeting_schedule", "pto_balance"],
-    "kitchen_dining": ["recipe", "restaurant_suggestion", "calories"],
 }
 
 # How many out-of-scope examples to keep per split. CLINC's `plus` config has
 # 1000 OOS test utterances, which would swamp 40 in-scope classes (30 each), so
 # the test set is subsampled to keep the confusion matrix readable while still
 # leaving enough OOS to estimate recall.
-OOS_KEEP = {"train": 250, "validation": 100, "test": 300}
+OOS_KEEP = {"train": 250, "validation": 75, "test": 150}
 
 
 def main() -> None:
     in_scope = [name for names in SELECTED.values() for name in names]
-    assert len(in_scope) == 40, f"expected 40 intents, got {len(in_scope)}"
-    assert len(set(in_scope)) == 40, "duplicate intent in SELECTED"
+    assert len(in_scope) == 15, f"expected 15 intents, got {len(in_scope)}"
+    assert len(set(in_scope)) == 15, "duplicate intent in SELECTED"
 
     print("Loading clinc/clinc_oos (config: plus) ...")
     ds = load_dataset("clinc/clinc_oos", "plus")

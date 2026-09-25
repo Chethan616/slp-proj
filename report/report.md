@@ -1,7 +1,7 @@
 # Voice-Enabled Chatbot using Speech Recognition and Deep Learning
 
 **Live application:** (deployment link to be inserted)  
-**Date:** 30 August 2026
+**Date:** 25 September 2026
 
 ---
 
@@ -22,9 +22,9 @@ microphone --> recorded audio --> server
                                      |
              faster-whisper base.en (int8, CTranslate2)
                                      |  recognised text
-             DistilBERT intent classifier, int8 ONNX (41-way softmax)
+             DistilBERT intent classifier, int8 ONNX (16-way softmax)
                                      |  intent + confidence
-             response template --> recognised speech + intent + reply shown
+             recipe corpus lookup --> recognised speech + intent + reply shown
 ```
 
 ## 2. Dataset
@@ -39,41 +39,49 @@ class of queries that a task-oriented assistant is not built to answer.
 
 ### 2.2 Subset used
 
-A 40-intent subset spanning eight domains was selected, plus the out-of-scope
-class, giving **41 classes**. The selection is fixed in code
-(`train/prepare_data.py`) and therefore reproducible. Two considerations drove
-it: training all 150 classes on CPU is slow without teaching anything extra, and
-every intent needs a written response template for the chatbot to reply at all.
+This project uses one CLINC domain in full - kitchen and dining, 15 intents -
+plus the out-of-scope class, giving **16 classes**. The selection is fixed in
+code (`train/prepare_data.py`) and therefore reproducible.
 
-| Domain | Intents |
+Taking a whole domain rather than a slice of several gives the assistant a
+subject it can genuinely answer about, and makes the out-of-scope class more
+important rather than less: a narrow assistant is asked things it cannot handle
+far more often than a general one.
+
+| Area | Intents |
 |---|---|
-| Small talk | greeting, goodbye, thank_you, tell_joke, what_is_your_name, how_old_are_you, are_you_a_bot, what_can_i_ask_you |
-| Utility | weather, time, date, alarm, timer, definition, calculator, flip_coin |
-| Travel | flight_status, book_flight, book_hotel, translate, exchange_rate |
-| Auto and commute | directions, traffic, distance, gas |
-| Banking | balance, transactions, pay_bill, credit_score |
-| Home | play_music, next_song, shopping_list, todo_list, reminder |
-| Work | payday, meeting_schedule, pto_balance |
-| Kitchen and dining | recipe, restaurant_suggestion, calories |
+| Cooking | recipe, ingredients_list, ingredient_substitution, cook_time, meal_suggestion |
+| Nutrition | calories, nutrition_info, food_last |
+| Restaurants | restaurant_suggestion, restaurant_reviews, how_busy, restaurant_reservation, confirm_reservation, cancel_reservation, accept_reservations |
 | - | oos (out of scope) |
 
 | Split | Utterances | Per in-scope intent | Out-of-scope |
 |---|---:|---:|---:|
-| Train | 4,250 | 100 | 250 |
-| Validation | 900 | 20 | 100 |
-| Test | 1,500 | 30 | 300 |
+| Train | 1,750 | 100 | 250 |
+| Validation | 375 | 20 | 75 |
+| Test | 600 | 30 | 150 |
 
-The out-of-scope examples in the test split were subsampled from the 1,000 that
-CLINC provides, because 1,000 out-of-scope against 1,200 in-scope would have let
-a single class dominate every aggregate metric.
+The out-of-scope examples were subsampled from the 1,000 that CLINC provides.
+Left at full size they would outnumber the 450 in-scope test utterances and
+dominate every aggregate metric.
 
-### 2.3 Responses
+### 2.3 Second dataset: the recipe corpus
 
-CLINC150 is a classification dataset and ships no replies. A response file
-(`app/responses.json`) maps each of the 41 intents to two or three written
-replies, one of which is chosen at random per turn. A few contain placeholders
-(`{time}`, `{date}`, `{coin}`) that are filled from the server clock or a random
-draw, so those intents give genuinely live answers.
+CLINC150 is a classification dataset and ships no replies, so a second corpus
+supplies the answers. **recipes-with-nutrition** (datahiveai, Hugging Face) holds
+**39,447 recipes** with per-recipe servings, energy, full nutrient breakdowns,
+ingredient lists and dietary labels.
+
+It cannot train an intent classifier - it contains recipes, not user utterances -
+but it serves as the knowledge base the food intents answer from. Asked how many
+calories are in butter chicken, the assistant classifies the intent with
+DistilBERT, matches the dish against 39,447 recipe names, and quotes the real
+figure. Where no dish is named, or where the corpus holds nothing relevant, a
+written template is used instead.
+
+The published file is 450 MB of nested JSON. `train/build_recipes.py` reduces it
+to the fields the assistant quotes and writes 2.4 MB gzipped, small enough to
+deploy alongside the models.
 
 ## 3. Speech recognition
 
@@ -134,10 +142,10 @@ Input utterance
    -> DistilBERT encoder: 6 transformer layers, hidden 768, 12 heads
    -> [CLS] representation (768-d)
    -> pre-classifier Linear(768, 768) + ReLU + dropout(0.2)
-   -> Linear(768, 41) -> softmax over 41 intents
+   -> Linear(768, 16) -> softmax over 16 classes
 ```
 
-Trainable parameters: **66,985,001**.
+Trainable parameters: **66,965,776**.
 
 | Hyperparameter | Value |
 |---|---|
@@ -185,21 +193,21 @@ argmax, and the bot says it did not understand.
 
 ### 6.1 Intent classification
 
-All models were evaluated on the same 1,500 held-out utterances.
+All models were evaluated on the same 600 held-out utterances.
 
 | Model | Family | Parameters | Test accuracy | Macro F1 | Training time |
 |---|---|---:|---:|---:|---:|
-| TF-IDF + Logistic Regression | classical | 485,071 | 0.8800 | 0.9055 | 3s |
-| Bag-of-words + MLP | neural (from scratch) | 375,081 | 0.8747 | 0.8981 | 5s |
-| Embedding + BiLSTM | neural (from scratch) | 273,833 | 0.8860 | 0.9015 | 39s |
-| DistilBERT (fine-tuned) **(deployed)** | transformer (pre-trained) | 66,985,001 | 0.9460 | 0.9556 | 1297s |
+| TF-IDF + Logistic Regression | classical | 112,864 | 0.8750 | 0.8803 | 1s |
+| Bag-of-words + MLP | neural (from scratch) | 249,744 | 0.8867 | 0.8847 | 5s |
+| Embedding + BiLSTM | neural (from scratch) | 209,040 | 0.8867 | 0.8763 | 27s |
+| DistilBERT (fine-tuned) **(deployed)** | transformer (pre-trained) | 66,965,776 | 0.9333 | 0.9294 | 887s |
 
 ![Model comparison](../results/model_comparison.png)
 
-The fine-tuned transformer reaches **0.9460** accuracy and
-**0.9556** macro F1, an improvement of
-+6.0 accuracy points and +5.4 macro-F1 points over the
-best non-transformer model (Embedding + BiLSTM). The gain comes from
+The fine-tuned transformer reaches **0.9333** accuracy and
+**0.9294** macro F1, an improvement of
++4.7 accuracy points and +4.5 macro-F1 points over the
+best non-transformer model (Bag-of-words + MLP). The gain comes from
 pre-training: DistilBERT has already learned that "what's the forecast" and
 "will it rain tomorrow" are related, whereas the from-scratch models can only
 learn that from the hundred examples per class they are given.
@@ -233,50 +241,50 @@ inflate the reported figures.
 
 | Split | In-scope accuracy | Out-of-scope recall | Macro F1 |
 |---|---:|---:|---:|
-| Test, no threshold | 0.9742 | 0.8333 | 0.9556 |
-| Validation, threshold 0.44 | 0.9663 | 0.9100 | 0.9672 |
-| Test, threshold 0.44 | 0.9700 | 0.9033 | 0.9651 |
+| Test, no threshold | 0.9356 | 0.9267 | 0.9294 |
+| Validation, threshold 0.38 | 0.9333 | 0.9467 | 0.9390 |
+| Test, threshold 0.38 | 0.9222 | 0.9467 | 0.9273 |
 
-The chosen threshold of **0.44** raises out-of-scope
-recall on test from 83.3% to 90.3%,
-at a cost of 0.4 points of
+The chosen threshold of **0.38** raises out-of-scope
+recall on test from 92.7% to 94.7%,
+at a cost of 1.3 points of
 in-scope accuracy. This is the trade-off the sweep makes explicit: a higher
 threshold catches more unanswerable questions but starts refusing questions the
-model actually got right. The deployed application uses 0.44.
+model actually got right. The deployed application uses 0.38.
 
 ### 6.4 End-to-end voice evaluation
 
 Text accuracy is not the accuracy a user experiences, because recognition
-errors propagate into the classifier. To measure that, 86 held-out
+errors propagate into the classifier. To measure that, 36 held-out
 test utterances were synthesised to speech with offline system voices and put
 through the complete deployed pipeline.
 
 | Metric | Value |
 |---|---:|
-| Utterances evaluated | 86 |
-| Word error rate | 0.0394 |
-| Transcribed with no errors | 80.2% |
-| Intent accuracy from clean text | 0.9767 |
-| Intent accuracy from speech | 0.9651 |
-| Accuracy lost to recognition | 1.2 points |
-| Mean speech recognition latency | 1089 ms |
-| Mean intent inference latency | 12 ms |
-| Real-time factor | 0.35 |
+| Utterances evaluated | 36 |
+| Word error rate | 0.0476 |
+| Transcribed with no errors | 75.0% |
+| Intent accuracy from clean text | 1.0000 |
+| Intent accuracy from speech | 0.9722 |
+| Accuracy lost to recognition | 2.8 points |
+| Mean speech recognition latency | 2515 ms |
+| Mean intent inference latency | 32 ms |
+| Real-time factor | 0.74 |
 
 ![Voice evaluation](../results/voice_eval.png)
 
-A word error rate of 0.039 means roughly
-4 words in every 100 are recognised wrongly, and
-80.2% of utterances come back with no errors
+A word error rate of 0.048 means roughly
+5 words in every 100 are recognised wrongly, and
+75.0% of utterances come back with no errors
 at all.
 
 The intent classifier absorbs most of those errors: accuracy falls by
-1.2 points when the input arrives as speech rather
+2.8 points when the input arrives as speech rather
 than as text, because recognition errors tend to land on words that do not
 determine the intent.
 
-A real-time factor of 0.35 means the system transcribes
-roughly 2.8 times faster than the audio was spoken.
+A real-time factor of 0.74 means the system transcribes
+roughly 1.4 times faster than the audio was spoken.
 
 This evaluation uses synthetic speech, which is cleaner than real speech: no
 background noise, no disfluencies, limited accent variation. The figures are a
@@ -302,14 +310,14 @@ training-time dependency only.
 | Property | PyTorch build | Deployed ONNX int8 build |
 |---|---:|---:|
 | Model size on disk | 268.0 MB | 67.4 MB |
-| Test accuracy | 0.9460 | 0.9473 |
-| Macro F1 | 0.9556 | 0.9562 |
-| Relative inference speed | 1.0x | 1.85x |
+| Test accuracy | 0.9333 | 0.9333 |
+| Macro F1 | 0.9294 | 0.9278 |
+| Relative inference speed | 1.0x | 1.88x |
 
 Quantisation is effectively lossless here: the int8 graph agrees with the
-full-precision model on 97.9% of test utterances,
+full-precision model on 97.3% of test utterances,
 and where they disagree the errors cancel out, leaving accuracy marginally
-*higher* (0.9473 against 0.9460) rather
+*higher* (0.9333 against 0.9333) rather
 than lower. The end-to-end voice figures in section 6.4 were measured on this
 deployed build, not on the PyTorch one.
 
@@ -347,10 +355,15 @@ but it documents the system as a reusable service rather than a single page.
 
 ## 8. Limitations and future work
 
-- **Responses are templates, not generated text.** The deep learning in this
-  system does the understanding, not the writing. Generating replies would need a
-  language model far larger than the deployment target allows, and would
-  introduce hallucination risk that templates do not have.
+- **Replies are retrieved and filled, not generated.** The cooking and nutrition
+  intents answer from the recipe corpus, so their numbers are real, but the
+  sentence around them is a template. The restaurant intents have no backing data
+  at all and answer from fixed text. Generating replies would need a language
+  model far larger than the deployment target allows, and would introduce
+  hallucination risk that retrieval does not have.
+- **Dish matching is lexical, not learned.** The dish is found by scoring query
+  tokens against 39,447 recipe names with inverse document frequency weighting.
+  It has no notion that "aubergine" and "eggplant" are the same thing.
 - **No dialogue state.** Each turn is classified independently, so a follow-up
   like "and what about tomorrow?" cannot be resolved.
 - **No slot filling.** The system knows the user wants an alarm set, but not for
