@@ -1001,3 +1001,79 @@ main.empty { justify-content: center; }
   .data { font-size: 12px; }
   .data th, .data td { padding: 8px 6px; }
 }
+
+
+/* ---- first-visit nudge on the microphone ---- */
+.mic-wrap { position: relative; display: inline-flex; }
+
+/* Two staggered rings that breathe outward from the button. */
+.mic-wrap.tour::before,
+.mic-wrap.tour::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--accent-ink);
+  pointer-events: none;
+  animation: tour-ring 1.8s ease-out infinite;
+}
+
+.mic-wrap.tour::after { animation-delay: .9s; }
+
+.mic-wrap.tour .mic { animation: tour-hop 1.8s var(--ease-bounce) infinite; }
+
+.tour-tip {
+  position: absolute;
+  bottom: calc(100% + 14px);
+  right: -6px;
+  padding: 8px 13px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111111;
+  font-size: 12.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+  animation: tour-tip-in .45s var(--ease-bounce) both, tour-bob 1.8s ease-in-out .45s infinite;
+}
+
+/* small pointer toward the button */
+.tour-tip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 20px;
+  border: 6px solid transparent;
+  border-top-color: #ffffff;
+}
+
+@keyframes tour-ring {
+  0% { transform: scale(1); opacity: .75; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+@keyframes tour-hop {
+  0%, 55%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-5px); }
+}
+
+@keyframes tour-tip-in {
+  from { opacity: 0; transform: translateY(8px) scale(.9); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes tour-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-wrap.tour::before, .mic-wrap.tour::after,
+  .mic-wrap.tour .mic, .tour-tip { animation: none; }
+  .mic-wrap.tour::before { opacity: .6; }
+}
+
+@media (max-width: 640px) {
+  .tour-tip { right: -4px; }
+}

@@ -43,7 +43,8 @@ export default function App() {
   // 'connecting' until the backend answers, then 'ready'; 'failed' once the
   // retries are exhausted. Every control is inert until this is 'ready'.
   const [conn, setConn] = useState('connecting')
-  const [speak, setSpeak] = useState(false)
+  // On by default: a voice assistant that only shows text is half of one.
+  const [speak, setSpeak] = useState(true)
   const [view, setView] = useState('chat')
   const bottomRef = useRef(null)
   const ghRef = useRef(null)

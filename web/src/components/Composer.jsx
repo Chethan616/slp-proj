@@ -1,5 +1,6 @@
 import {
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -76,6 +77,24 @@ export default function Composer({
   /* Only whether the field is empty, not its contents: this flips once when you
    * start typing and once when you clear, rather than on every keystroke. */
   const [hasText, setHasText] = useState(false)
+
+  /* Playful first-visit nudge on the microphone. Shown once the backend is
+   * up, dismissed by the first tap, by typing, or after a few seconds, and
+   * remembered so a returning visitor is not nagged. Pure CSS animation, so it
+   * costs no re-renders while it plays. */
+  const [tourDone, setTourDone] = useState(() => {
+    try { return localStorage.getItem('vb-tour') === '1' } catch { return false }
+  })
+  const tourOn = ready && !tourDone && !busy
+  const endTour = useCallback(() => {
+    setTourDone(true)
+    try { localStorage.setItem('vb-tour', '1') } catch { /* storage unavailable */ }
+  }, [])
+  useEffect(() => {
+    if (!tourOn) return undefined
+    const id = setTimeout(endTour, 9000)
+    return () => clearTimeout(id)
+  }, [tourOn, endTour])
 
   const recorderRef = useRef(null)
   const chunksRef = useRef([])
@@ -406,12 +425,20 @@ export default function Composer({
               </button>
             )}
 
+            <span className={`mic-wrap${tourOn ? ' tour' : ''}`}>
+              {tourOn && (
+                <span className="tour-tip" role="status">
+                  Tap me and ask about a dish
+                </span>
+              )}
             <button
               ref={micRef}
               className={`icon-circle mic${recording ? ' recording' : ''}`}
-              onClick={() =>
-                recording ? stopRecording() : startRecording()
-              }
+              onClick={() => {
+                endTour()
+                if (recording) stopRecording()
+                else startRecording()
+              }}
               disabled={busy || !mic.supported}
               data-waiting={!ready ? 'true' : undefined}
               aria-label={
@@ -459,6 +486,7 @@ export default function Composer({
                 </svg>
               )}
             </button>
+            </span>
 
             <button
               type="button"
