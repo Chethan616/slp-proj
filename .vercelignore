@@ -1,0 +1,16 @@
+# Vercel builds only the web app (Root Directory = web). Everything else in the
+# repository - model weights, corpora, training scripts, the report - would
+# otherwise be uploaded as build context and blow the 100 MB limit.
+app/
+data/
+results/
+report/
+train/
+Libraries.dev-main/
+*.png
+*.pyc
+__pycache__/
+streamlit_app.py
+requirements*.txt
+Dockerfile
+railway.json
