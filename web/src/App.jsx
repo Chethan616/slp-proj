@@ -6,16 +6,16 @@ import Turn from './components/Turn'
 import Results from './components/Results'
 import { getInfo, postText, postVoice, wake } from './api'
 
-/* One per domain, so a few clicks walk through the whole label space and show
- * a different avatar each time. The last is deliberately unanswerable: it
- * demonstrates the out-of-scope class rather than hiding it. */
+/* Chosen so a few clicks walk through the food domain and show a different
+ * intent each time: calories, ingredients, recipe, nutrition, a reservation
+ * and food storage. */
 const SUGGESTIONS = [
   'How many calories are in butter chicken?',
   'What ingredients do I need for tiramisu?',
   'Give me a recipe for banana bread',
   'Nutrition info for pad thai',
   'Book a table for four at eight',
-  'Who won the world cup in 1994?',
+  'How long does leftover pasta last in the fridge?',
 ]
 
 /* Each pipeline phase gets the orb state that actually describes it, so the
