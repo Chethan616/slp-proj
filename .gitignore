@@ -15,3 +15,6 @@ Libraries.dev-main/
 
 # Scratch screenshots dropped in the project root
 /*.png
+
+# Vercel CLI project link
+.vercel/
