@@ -63,7 +63,10 @@
 
 * { box-sizing: border-box; }
 
-html, body, #root { height: 100%; }
+/* min-height, not height: a fixed 100% caps scrollHeight at the viewport, which
+   silently clips any view taller than the screen. The chat fills the screen via
+   .app's own min-height instead. */
+html, body, #root { min-height: 100%; }
 html, body { overflow-x: hidden; }
 
 body {
@@ -742,4 +745,259 @@ main.empty { justify-content: center; }
     inset 0 0 0 1px rgba(0, 113, 252, 0.35),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
 }
+}
+
+
+/* ============================================================
+   Results
+   Two categorical series (blue, orange) validated for CVD
+   separation and >=3:1 contrast against the #181818 surface.
+   ============================================================ */
+
+:root {
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --viz-surface: #181818;
+  --viz-track: rgba(255, 255, 255, 0.055);
+  --viz-rule: rgba(255, 255, 255, 0.08);
+}
+
+.results {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 10px 0 60px;
+}
+
+.results-head { margin-bottom: 26px; }
+
+.results-head h2 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -.015em;
+}
+
+.results-head p {
+  margin: 0;
+  max-width: 620px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+/* ---- stat tiles ---- */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 15px 16px;
+  border-radius: 13px;
+  background: var(--viz-surface);
+  box-shadow: inset 0 0 0 1px var(--viz-rule);
+}
+
+.stat-label {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  letter-spacing: .01em;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 23px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.stat-sub { font-size: 11px; color: var(--label-mono); }
+
+/* ---- chart block ---- */
+.chart {
+  margin: 0 0 28px;
+  padding: 20px;
+  border-radius: 15px;
+  background: var(--viz-surface);
+  box-shadow: inset 0 0 0 1px var(--viz-rule);
+}
+
+.chart figcaption { margin-bottom: 16px; }
+
+.chart h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+}
+
+.chart figcaption p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.chart .note {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--viz-rule);
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.chart .note code {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text);
+}
+
+/* ---- legend ---- */
+.legend { display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+
+.legend-item {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.swatch { width: 10px; height: 10px; border-radius: 3px; flex: none; }
+.swatch.s1 { background: var(--series-1); }
+.swatch.s2 { background: var(--series-2); }
+
+/* ---- bars ---- */
+.bars { display: flex; flex-direction: column; gap: 14px; }
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 168px 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.bar-row.compact { grid-template-columns: 168px 1fr; }
+
+.bar-name {
+  font-size: 13px;
+  color: var(--text);
+  text-align: right;
+  line-height: 1.3;
+}
+
+.bar-name.mono { font-family: var(--font-mono); font-size: 11.5px; }
+
+.bar-name em {
+  display: block;
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--series-1);
+}
+
+/* A 2px gap between the two bars of a pair keeps the fills from touching. */
+.bar-pair { display: flex; flex-direction: column; gap: 2px; }
+
+.bar-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  height: 17px;
+  background: linear-gradient(to right, var(--viz-track) 0 100%) no-repeat left center / 100% 9px;
+}
+
+.bar-fill {
+  display: block;
+  height: 9px;
+  /* Rounded only at the data end; the baseline end stays square so the bar
+     reads as anchored rather than floating. */
+  border-radius: 0 4px 4px 0;
+  transition: width var(--duration-medium) var(--ease-smooth-out);
+}
+
+.bar-fill.s1 { background: var(--series-1); }
+.bar-fill.s2 { background: var(--series-2); }
+
+.bar-value {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.bar-track:hover .bar-value { color: var(--text); }
+
+/* ---- tables ---- */
+.data {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data th, .data td {
+  padding: 9px 10px;
+  text-align: right;
+  border-bottom: 1px solid var(--viz-rule);
+}
+
+.data th:first-child, .data td:first-child { text-align: left; }
+
+.data th {
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.data td { font-family: var(--font-mono); font-size: 12px; color: var(--text); }
+.data td:first-child { font-family: var(--font-sans); color: var(--text-muted); }
+.data tbody tr:last-child td { border-bottom: none; }
+.data tr.highlight td { color: var(--text); background: rgba(57, 135, 229, 0.08); }
+
+.mini-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mini-stats .stat { padding: 11px 13px; background: rgba(255, 255, 255, 0.025); }
+.mini-stats .stat-value { font-size: 17px; }
+
+/* ---- view switch ---- */
+.view-switch { display: flex; gap: 3px; padding: 3px; border-radius: 999px; background: var(--chip-bg); }
+
+.view-switch button {
+  padding: 6px 14px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--duration-quick) var(--ease-smooth-out),
+              color var(--duration-quick) var(--ease-smooth-out);
+}
+
+.view-switch button:hover { color: var(--text); }
+.view-switch button.on { background: var(--surface-bg); color: var(--text); }
+
+@media (max-width: 640px) {
+  .results { padding: 4px 16px 40px; }
+  .bar-row, .bar-row.compact { grid-template-columns: 1fr; gap: 5px; }
+  .bar-name { text-align: left; }
+  .bar-name em { display: inline; margin-left: 6px; }
+  .chart { padding: 16px 14px; }
+  .data { font-size: 12px; }
+  .data th, .data td { padding: 8px 6px; }
 }

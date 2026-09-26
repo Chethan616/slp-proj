@@ -1,6 +1,6 @@
 # Results
 
-## Model comparison (1500 held-out test utterances, 41 classes)
+## Model comparison (600 held-out test utterances, 16 classes)
 
 | Model | Family | Trainable parameters | Test accuracy | Macro F1 | Training time |
 |---|---|---:|---:|---:|---:|

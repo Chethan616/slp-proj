@@ -1,7 +1,7 @@
 # Voice-Enabled Chatbot using Speech Recognition and Deep Learning
 
 **Live application:** (deployment link to be inserted)  
-**Date:** 25 September 2026
+**Date:** 26 September 2026
 
 ---
 

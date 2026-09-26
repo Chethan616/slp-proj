@@ -1,0 +1,284 @@
+{
+ "classes": 16,
+ "intents": [
+  "accept_reservations",
+  "calories",
+  "cancel_reservation",
+  "confirm_reservation",
+  "cook_time",
+  "food_last",
+  "how_busy",
+  "ingredient_substitution",
+  "ingredients_list",
+  "meal_suggestion",
+  "nutrition_info",
+  "recipe",
+  "restaurant_reservation",
+  "restaurant_reviews",
+  "restaurant_suggestion",
+  "oos"
+ ],
+ "splits": {
+  "train": 1750,
+  "val": 375,
+  "test": 600
+ },
+ "headline": {
+  "accuracy": 0.9333333333333333,
+  "macro_f1": 0.9277983970711547,
+  "wer": 0.047619047619047616,
+  "oos_recall": 0.9466666666666667
+ },
+ "models": [
+  {
+   "key": "tfidf_logreg",
+   "name": "TF-IDF + LogReg",
+   "params": 112864,
+   "accuracy": 0.875,
+   "macro_f1": 0.8803332753926816,
+   "family": "classical"
+  },
+  {
+   "key": "bow_mlp",
+   "name": "Bag-of-words + MLP",
+   "params": 249744,
+   "accuracy": 0.8866666666666667,
+   "macro_f1": 0.8847034874634485,
+   "family": "neural (from scratch)"
+  },
+  {
+   "key": "bilstm",
+   "name": "Embedding + BiLSTM",
+   "params": 209040,
+   "accuracy": 0.8866666666666667,
+   "macro_f1": 0.8763003951268085,
+   "family": "neural (from scratch)"
+  },
+  {
+   "key": "distilbert",
+   "name": "DistilBERT",
+   "params": 66965776,
+   "accuracy": 0.9333333333333333,
+   "macro_f1": 0.9294161829306906,
+   "family": "transformer (pre-trained)"
+  }
+ ],
+ "deployed": {
+  "name": "DistilBERT, int8 ONNX",
+  "size_mb": 67.4,
+  "accuracy": 0.9333333333333333,
+  "macro_f1": 0.9277983970711547,
+  "agreement_with_fp32": 0.9733333333333334,
+  "speedup": 1.88
+ },
+ "threshold": {
+  "best_threshold": 0.38,
+  "selected_on": "validation",
+  "validation": {
+   "in_scope_accuracy": 0.9333333333333333,
+   "oos_recall": 0.9466666666666667,
+   "macro_f1": 0.9389531882042275
+  },
+  "test": {
+   "in_scope_accuracy": 0.9222222222222223,
+   "oos_recall": 0.9466666666666667,
+   "macro_f1": 0.9272993453315257
+  },
+  "test_at_zero": {
+   "in_scope_accuracy": 0.9355555555555556,
+   "oos_recall": 0.9266666666666666,
+   "macro_f1": 0.9294161829306906
+  }
+ },
+ "voice": {
+  "n_utterances": 36,
+  "corpus_wer": 0.047619047619047616,
+  "intent_accuracy_from_audio": 0.9722222222222222,
+  "intent_accuracy_from_clean_text": 1.0,
+  "accuracy_drop": 0.027777777777777776,
+  "mean_stt_ms": 2515.3055555555557,
+  "median_stt_ms": 2423.0,
+  "mean_infer_ms": 32.388888888888886,
+  "mean_audio_seconds": 3.4050000000000002,
+  "real_time_factor": 0.738709414260075,
+  "perfect_transcriptions": 0.75
+ },
+ "per_class": [
+  {
+   "intent": "recipe",
+   "f1": 0.8,
+   "precision": 0.7429,
+   "recall": 0.8667,
+   "support": 30
+  },
+  {
+   "intent": "meal_suggestion",
+   "f1": 0.8387,
+   "precision": 0.8125,
+   "recall": 0.8667,
+   "support": 30
+  },
+  {
+   "intent": "restaurant_reservation",
+   "f1": 0.871,
+   "precision": 0.8438,
+   "recall": 0.9,
+   "support": 30
+  },
+  {
+   "intent": "restaurant_reviews",
+   "f1": 0.8889,
+   "precision": 1.0,
+   "recall": 0.8,
+   "support": 30
+  },
+  {
+   "intent": "ingredients_list",
+   "f1": 0.9,
+   "precision": 0.9,
+   "recall": 0.9,
+   "support": 30
+  },
+  {
+   "intent": "restaurant_suggestion",
+   "f1": 0.9032,
+   "precision": 0.875,
+   "recall": 0.9333,
+   "support": 30
+  },
+  {
+   "intent": "accept_reservations",
+   "f1": 0.9153,
+   "precision": 0.931,
+   "recall": 0.9,
+   "support": 30
+  },
+  {
+   "intent": "how_busy",
+   "f1": 0.9153,
+   "precision": 0.931,
+   "recall": 0.9,
+   "support": 30
+  },
+  {
+   "intent": "cook_time",
+   "f1": 0.9355,
+   "precision": 0.9062,
+   "recall": 0.9667,
+   "support": 30
+  },
+  {
+   "intent": "oos",
+   "f1": 0.9521,
+   "precision": 0.9789,
+   "recall": 0.9267,
+   "support": 150
+  },
+  {
+   "intent": "cancel_reservation",
+   "f1": 0.9836,
+   "precision": 0.9677,
+   "recall": 1.0,
+   "support": 30
+  },
+  {
+   "intent": "ingredient_substitution",
+   "f1": 0.9836,
+   "precision": 0.9677,
+   "recall": 1.0,
+   "support": 30
+  },
+  {
+   "intent": "nutrition_info",
+   "f1": 0.9836,
+   "precision": 0.9677,
+   "recall": 1.0,
+   "support": 30
+  },
+  {
+   "intent": "calories",
+   "f1": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 30
+  },
+  {
+   "intent": "confirm_reservation",
+   "f1": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 30
+  },
+  {
+   "intent": "food_last",
+   "f1": 1.0,
+   "precision": 1.0,
+   "recall": 1.0,
+   "support": 30
+  }
+ ],
+ "confusions": [
+  {
+   "count": 4,
+   "true": "oos",
+   "predicted": "recipe"
+  },
+  {
+   "count": 3,
+   "true": "restaurant_reviews",
+   "predicted": "meal_suggestion"
+  },
+  {
+   "count": 3,
+   "true": "recipe",
+   "predicted": "ingredients_list"
+  },
+  {
+   "count": 3,
+   "true": "oos",
+   "predicted": "restaurant_suggestion"
+  },
+  {
+   "count": 3,
+   "true": "ingredients_list",
+   "predicted": "recipe"
+  },
+  {
+   "count": 3,
+   "true": "accept_reservations",
+   "predicted": "restaurant_reservation"
+  }
+ ],
+ "training": [
+  {
+   "epoch": 1,
+   "train_loss": 2.5215645621163505,
+   "val_accuracy": 0.6826666666666666,
+   "val_macro_f1": 0.6439639540372415
+  },
+  {
+   "epoch": 2,
+   "train_loss": 1.3224010513169424,
+   "val_accuracy": 0.8986666666666666,
+   "val_macro_f1": 0.8905835172324701
+  },
+  {
+   "epoch": 3,
+   "train_loss": 0.5728309325150082,
+   "val_accuracy": 0.928,
+   "val_macro_f1": 0.9278531797601313
+  },
+  {
+   "epoch": 4,
+   "train_loss": 0.29773625009400506,
+   "val_accuracy": 0.9306666666666666,
+   "val_macro_f1": 0.9317533984165884
+  },
+  {
+   "epoch": 5,
+   "train_loss": 0.20151330259868078,
+   "val_accuracy": 0.9306666666666666,
+   "val_macro_f1": 0.9318074970323487
+  }
+ ]
+}

@@ -4,7 +4,7 @@ Reads results/metrics.json and results/preds_<model>.json (written by
 train_baselines.py and train_distilbert.py) and produces:
 
   results/model_comparison.png   accuracy / macro-F1 across the four models
-  results/confusion_matrix.png   41x41 matrix for the deployed model
+  results/confusion_matrix.png   confusion matrix for the deployed model
   results/training_curves.png    loss and validation accuracy per epoch
   results/threshold_sweep.png    out-of-scope confidence threshold analysis
   results/per_class_f1.png       the classes the deployed model finds hardest
@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.metrics import classification_report, confusion_matrix, f1_score
 
-from common import RESULTS, load_labels
+from common import DATA, RESULTS, load_labels
 
 ORDER = ["tfidf_logreg", "bow_mlp", "bilstm", "distilbert"]
 DEPLOYED = "distilbert"
@@ -35,7 +35,7 @@ def load_preds(key: str):
     return np.array(d["y_true"]), np.array(d["y_pred"]), np.array(d["y_conf"])
 
 
-def model_comparison(metrics, present):
+def model_comparison(metrics, present, n_classes, n_test):
     names = [metrics[k]["name"] for k in present]
     acc = [metrics[k]["test_accuracy"] for k in present]
     f1 = [metrics[k]["test_macro_f1"] for k in present]
@@ -51,7 +51,7 @@ def model_comparison(metrics, present):
     ax.set_xticklabels([n.replace(" + ", "\n+ ").replace(" (", "\n(") for n in names], fontsize=9)
     ax.set_ylim(0, 1.06)
     ax.set_ylabel("Score")
-    ax.set_title("Intent classification on the CLINC150 subset (41 classes, 1500 test utterances)")
+    ax.set_title(f"Intent classification on the CLINC150 subset ({n_classes} classes, {n_test} test utterances)")
     ax.legend(loc="lower right")
     ax.grid(axis="y", alpha=0.25)
     fig.tight_layout()
@@ -182,7 +182,7 @@ def per_class_f1(labels, y_true, y_pred):
     ax.barh([r[0] for r in worst], [r[1] for r in worst], color="#f97316")
     ax.set_xlim(0, 1)
     ax.set_xlabel("F1 score")
-    ax.set_title("Twelve hardest intents for the deployed model")
+    ax.set_title(f"The {len(worst)} hardest intents for the deployed model")
     ax.grid(axis="x", alpha=0.25)
     for i, r in enumerate(worst):
         ax.text(r[1] + 0.012, i, f"{r[1]:.2f}", va="center", fontsize=8.5)
@@ -206,13 +206,14 @@ def main() -> None:
             f"{m['test_macro_f1']:>11.4f}{m['train_seconds']:>8.0f}s"
         )
 
-    model_comparison(metrics, present)
+    n_test = len(json.loads((DATA / "test.json").read_text(encoding="utf-8")))
+    model_comparison(metrics, present, len(labels), n_test)
     training_curves(metrics, present)
 
     lines = [
         "# Results",
         "",
-        "## Model comparison (1500 held-out test utterances, 41 classes)",
+        f"## Model comparison ({n_test} held-out test utterances, {len(labels)} classes)",
         "",
         "| Model | Family | Trainable parameters | Test accuracy | Macro F1 | Training time |",
         "|---|---|---:|---:|---:|---:|",

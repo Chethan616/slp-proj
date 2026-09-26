@@ -3,6 +3,7 @@ import { MetalFx, MetalText, useMetalBend } from 'metal-fx'
 import { ThinkingOrb } from 'thinking-orbs'
 import Composer from './components/Composer'
 import Turn from './components/Turn'
+import Results from './components/Results'
 import { getInfo, postText, postVoice, wake } from './api'
 
 /* One per domain, so a few clicks walk through the whole label space and show
@@ -43,6 +44,7 @@ export default function App() {
   // retries are exhausted. Every control is inert until this is 'ready'.
   const [conn, setConn] = useState('connecting')
   const [speak, setSpeak] = useState(false)
+  const [view, setView] = useState('chat')
   const bottomRef = useRef(null)
   const ghRef = useRef(null)
 
@@ -154,6 +156,19 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
+          <div className="view-switch" role="tablist" aria-label="View">
+            {['chat', 'results'].map((v) => (
+              <button
+                key={v}
+                role="tab"
+                aria-selected={view === v}
+                className={view === v ? 'on' : undefined}
+                onClick={() => setView(v)}
+              >
+                {v === 'chat' ? 'Chat' : 'Results'}
+              </button>
+            ))}
+          </div>
           <div className="pipeline" aria-label="processing pipeline">
           {STAGES.map(([key, label], i) => (
             <span key={key} style={{ display: 'contents' }}>
@@ -202,7 +217,10 @@ export default function App() {
         </div>
       </header>
 
-      <main className={turns.length === 0 ? "empty" : ""}>
+      <main className={view === 'chat' && turns.length === 0 ? 'empty' : ''}>
+        {view === 'results' ? (
+          <Results />
+        ) : (
         <section className="transcript" aria-live="polite">
           {turns.length === 0 && (
             <div className="hero">
@@ -244,9 +262,10 @@ export default function App() {
           {error && <div className="error">{error}</div>}
           <div ref={bottomRef} />
         </section>
+        )}
       </main>
 
-      <Composer
+      {view === 'chat' && <Composer
         busy={busy}
         processing={busy}
         info={info}
@@ -264,7 +283,7 @@ export default function App() {
         onVoice={handleVoice}
         onText={handleText}
         onError={setError}
-      />
+      />}
     </div>
   )
 }
