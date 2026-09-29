@@ -351,6 +351,27 @@ The production MealMuse website is shown below.
 
 ![MealMuse website](website-screenshot.png)
 
+### Example intent result
+
+The question *How many calories are in butter chicken?* is classified as
+`calories` with 86% confidence. The answer is retrieved from the recipe corpus.
+
+![MealMuse calories intent example](intent-example.png)
+
+### Voice mode
+
+The composer keeps the microphone available for spoken questions alongside
+typed input.
+
+![MealMuse voice mode](voice-mode.png)
+
+### Per-intent results
+
+The results view shows per-class F1 for the eight hardest intents and the
+most common confusions on the held-out set.
+
+![MealMuse per-intent results](intent-results.png)
+
 | Method | Endpoint | Purpose |
 |---|---|---|
 | GET | `/` | chat interface |

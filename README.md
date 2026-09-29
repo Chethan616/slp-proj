@@ -74,17 +74,32 @@ Speech recognition uses Whisper `base.en` with int8 quantisation, through the
 
 ### Model graphs
 
-![Model comparison](results/model_comparison.png)
+<table>
+  <tr>
+    <td align="center" width="50%"><strong>Model comparison</strong><br><img src="results/model_comparison.png" alt="Accuracy and macro F1 across models" width="100%"></td>
+    <td align="center" width="50%"><strong>Confusion matrix</strong><br><img src="results/confusion_matrix.png" alt="Confusion matrix for the deployed model" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Per-class F1</strong><br><img src="results/per_class_f1.png" alt="Per-class F1 scores" width="100%"></td>
+    <td align="center"><strong>Confidence threshold sweep</strong><br><img src="results/threshold_sweep.png" alt="Validation and test results across confidence thresholds" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Training curves</strong><br><img src="results/training_curves.png" alt="Training loss and validation accuracy" width="100%"></td>
+    <td align="center"><strong>Voice evaluation</strong><br><img src="results/voice_eval.png" alt="Intent accuracy and word error rate from voice evaluation" width="100%"></td>
+  </tr>
+</table>
 
-![Confusion matrix](results/confusion_matrix.png)
+### App screenshots
 
-![Per-class F1 score](results/per_class_f1.png)
-
-![Confidence threshold sweep](results/threshold_sweep.png)
-
-![Training curves](results/training_curves.png)
-
-![End-to-end voice evaluation](results/voice_eval.png)
+<table>
+  <tr>
+    <td align="center" width="50%"><strong>Example intent result</strong><br>Butter chicken calories → <code>calories</code> at 86% confidence<br><img src="report/intent-example.png" alt="MealMuse recognizes a calories question and answers with recipe data" width="100%"></td>
+    <td align="center" width="50%"><strong>Voice mode</strong><br>Microphone ready for a spoken question<br><img src="report/voice-mode.png" alt="MealMuse chat interface with its microphone control ready" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center" colspan="2"><strong>Per-intent results</strong><br>F1 scores for the eight hardest intents, with common confusions<br><img src="report/intent-results.png" alt="Per-intent F1 scores and common intent confusions" width="90%"></td>
+  </tr>
+</table>
 
 **Out-of-scope rejection.** A prediction whose softmax probability falls below a
 threshold is answered as out-of-scope rather than guessed at. The threshold was
