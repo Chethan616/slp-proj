@@ -1,4 +1,4 @@
-# VoiceBot - Voice-Enabled Food and Nutrition Assistant
+# MealMuse - Voice-Enabled Food and Nutrition Assistant
 
 A web application that is operated by speech. The browser records a spoken
 question, the server transcribes it with Whisper, a fine-tuned DistilBERT model
@@ -71,6 +71,20 @@ Speech recognition uses Whisper `base.en` with int8 quantisation, through the
 `faster-whisper` implementation on the CTranslate2 engine.
 
 ## Results
+
+### Model graphs
+
+![Model comparison](results/model_comparison.png)
+
+![Confusion matrix](results/confusion_matrix.png)
+
+![Per-class F1 score](results/per_class_f1.png)
+
+![Confidence threshold sweep](results/threshold_sweep.png)
+
+![Training curves](results/training_curves.png)
+
+![End-to-end voice evaluation](results/voice_eval.png)
 
 **Out-of-scope rejection.** A prediction whose softmax probability falls below a
 threshold is answered as out-of-scope rather than guessed at. The threshold was

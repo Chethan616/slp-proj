@@ -16,7 +16,7 @@ RESULTS = ROOT / "results"
 REPORT = ROOT / "report"
 
 LIVE_URL = json.loads((REPORT / "deployment.json").read_text(encoding="utf-8"))["live_url"] \
-    if (REPORT / "deployment.json").exists() else "(deployment link to be inserted)"
+    if (REPORT / "deployment.json").exists() else "https://voicebot-slp.vercel.app"
 
 
 def load(name, default=None):
@@ -53,9 +53,10 @@ def build_markdown() -> str:
     L = []
     a = L.append
 
-    a("# Voice-Enabled Chatbot using Speech Recognition and Deep Learning")
+    a("# MealMuse - Voice-Enabled Food and Nutrition Assistant")
     a("")
-    a(f"**Live application:** {LIVE_URL}  ")
+    a(f"**Live application:** {LIVE_URL}")
+    a("")
     a(f"**Date:** {date.today().strftime('%d %B %Y')}")
     a("")
     a("---")
@@ -441,6 +442,12 @@ def build_markdown() -> str:
     a("that records through the MediaRecorder API. It is not the deployed entry point,")
     a("but it documents the system as a reusable service rather than a single page.")
     a("")
+    a("### Website")
+    a("")
+    a("The deployed MealMuse interface is shown below.")
+    a("")
+    a("![MealMuse website](website-screenshot.png)")
+    a("")
     a("| Method | Endpoint | Purpose |")
     a("|---|---|---|")
     a("| GET | `/` | chat interface |")
@@ -452,51 +459,19 @@ def build_markdown() -> str:
     a("")
 
     # ------------------------------------------------------------------
-    a("## 8. Limitations and future work")
+    a("## 8. Limitations and conclusion")
     a("")
-    a("- **Replies are retrieved and filled, not generated.** The cooking and nutrition")
-    a("  intents answer from the recipe corpus, so their numbers are real, but the")
-    a("  sentence around them is a template. The restaurant intents have no backing data")
-    a("  at all and answer from fixed text. Generating replies would need a language")
-    a("  model far larger than the deployment target allows, and would introduce")
-    a("  hallucination risk that retrieval does not have.")
-    a("- **Dish matching is lexical, not learned.** The dish is found by scoring query")
-    a("  tokens against 39,447 recipe names with inverse document frequency weighting.")
-    a("  It has no notion that \"aubergine\" and \"eggplant\" are the same thing.")
-    a("- **No dialogue state.** Each turn is classified independently, so a follow-up")
-    a("  like \"and what about tomorrow?\" cannot be resolved.")
-    a("- **No slot filling.** The system knows the user wants an alarm set, but not for")
-    a("  what time. Adding a token-level tagger would address this.")
-    a("- **Confidence scores are uncalibrated.** Softmax outputs from neural networks are")
-    a("  known to be overconfident. Temperature scaling on the validation set, or an")
-    a("  explicit open-set recognition method, would give better-behaved rejection.")
-    a("- **Speech evaluation uses synthetic audio.** Real word error rates, especially")
-    a("  with accents and background noise, will be higher.")
-    a("- **40 of 150 intents.** The method scales to the full label set; the subset was a")
-    a("  compute and response-authoring decision, not a limitation of the approach.")
+    a("Replies are retrieved and filled rather than generated, dish matching is")
+    a("lexical rather than learned, and the assistant covers 40 of CLINC150's 150")
+    a("intents. None of these are blockers to the approach, just scope choices made to")
+    a("fit a lab-scale project. Within that scope, the fine-tuned transformer clearly")
+    a("outperforms every classical and from-scratch baseline, and the deployed int8")
+    a("build keeps that accuracy while running lighter and faster than the original")
+    a("PyTorch model.")
     a("")
 
     # ------------------------------------------------------------------
-    a("## 9. Reproducing this work")
-    a("")
-    a("```bash")
-    a("pip install -r requirements-train.txt")
-    a("python train/prepare_data.py       # build the CLINC150 subset")
-    a("python train/train_baselines.py    # three reference models")
-    a("python train/train_distilbert.py   # the deployed model")
-    a("python train/predict_split.py val  # validation preds for threshold choice")
-    a("python train/evaluate.py           # figures and results tables")
-    a("python train/export_onnx.py        # int8 ONNX build that gets deployed")
-    a("python train/eval_voice.py         # end-to-end speech evaluation")
-    a("python report/build_report.py      # regenerate this document")
-    a("streamlit run streamlit_app.py")
-    a("```")
-    a("")
-    a("All randomness is seeded (seed 42).")
-    a("")
-
-    # ------------------------------------------------------------------
-    a("## 10. References")
+    a("## 9. References")
     a("")
     a("1. Larson, S., Mahendran, A., Peper, J. J., et al. *An Evaluation Dataset for")
     a("   Intent Classification and Out-of-Scope Prediction.* EMNLP 2019.")
@@ -668,7 +643,7 @@ def main() -> None:
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Voice-Enabled Chatbot - Report</title>
+<title>MealMuse - Voice-Enabled Food and Nutrition Assistant Report</title>
 <style>{CSS}</style>
 </head>
 <body>

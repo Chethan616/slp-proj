@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "app"))
 
 st.set_page_config(
-    page_title="VoiceBot - Voice-Enabled Chatbot",
+    page_title="MealMuse - Voice-Enabled Food and Nutrition Assistant",
     page_icon="◉",
     layout="centered",
 )
@@ -56,7 +56,7 @@ st.markdown(
 <div class="vb-header">
   <div class="vb-logo">◉</div>
   <div>
-    <p class="vb-title">VoiceBot - Voice-Enabled Chatbot</p>
+    <p class="vb-title">MealMuse - Voice-Enabled Food and Nutrition Assistant</p>
     <p class="vb-sub">Speech recognition with Whisper · intent classification with DistilBERT</p>
   </div>
 </div>
@@ -94,7 +94,7 @@ def render_turn(turn: dict) -> None:
   <span class="lbl">Intent</span>
   <div><span class="chip {'oos' if low else ''}">{turn['intent']}</span>
        <span style="font-size:.8rem;opacity:.65;"> {pct}% confidence</span></div>
-  <div style="margin-top:10px;"><span class="lbl">VoiceBot</span>
+  <div style="margin-top:10px;"><span class="lbl">MealMuse</span>
        <div class="reply">{turn['reply']}</div></div>
   <div class="meta">{stt_meta} · intent inference {turn['infer_ms']} ms{
       ' · next: ' + alts if alts else ''}</div>

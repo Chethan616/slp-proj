@@ -150,7 +150,7 @@ export default function App() {
                 color="#ffffff"
                 theme="dark"
               >
-                VoiceBot
+                MealMuse
               </MetalText>
             </h1>
             <p className="tagline">Whisper → DistilBERT</p>

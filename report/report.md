@@ -1,7 +1,8 @@
-# Voice-Enabled Chatbot using Speech Recognition and Deep Learning
+# MealMuse - Voice-Enabled Food and Nutrition Assistant
 
-**Live application:** (deployment link to be inserted)  
-**Date:** 26 September 2026
+**Live application:** https://voicebot-slp.vercel.app
+
+**Date:** 29 September 2026
 
 ---
 
@@ -292,7 +293,7 @@ lower bound on error, not a prediction of field performance.
 
 ## 7. Deployment
 
-The application is live at **(deployment link to be inserted)**.
+The application is live at **https://voicebot-slp.vercel.app**.
 
 It is deployed on **Streamlit Community Cloud**, which builds the app directly
 from the GitHub repository. Both models run server-side, so the browser only
@@ -344,6 +345,12 @@ same pipeline programmatically, with a dependency-free HTML/JavaScript interface
 that records through the MediaRecorder API. It is not the deployed entry point,
 but it documents the system as a reusable service rather than a single page.
 
+### Website
+
+The deployed MealMuse interface is shown below.
+
+![MealMuse website](website-screenshot.png)
+
 | Method | Endpoint | Purpose |
 |---|---|---|
 | GET | `/` | chat interface |
@@ -353,47 +360,17 @@ but it documents the system as a reusable service rather than a single page.
 | GET | `/api/info` | model metadata and intent list |
 | GET | `/health` | liveness probe |
 
-## 8. Limitations and future work
+## 8. Limitations and conclusion
 
-- **Replies are retrieved and filled, not generated.** The cooking and nutrition
-  intents answer from the recipe corpus, so their numbers are real, but the
-  sentence around them is a template. The restaurant intents have no backing data
-  at all and answer from fixed text. Generating replies would need a language
-  model far larger than the deployment target allows, and would introduce
-  hallucination risk that retrieval does not have.
-- **Dish matching is lexical, not learned.** The dish is found by scoring query
-  tokens against 39,447 recipe names with inverse document frequency weighting.
-  It has no notion that "aubergine" and "eggplant" are the same thing.
-- **No dialogue state.** Each turn is classified independently, so a follow-up
-  like "and what about tomorrow?" cannot be resolved.
-- **No slot filling.** The system knows the user wants an alarm set, but not for
-  what time. Adding a token-level tagger would address this.
-- **Confidence scores are uncalibrated.** Softmax outputs from neural networks are
-  known to be overconfident. Temperature scaling on the validation set, or an
-  explicit open-set recognition method, would give better-behaved rejection.
-- **Speech evaluation uses synthetic audio.** Real word error rates, especially
-  with accents and background noise, will be higher.
-- **40 of 150 intents.** The method scales to the full label set; the subset was a
-  compute and response-authoring decision, not a limitation of the approach.
+Replies are retrieved and filled rather than generated, dish matching is
+lexical rather than learned, and the assistant covers 40 of CLINC150's 150
+intents. None of these are blockers to the approach, just scope choices made to
+fit a lab-scale project. Within that scope, the fine-tuned transformer clearly
+outperforms every classical and from-scratch baseline, and the deployed int8
+build keeps that accuracy while running lighter and faster than the original
+PyTorch model.
 
-## 9. Reproducing this work
-
-```bash
-pip install -r requirements-train.txt
-python train/prepare_data.py       # build the CLINC150 subset
-python train/train_baselines.py    # three reference models
-python train/train_distilbert.py   # the deployed model
-python train/predict_split.py val  # validation preds for threshold choice
-python train/evaluate.py           # figures and results tables
-python train/export_onnx.py        # int8 ONNX build that gets deployed
-python train/eval_voice.py         # end-to-end speech evaluation
-python report/build_report.py      # regenerate this document
-streamlit run streamlit_app.py
-```
-
-All randomness is seeded (seed 42).
-
-## 10. References
+## 9. References
 
 1. Larson, S., Mahendran, A., Peper, J. J., et al. *An Evaluation Dataset for
    Intent Classification and Out-of-Scope Prediction.* EMNLP 2019.
