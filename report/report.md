@@ -1,6 +1,6 @@
 # MealMuse - Voice-Enabled Food and Nutrition Assistant
 
-**Live application:** https://voicebot-slp.vercel.app
+**Live application:** https://voicebot-fawn.vercel.app
 
 **Date:** 29 September 2026
 
@@ -293,7 +293,7 @@ lower bound on error, not a prediction of field performance.
 
 ## 7. Deployment
 
-The application is live at **https://voicebot-slp.vercel.app**.
+The application is live at **https://voicebot-fawn.vercel.app**.
 
 It is deployed on **Streamlit Community Cloud**, which builds the app directly
 from the GitHub repository. Both models run server-side, so the browser only
@@ -347,7 +347,7 @@ but it documents the system as a reusable service rather than a single page.
 
 ### Website
 
-The deployed MealMuse interface is shown below.
+The production MealMuse website is shown below.
 
 ![MealMuse website](website-screenshot.png)
 

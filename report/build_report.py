@@ -16,7 +16,7 @@ RESULTS = ROOT / "results"
 REPORT = ROOT / "report"
 
 LIVE_URL = json.loads((REPORT / "deployment.json").read_text(encoding="utf-8"))["live_url"] \
-    if (REPORT / "deployment.json").exists() else "https://voicebot-slp.vercel.app"
+    if (REPORT / "deployment.json").exists() else "https://voicebot-fawn.vercel.app"
 
 
 def load(name, default=None):
@@ -444,7 +444,7 @@ def build_markdown() -> str:
     a("")
     a("### Website")
     a("")
-    a("The deployed MealMuse interface is shown below.")
+    a("The production MealMuse website is shown below.")
     a("")
     a("![MealMuse website](website-screenshot.png)")
     a("")

@@ -10,7 +10,7 @@ confidence.
 Ask it how many calories are in butter chicken and the figure it quotes is real,
 read from the corpus rather than written into the code.
 
-**Live application:** https://voicebot-slp.vercel.app
+**Live application:** https://voicebot-fawn.vercel.app
 
 ## Pipeline
 
