@@ -10,8 +10,8 @@ One-time setup:
 
 ```bash
 gcloud auth login                       # opens a browser
-gcloud projects create voicebot-slp     # or reuse an existing project id
-gcloud config set project voicebot-slp
+gcloud projects create mealmuse-slp     # or reuse an existing project id
+gcloud config set project mealmuse-slp
 gcloud services enable run.googleapis.com cloudbuild.googleapis.com
 ```
 
@@ -22,7 +22,7 @@ which is far more than a demo uses.
 Deploy:
 
 ```bash
-gcloud run deploy voicebot-api \
+gcloud run deploy mealmuse-api \
   --source . \
   --region asia-south1 \
   --memory 1Gi \
@@ -39,7 +39,7 @@ locally on the same image). The
 front end pings `/health` on page load so that happens while the visitor is
 still reading.
 
-The command prints a service URL like `https://voicebot-api-xxxx.run.app`.
+The command prints a service URL like `https://mealmuse-api-xxxx.run.app`.
 
 ## 1b. Backend - Railway (alternative to Cloud Run)
 
@@ -83,7 +83,7 @@ read at build time, so changing it requires a redeploy.
 The API allows any origin by default. Once the Vercel URL is known:
 
 ```bash
-gcloud run services update voicebot-api \
+gcloud run services update mealmuse-api \
   --region asia-south1 \
   --set-env-vars ALLOWED_ORIGINS=https://<your-app>.vercel.app
 ```
