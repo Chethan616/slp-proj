@@ -149,14 +149,3 @@ All randomness is seeded, so the reported numbers reproduce.
 The backend runs as a Docker container on Railway and the front end is a static
 build on Vercel. `DEPLOY.md` has the exact commands, including the Google Cloud
 Run alternative.
-
-## References
-
-1. Larson, S., Mahendran, A., Peper, J. J., et al. *An Evaluation Dataset for
-   Intent Classification and Out-of-Scope Prediction.* EMNLP 2019.
-2. Sanh, V., Debut, L., Chaumond, J., Wolf, T. *DistilBERT, a distilled version
-   of BERT: smaller, faster, cheaper and lighter.* NeurIPS EMC^2 Workshop, 2019.
-3. Radford, A., Kim, J. W., Xu, T., et al. *Robust Speech Recognition via
-   Large-Scale Weak Supervision.* OpenAI, 2022.
-4. Devlin, J., Chang, M.-W., Lee, K., Toutanova, K. *BERT: Pre-training of Deep
-   Bidirectional Transformers for Language Understanding.* NAACL 2019.
